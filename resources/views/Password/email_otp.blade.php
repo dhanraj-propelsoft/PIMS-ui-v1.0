@@ -1,0 +1,58 @@
+@extends('layouts.auth.app')
+
+@section('form')
+
+<main>
+    <div class="container">
+        <div class="row h-100">
+            <div class="col-12 col-md-10 mx-auto my-auto">
+                <div class="card auth-card">
+                    <div class="position-relative image-side ">
+
+                        {{-- <p class=" text-white h2">MAGIC IS IN THE DETAILS</p> --}}
+
+                        {{-- <p class="white mb-0">
+                            Don’t have a Login yet, just enter your mobile number and follow us. we ensure your Signup for a New Account in few steps
+
+                        </p> --}}
+                    </div>
+                    <div class="form-side">
+                        <div class="log-container col-md-12  ">
+                            <img src="{{ asset('assets/images/logo.svg') }}" alt="">
+                            <div>
+                                <span>Propel Soft</span>
+                                <span>Acclereting Business Ahead</span>
+                            </div>
+                        </div>
+                       
+                        <h6 class="mb-4">OTP Verification <span class="lead-sm text-muted">( {{$email}} )</span></h6>
+
+                        <form action="{{route('validateEmailOtp')}}" class="frm-single" method="post" autocomplete="off">
+                            @csrf
+
+                            <label class="form-group col-md-12 p-0  InputLabel mb-4">
+                                <input class="form-control AlterInput  propel-key-press-input-mendatory needValidation" placeholder="Enter OTP Received on your email {{$email}}" name="otp" value="{{ old('otp') }}" />
+                                <span class="text-danger">@error('otp'){{ $message }}@enderror</span>
+                                <span class="AlterInputLabel">Enter OTP </span>
+                            </label>
+
+                            <input type="hidden" name="uid" value="{{$uid}}">
+                            <input type="hidden" name="email" value="{{$email}}">
+                            <div class="d-flex justify-content-between align-items-center">
+
+
+                             
+                                <a href="javascript:void(0);"><span class="propelbtn propel-hover propelbtncurved propelcancel" >Resend OTP</span></a>
+                          
+                                <button class="propelbtn propelbtncurved propelsubmit" type="submit">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@endsection

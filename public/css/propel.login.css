@@ -1,0 +1,126 @@
+/* For Logo */
+.log-container {
+    height: 70px; 
+    width: 100%; 
+/* border: 1px solid green; */
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.log-container>img {
+    height: 100%;
+    margin-right: 10px;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
+.log-container div span{
+  display: block;
+}
+.logo-in-row .log-container{
+    width: unset;
+    margin:unset;
+}
+
+.log-container> div >span:first-child {
+    font-family: bahnschrift light;
+    color: var(--propel);
+    font-size: 3.2rem;
+    font-weight: 500;
+    /* height: 50px; */
+    line-height: 45px;
+    white-space: nowrap;
+}
+
+.log-container > div >span:last-child {
+    font-family: arial narrow;
+    color:var(--gray-color);
+   font-size: 1rem;
+   font-weight: 500;
+   white-space: nowrap;
+}
+
+@media only screen and (max-width: 990px) {
+    .log-container {
+        margin-top: -40px;
+
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .log-container {
+        margin-top: -20px;
+
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .log-container {
+          height: 30px;
+    }
+    .log-container>div>span:first-child {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .log-container>div>span:last-child {
+        font-size: 10px;
+    }
+}
+
+
+.ExtraInfo {
+    font-style: italic;
+    color:var(--black-color);
+    margin-top: 10px;
+    font-family: Century Schoolbook ;
+    position: absolute;
+    bottom: 10px;
+}
+.propel-forget-password:hover{
+    color:var(--blue-color-3);
+    color: var(--blue-color-1);
+
+}
+.homeInput{
+    display: flex;
+}
+.homeInput:focus ~ .propel-home-address-popup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.propel-home-address-popup-container{
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index:10;
+    display: none;
+}
+.propel-home-address-popup{
+    width:300px;
+    height: auto;
+    background-color: var(--white-color);
+    box-shadow:var(--black-color-1) 0px 2px 4px,var(--black-color-2) 0px 7px 13px -3px, var(--black-color-3) 0px -3px 0px inset;
+    padding: 10px;
+    border-radius: 5px;
+}
+.propel-text-info{
+    color: var(--propel);
+    font-weight: 600;
+}
+.pwd-view{
+    cursor: pointer;
+}
+
+.top-info{
+    font-style: italic; 
+    font-family:arial narrow;
+}

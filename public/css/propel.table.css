@@ -1,0 +1,70 @@
+.dataTables_scrollHead {
+    width: 100% !important;
+}
+.dataTables_scrollHeadInner {
+    width: 100% !important;
+}
+table.dataTable   {
+    width: 100% !important;  
+}
+table.dataTable  td,table.dataTable th{
+    min-width: 150px !important; 
+}
+table.dataTable  td,table.dataTable  th {
+    font-size: 15px !important;
+    padding: 5px !important;
+}
+
+table.dataTable  tbody tr:hover{
+    background-color: var(--white-color-3);
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    cursor: pointer; */
+}
+
+.page-item .page-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .page-item .page-link:hover{
+    background-color: var(--primary);
+    color: white;
+} */
+.page-item.active .page-link:hover{
+    background-color: var(--theme-color-1);
+    color: var(--white-color);
+}
+.view-pager div div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ .propeltablebtn{
+    /* font-size: 10px;
+    padding: 5px 10px;
+    background-color: var(--theme-color-1);
+    color: white;
+    border-radius: 5px; */
+    background-color: transparent;
+    border: none;
+ }
+ .propeltablebtn:focus{
+    filter: grayscale(0.5);
+ }
+table.table thead tr th  ,  table.table tbody tr td{
+    max-width: 0px !important;
+}
+ table.table tbody tr:hover {
+    background-color: var(--propel-color-10) !important;
+    color: var(--propel) !important;
+    /* text-shadow: 0px 1px 1px var(--propel) !important; */
+}
+.dataTables_empty{
+    text-align: center;
+}
+
+.table-rounded{
+ /* overflow: hidden; */
+ border-radius: 10px !important;
+ border: 3px solid red;
+}
