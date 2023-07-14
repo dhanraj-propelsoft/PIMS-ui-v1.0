@@ -1,6 +1,12 @@
 <div class="propel-main-container">
     <div class="propel-menu-bar">
-
+        <div class="propel-brand-container ">
+            <img src="{{ asset('assets/images/logo.svg') }}" alt="Propel Brand Image" class="propel-logo-image">
+            <div class="propel-brand">
+                <p class="propel-brand-name">Propel Soft</p>
+                <p class="propel-caption">Accelerating Business Ahead</p>
+            </div>
+        </div>
         <ul class="propel-menu-bar-list-container user-menu-bar propel-display-menu-bar">
             {{-- <p class="propel-menu-bar-title">User</p> --}}
             <a href="{{route('myAccount') }}">

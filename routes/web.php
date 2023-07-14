@@ -28,12 +28,15 @@ Route::get('/clear', function () {
 
     return "Cleared!";
 });
+Route::get('/', function () {
+    return view('home');
+});
 
 // Route::prefix('user')->name('user.')->group(function () {
 Route::middleware(['guest:web', 'PreventBackHistory'])->group(function () {
 
     //dhana Code Start
-    Route::get('/', [AuthController::class, 'loginMobilePage'])->name('loginMobilePage');
+
     include_once('version1/Person/person.php');
     include_once('version1/User/user.php');
     include_once('version1/Organization/organization.php');

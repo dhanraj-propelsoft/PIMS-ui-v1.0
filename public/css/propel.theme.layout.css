@@ -258,7 +258,7 @@ body {
 
     margin-left: 0;
     width: 100%;
-    height: calc(100vh - 7px);
+    height:100%;
     overflow: hidden;
 }
 
@@ -279,14 +279,15 @@ body {
 }
 
 .propel-brand-container {
-    height: 100%;
+    /* height: 100%; */
+    width: 100%;
     display: flex;
     align-items: center;
-    margin-right: 40px;
+  justify-content: center;
 }
 
 .propel-brand-container .propel-logo-image {
-    height: calc(100% - 20px);
+    height:20px;
     margin-top: -10px;
     margin-right: 10px;
 }
@@ -301,7 +302,7 @@ nav {
 
 .propel-brand-container > .propel-brand > .propel-brand-name {
     font-family: bahnschrift light;
-    font-size: 30px;
+    font-size: 16px;
     /* font-weight:100; */
     letter-spacing: -1px;
     color: var(--propel);
@@ -309,7 +310,7 @@ nav {
 
 .propel-brand-container > .propel-brand > .propel-caption {
     font-family: arial narrow;
-    font-size: 12px;
+    font-size: 6px;
     letter-spacing: 0.5px;
     color: var(--gray-color);
     margin-top: -15px;
@@ -391,21 +392,22 @@ nav {
 
 .propel-main-container {
     display: flex;
-    height: calc(100vh - 79px);
+    height:calc(100% - 12px);
+  margin-top: 4px;
 
     /* overflow: hidden; */
 }
 
 .propel-menu-bar {
     width: 180px;
-    height: calc(100% - 4px);
+    height: 100% ;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: var(--white-color);
     border-radius: 5px;
     transition: 0.2s;
     transition-timing-function: ease-in;
-    margin: 2px 2px 4px 2px;
+    margin: 2px 2px 0px 2px;
 }
 
 .propel-menu-bar-list-container {
@@ -502,8 +504,8 @@ text-shadow: 2px 3px 14px rgba(255,255,255,0.8);
     overflow-x: hidden;
     padding-top: 0;
  
-    height: calc(100% - 4px);
-    margin: 2px 4px 4px 2px;
+    height: 100% ;
+    margin: 2px 4px 0px 2px;
     border-radius: 5px;
 }
 .fit-workspace {
