@@ -72,3 +72,12 @@ Route::view('/resourceview', 'resource/resourceview');
 Route::view('/slide_one_org', 'organization/slide_one');
 Route::view('/slide_two_org', 'organization/slide_two');
 Route::view('/profileView', 'profiles/profileView');
+Route::view('/salutation', 'pimsUi/salutation/list');
+Route::view('/salutationView', 'pimsUi/salutation/view');
+Route::view('/salutationEdit', 'pimsUi/salutation/edit');
+Route::view('/salutationAdd', 'pimsUi/salutation/add');
+
+Route::view('/genre', 'pimsUi/genre/list');
+Route::view('/genreView', 'pimsUi/genre/view');
+Route::view('/genreEdit', 'pimsUi/genre/edit');
+Route::view('/genreAdd', 'pimsUi/genre/add');
