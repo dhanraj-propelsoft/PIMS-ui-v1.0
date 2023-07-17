@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\WizardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\PIMS\Master\SalutationController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -35,49 +36,15 @@ Route::get('/', function () {
 // Route::prefix('user')->name('user.')->group(function () {
 Route::middleware(['guest:web', 'PreventBackHistory'])->group(function () {
 
-    //dhana Code Start
-
-    include_once('version1/Person/person.php');
-    include_once('version1/User/user.php');
-    include_once('version1/Organization/organization.php');
-    include_once('version1/Hrm/hrmMasters.php');
-    include_once('version1/Hrm/Transaction/hrmTransaction.php');
+  
     
-    //dhana Code End
-    Route::get('login', [AuthController::class, 'login'])->name('login');
-
-    Route::post('set_password', [AdminController::class, 'set_password'])->name('set_password');
-    // Modules
-    Route::get('list/', [ModuleController::class, 'list'])->name('list');
-
-    //include_once('Hrm/hrmMasters.php');
-    include_once('Person/person.php');
-    include_once('Organization/organization.php');
-    //include_once('Hrm/Transaction/hrmTransaction.php');
+   
 });
 
-Route::view('/add-resource-stage-1', 'resource/add-resource-stage-1');
-Route::view('/resource', 'resource/resource');
-Route::view('/add-resource-stage-2', 'resource/add-resource-stage-2');
-Route::view('/add-resource-stage-3', 'resource/add-resource-stage-3');
-Route::view('/reliveresource', 'resource/relieveresource');
-Route::view('/rejoin_stage_1', 'resource/rejoin_stage_1');
-Route::view('/rejoin_stage_2', 'resource/rejoin_stage_2');
-Route::view('/rejoin_stage_3', 'resource/rejoin_stage_3');
-Route::view('/rejoin_case2_stage_1', 'resource/rejoin_case2_stage_1');
-Route::view('/rejoin_case2_stage_2', 'resource/rejoin_case2_stage_2');
-Route::view('/rejoin_case2_stage_3', 'resource/rejoin_case2_stage_3');
-Route::view('/rejoin_case3_stage_1', 'resource/rejoin_case3_stage_1');
-Route::view('/resourceview', 'resource/resourceview');
-Route::view('/slide_one_org', 'organization/slide_one');
-Route::view('/slide_two_org', 'organization/slide_two');
-Route::view('/profileView', 'profiles/profileView');
-Route::view('/salutation', 'pimsUi/salutation/list');
-Route::view('/salutationView', 'pimsUi/salutation/view');
-Route::view('/salutationEdit', 'pimsUi/salutation/edit');
-Route::view('/salutationAdd', 'pimsUi/salutation/add');
+Route::Resource('salutation','App\Http\Controllers\PIMS\Master\SalutationController');
 
-Route::view('/genre', 'pimsUi/genre/list');
-Route::view('/genreView', 'pimsUi/genre/view');
-Route::view('/genreEdit', 'pimsUi/genre/edit');
-Route::view('/genreAdd', 'pimsUi/genre/add');
+
+Route::view('/gender', 'pimsUi/gender/list');
+Route::view('/genderView', 'pimsUi/gender/view');
+Route::view('/genderEdit', 'pimsUi/gender/edit');
+Route::view('/genderAdd', 'pimsUi/gender/add');

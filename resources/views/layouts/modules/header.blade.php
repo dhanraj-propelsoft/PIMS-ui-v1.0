@@ -68,8 +68,8 @@
                 &nbsp;
                 <div class="dropdown-menu dropdown-menu-right mt-3">
                     <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
-                    <a class="dropdown-item" href="{{ route('signout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign out</a>
-                    <form action="{{ route('signout')}}" method="post" class="d-none" id="logout-form">@csrf</form>
+                    <a class="dropdown-item" href="{ut') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign out</a>
+                    <form action="" method="post" class="d-none" id="logout-form">@csrf</form>
                 </div>
             </div>
 

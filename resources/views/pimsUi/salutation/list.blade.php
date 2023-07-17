@@ -1,44 +1,49 @@
 @extends('layouts.dashboard.app')
 @section('content')
-  
-    <div class="common-master0 salutation0 for-active"></div>
 
-    <!--Table-->
-    <div class="container col-md-10 m-4 mx-auto">
-        <div class="row ">
-            <h2 class="text-center col-12">Select an Account to manage settings</h2>
+<div class="common-master0 salutation0 for-active"></div>
 
-            <table class="table shadow mt-4">
-                <thead>
-                  <tr>
-                    <th>Person Salutation</th>
-                    <th>Created By</th>
-                    <th>Modified By</th>
-                    <th>Active Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr  ondblclick="window.location.href='/salutationView'" >
-                    <td >Mr.</td>
-                    <td>John Doe</td>
-                    <td>Jane Smith</td>
-                    <td>Active</td>
-                  </tr>
-           
-                </tbody>
-               
-              </table>
-              
-            <br><br>
+<!--Table-->
+<div class="container col-md-10 m-4 mx-auto">
+  <div class="row ">
+    <h2 class="text-center col-12">Select an Account to manage settings</h2>
 
-        </div>
-    </div>
-    <!--End Table-->
+    <table class="table shadow mt-4">
+      <thead>
+        <tr>
+          <th>Person Salutation</th>
+          <th>Created By</th>
+          <th>Modified By</th>
+          <th>Active Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($modeldatas as $modeldata)
+        <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
+          <td>{{$modeldata['name']}}</td>
+          <td>John Doe</td>
+          <td>Jane Smith</td>
+          <td>{{$modeldata['status']}}</td>
+        </tr>
+        @endforeach
+      </tbody>
 
-    <script>
+    </table>
 
-        document.querySelector(".propel-breadcrumb-extra-content").innerHTML =
-            `<a href="/salutationAdd"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
-    
-    </script>
+    <br><br>
+
+  </div>
+</div>
+<!--End Table-->
+
+<script>
+  document.querySelector(".propel-breadcrumb-extra-content").innerHTML =
+    `<a href="{{route('salutation.create')}}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
+
+function viewPage(id){
+  var url = '{{ route("salutation.show", ":id") }}';
+      url = url.replace(':id', id);    
+  window.location.href = url;
+}
+</script>
 @endsection

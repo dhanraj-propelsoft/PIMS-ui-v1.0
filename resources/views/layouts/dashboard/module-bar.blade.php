@@ -131,6 +131,6 @@
                     <span>Sign Out</span>
                     </li>
                 </ul>
-                <form action="{{ route('signout')}}" method="post" class="d-none" id="logout-form">@csrf</form>
+                <form action="" method="post" class="d-none" id="logout-form">@csrf</form>
         </div>
     </div>

@@ -1,7 +1,9 @@
 <?php
 
 return [
-
+    'APIGATEWAYURI' => [
+        'base_uri' => env('API_GATEWAY_BASE_URI')
+    ],
     /*
     |--------------------------------------------------------------------------
     | Third Party Services

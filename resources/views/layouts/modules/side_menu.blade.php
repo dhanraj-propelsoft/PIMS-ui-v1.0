@@ -21,7 +21,7 @@
         <div class="scroll">
             <ul class="list-unstyled" data-link="dashboard">
                 <li>
-                    <a href="{{route('my_account')}}">
+                    <a href="">
                         <i class="simple-icon-rocket"></i> <span class="d-inline-block">My Accounts</span>
                     </a>
                 </li>
@@ -44,12 +44,12 @@
 
             <ul class="list-unstyled" data-link="layouts">
                 <li>
-                    <a href="{{route('myAccount')}}">
+                    <a href="">
                         <i class="simple-icon-list"></i> <span class="d-inline-block">Organisation1</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('OrganizationAccount')}}">
+                    <a href="">
                         <i class="simple-icon-list"></i> <span class="d-inline-block">Create Organisation</span>
                     </a>
                 </li>

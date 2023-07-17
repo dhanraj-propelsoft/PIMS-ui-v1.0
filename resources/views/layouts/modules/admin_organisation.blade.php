@@ -159,17 +159,16 @@
   </div>
 </div>
 
-<h5 class="center">We Respect your interest but to create new organisation you must be an Administrator or impose administration rights on your Organisation.</h5>
+<h5 class="center">Does your Organisation have GSTIN</h5>
 
 
 <div class="container">
     <br>
 	<div class="row">
     <div class="col-md-12">
-        <form action="{{route('organisation_form')}}" method="post">
+        <form action="gender('gst_form')}}" method="post">
             @csrf
-            <input type="hidden" name="uid" value="{{$uid}}">
-        <input type="hidden" name="door_no" value="{{$door_no}}">
+            <input type="hidden" name="door_no" value="{{$door_no}}">
         <input type="hidden" name="building_name" value="{{$building_name}}">
         <input type="hidden" name="street" value="{{$street}}">
         <input type="hidden" name="landmark" value="{{$landmark}}">
@@ -182,11 +181,33 @@
         <input type="hidden" name="organisation_email" value="{{$organisation_email}}">
         <input type="hidden" name="organisation_admin" value="{{$organisation_admin}}">
         <input type="hidden" name="organisation_client" value="{{$organisation_client}}">
-            <button type="submit" class="btn btn-outlined btn-theme btn-lg">Continue</button>
+        <input type="hidden" name="temp_id" value="{{$temp_id}}">
+        <button type="submit" class="btn btn-outlined btn-theme btn-lg">We Have GSTIN</button>
         </form>
         </div>
 	</div>
     <hr>
+    <div class="row">
+        <div class="col-md-12">
+        <form action="gender('organisation_form')}}" method="post">
+            @csrf
+            <input type="hidden" name="door_no" value="{{$door_no}}">
+        <input type="hidden" name="building_name" value="{{$building_name}}">
+        <input type="hidden" name="street" value="{{$street}}">
+        <input type="hidden" name="landmark" value="{{$landmark}}">
+        <input type="hidden" name="pincode" value="{{$pincode}}">
+        <input type="hidden" name="state" value="{{$state}}">
+        <input type="hidden" name="city" value="{{$city}}">
+        <input type="hidden" name="district" value="{{$district}}">
+        <input type="hidden" name="area" value="{{$area}}">
+        <input type="hidden" name="organisation_name" value="{{$organisation_name}}">
+        <input type="hidden" name="organisation_email" value="{{$organisation_email}}">
+        <input type="hidden" name="temp_id" value="{{$temp_id}}">
+        <button type="submit" class="btn btn-outlined btn-theme btn-lg">We Don't Have GSTIN</button>
+        </form>
+    </div>
+      
+	</div>
     <br>
     <div class="row">
     <div class="col-md-12">

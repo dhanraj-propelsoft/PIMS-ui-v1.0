@@ -3,7 +3,7 @@
 
 {{-- This is For Navigation and Breadcrumbs --}}
 
- <!-- | -->   <div class="common-master0 genre0 edit0 for-active"><!-- | -->
+ <!-- | -->   <div class="common-master0 gender0 edit0 for-active"><!-- | -->
  <!-- | -->     <div class="edit">                                    <!-- | -->
  <!-- | -->      <span>edit</span>                                    <!-- | -->
  <!-- | -->    </div>                                                <!-- | -->
@@ -12,7 +12,7 @@
 
  <form action="" method="post" class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-      <select class="form-select w-100 AlterInput search-need" name="Genre" data-minimum-results-for-search="Infinity" data-placeholder="Salutation">
+      <select class="form-select w-100 AlterInput search-need" name="gender" data-minimum-results-for-search="Infinity" data-placeholder="Salutation">
         <option selected value="" disabled>Salutation</option>
         <option>Male</option>
         <option>Female</option>
@@ -38,7 +38,7 @@
         <button class="propelbtn propelbtncurved propelcancel">Close</button>
         <button class="propelbtn propelbtncurved propelcancel">Cancel</button>
         <button class="propelbtn propelbtncurved propeldelete">Delete</button>
-        <button class="propelbtn propelbtncurved propelsubmit" onclick="window.location.href='/genreEdit'">update</button>
+        <button class="propelbtn propelbtncurved propelsubmit" onclick="window.location.href='/genderEdit'">update</button>
       </div>
 
  </form>

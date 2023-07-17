@@ -9,7 +9,7 @@
         </div>
         <ul class="propel-menu-bar-list-container user-menu-bar propel-display-menu-bar">
             {{-- <p class="propel-menu-bar-title">User</p> --}}
-            <a href="{{route('myAccount') }}">
+            <a href="">
                 <li class="account">
                     <svg width="15" height="15" viewBox="0 0 15 15"  >
                         <path d="M5.25 0H1.5C0.671573 0 0 0.671573 0 1.5V5.25C0 6.07843 0.671573 6.75 1.5 6.75H5.25C6.07843 6.75 6.75 6.07843 6.75 5.25V1.5C6.75 0.671573 6.07843 0 5.25 0Z" />
@@ -20,12 +20,12 @@
 
                &nbsp;&nbsp; <span class='propel-menu-bar-text'> My Account</span></li>
             </a>
-            <a href="{{ route('userView') }}">
+            <a href="">
                 <li class="profile"><svg  width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                     <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
                 </svg>&nbsp;&nbsp; <span class='propel-menu-bar-text'> My Profile</span></li>
             </a>
-            <a href="{{ route('changePasswordPage') }}">
+            <a href="">
                 <li class="change-password">  
                     <svg width="15" height="15" viewBox="0 0 15 15" >
                         <path d="M9.53004 0.0368233C8.49991 0.218003 7.60954 0.699423 6.88482 1.46038C5.77186 2.63028 5.35774 4.22984 5.75633 5.79316L5.87539 6.25387L2.93511 9.17345L0 12.0982V13.4959V14.8884H1.39767H2.79534V13.9566V13.0248H3.72712H4.6589V12.093V11.1612H5.59068H6.52246V10.2295V9.29768H7.34036H8.15825L8.44297 8.95603C8.71732 8.61438 9.36439 8.08637 9.72675 7.90001C9.83028 7.84825 10.1357 7.73436 10.4049 7.64119C10.8656 7.48071 10.9432 7.47036 11.6214 7.46518C12.3979 7.46518 12.724 7.52213 13.2934 7.77578L13.5885 7.90519L13.7852 7.6826C14.2304 7.1753 14.5927 6.48681 14.7791 5.80351C14.9085 5.34279 14.9344 4.3489 14.8412 3.80536C14.6704 2.85287 14.22 2.01427 13.4901 1.2999C12.9 0.725306 12.284 0.378476 11.4143 0.130001C10.9898 0.0109402 9.9597 -0.0408251 9.53004 0.0368233ZM11.1555 1.91591C11.5903 2.0298 11.9682 2.25757 12.3254 2.61475C12.8482 3.14276 13.0812 3.74324 13.0346 4.45243C12.9828 5.24962 12.4703 5.93292 11.9216 5.93292C11.7404 5.93292 11.6628 5.8708 10.3945 4.60255C8.92439 3.1324 8.88297 3.08064 9.03309 2.6924C9.26604 2.08156 10.3221 1.69332 11.1555 1.91591Z" />
@@ -36,7 +36,7 @@
 
                     &nbsp;&nbsp; <span class='propel-menu-bar-text'> Change Password</span></li>
             </a>
-            <a href="{{ route('defaultLogin') }}">
+            <a href="">
                 <li class="default-login"><svg  width="15" height="17" viewBox="0 0 15 17"><path d="M10.105.195c-.862.223-1.733.951-2.106 1.769-.16.338-.196.578-.196 1.262 0 .755.027.898.258 1.333.986 1.91 3.44 2.31 4.95.809.622-.622.88-1.253.88-2.142A3.138 3.138 0 0 0 12.158.418c-.507-.25-1.538-.356-2.053-.223Zm2.017 1.964c.365.205.213.534-.684 1.494-.48.515-.924.906-1.013.906-.178 0-1.067-.88-1.173-1.155-.08-.214.16-.534.4-.534.097 0 .32.134.488.285l.294.293.648-.693c.658-.702.738-.747 1.04-.596Zm-8.141.214c-.56.257-1.022.977-1.022 1.59 0 .471.383 1.138.818 1.422.409.267 1.075.33 1.555.143.57-.214 1.085-.97 1.093-1.591 0-.436-.328-1.049-.737-1.369-.276-.222-.427-.275-.889-.293-.338-.018-.649.018-.818.098ZM.649 6.008c-.4.266-.649.71-.649 1.164 0 .266.453 1.448 1.75 4.586.97 2.32 1.84 4.363 1.938 4.541.098.178.329.409.516.515.328.178.435.187 3.981.187 3.342 0 3.662-.009 3.822-.16.266-.222.32-.55.133-.835-.364-.551-1.777-2.195-1.964-2.284-.124-.063-.88-.098-1.964-.098-1.707 0-1.76-.009-2.213-.231-.258-.125-.542-.347-.64-.48-.098-.142-.72-1.564-1.378-3.155A188.5 188.5 0 0 0 2.64 6.55c-.338-.711-1.342-.987-1.991-.542Z"/><path d="M5.315 6.06c-.64.294-.934.765-.934 1.476 0 .285.214.898.836 2.382.462 1.093.889 2.08.96 2.186.248.4.542.454 2.684.454h2l1.199 1.501c.649.818 1.28 1.565 1.395 1.645.285.195.774.177 1.12-.036.356-.213.516-.702.373-1.155-.133-.454-2.8-3.742-3.19-3.928-.249-.134-.551-.16-1.555-.16H8.957l-.213-.516c-.115-.275-.222-.56-.249-.622-.035-.08.24-.107 1.2-.107 1.218 0 1.253-.009 1.52-.23.213-.178.275-.303.275-.543 0-.755-.346-.915-2.008-.915H8.265l-.649-.622c-1.022-.97-1.555-1.156-2.301-.81Z"/></svg>
 
                     &nbsp;&nbsp; <span class='propel-menu-bar-text'> Default Login</span></li>
@@ -48,13 +48,13 @@
         </ul>
         <ul class="propel-menu-bar-list-container common-master-menu-bar  ">
             {{-- <p class="propel-menu-bar-title">Organisation</p> --}}
-            <a href="/salutation">
+            <a href="{{url('salutation')}}">
                 <li class="salutation"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>&nbsp;&nbsp;
                      <span class='propel-menu-bar-text'>Person Salutation</span></li>
             </a>
-            <a href="/genre">
-                <li class="genre"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>&nbsp;&nbsp;
-                     <span class='propel-menu-bar-text'>Person Genre</span></li>
+            <a href="/gender">
+                <li class="gender"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>&nbsp;&nbsp;
+                     <span class='propel-menu-bar-text'>Person gender</span></li>
             </a>
       
 
@@ -69,7 +69,7 @@
             {{-- <ol class="propel-dropdown propel-transaction">Transaction <i class="float-right simple-icon-arrow-up mt-1"></i></ol>
 
             <div class="propel-dropdown-menu">
-                <a href="{{ route('hrmDepartmentMaster.index') }}">
+                <a href="">
                     <li class="department"><svg  width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
                             <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
                         </svg>&nbsp;&nbsp; <span class='propel-menu-bar-text'> Departments</span></li>
@@ -151,7 +151,7 @@ l-136 7 29 46 c65 102 73 137 77 363 l4 207 26 4 c57 9 508 7 703 -3z m1349
 </svg> &nbsp;&nbsp;<span class="propel-dropdown-text">Master</span> <i class="float-right simple-icon-arrow-right mt-1"></i></ol>
 
             <div class="propel-dropdown-menu">
-                <a href="{{ route('hrmDepartment.index') }}">
+                <a href="">
                     <li class="department"><?xml version="1.0" standalone="no"?>
                         <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
                          "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
@@ -249,7 +249,7 @@ l-136 7 29 46 c65 102 73 137 77 363 l4 207 26 4 c57 9 508 7 703 -3z m1349
                         </g>
                         </svg>&nbsp;&nbsp; <span class='propel-menu-bar-text'> Departments</span></li>
                 </a>
-                <a href="{{ route('hrmResourceType.index') }}">
+                <a href="">
                     <li class="resourcetype">
                         <?xml version="1.0" standalone="no"?>
                         <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
@@ -330,7 +330,7 @@ l-136 7 29 46 c65 102 73 137 77 363 l4 207 26 4 c57 9 508 7 703 -3z m1349
                         &nbsp;&nbsp; <span class='propel-menu-bar-text'>HR Type</span></li>
                 </a>
                 <!-- //doubt for dhana -->
-                <a href="{{ route('hrmDesignation.index') }}">
+                <a href="">
                     <li class="designation"><svg  width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
                             <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
                             <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z" />
@@ -422,7 +422,7 @@ m-1440 400 l0 -80 -320 0 -320 0 0 80 0 80 320 0 320 0 0 -80z m2240 0 l0 -80
 </svg> &nbsp; &nbsp; <span class="propel-dropdown-text">Transaction</span > <i class="float-right simple-icon-arrow-right mt-1"></i></ol>
 
             <div class="propel-dropdown-menu">
-                <a href="{{route('hrmResource.index')}}">
+                <a href="">
                     <li class="resource"><svg  width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                           <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                           <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
@@ -431,7 +431,7 @@ m-1440 400 l0 -80 -320 0 -320 0 0 80 0 80 320 0 320 0 0 -80z m2240 0 l0 -80
 
 
             </div>
-          <!-- <a href="{{route('organization_wizard')}}">
+          <!-- <a href="">
                 <li class=""><svg  width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                       <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />

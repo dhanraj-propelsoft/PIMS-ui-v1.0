@@ -28,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Passport::withoutCookieSerialization();
-        config(['api_base' => "http://127.0.0.1:8000/api/"]);
+        config(['api_base' => "http://127.0.0.1:8002/api/"]);
     }
 }

@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
-if (! function_exists('apiHeaders')) {
+
+if (!function_exists('apiHeaders')) {
     function apiHeaders()
     {
         $bearerToken = Session::get('token');
@@ -11,5 +12,13 @@ if (! function_exists('apiHeaders')) {
             'Authorization' => 'Bearer ' . $bearerToken
         ]);
         return $head;
+    }
+}
+
+if (!function_exists('getBaseUrl')) {
+    function getBaseUrl()
+    {
+        $url =  config('services.APIGATEWAYURI.base_uri');
+        return $url;
     }
 }
