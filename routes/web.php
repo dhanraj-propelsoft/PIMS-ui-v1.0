@@ -6,6 +6,7 @@ use App\Http\Controllers\WizardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PIMS\Master\SalutationController;
+use App\Http\Controllers\PIMS\Master\GenderController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -36,15 +37,16 @@ Route::get('/', function () {
 // Route::prefix('user')->name('user.')->group(function () {
 Route::middleware(['guest:web', 'PreventBackHistory'])->group(function () {
 
-  
-    
-   
+
+
+
 });
 
 Route::Resource('salutation','App\Http\Controllers\PIMS\Master\SalutationController');
+Route::Resource('gender','App\Http\Controllers\PIMS\Master\GenderController');
 
 
-Route::view('/gender', 'pimsUi/gender/list');
-Route::view('/genderView', 'pimsUi/gender/view');
-Route::view('/genderEdit', 'pimsUi/gender/edit');
-Route::view('/genderAdd', 'pimsUi/gender/add');
+// Route::view('/gender', 'pimsUi/gender/list');
+// Route::view('/genderView', 'pimsUi/gender/view');
+// Route::view('/genderEdit', 'pimsUi/gender/edit');
+// Route::view('/genderAdd', 'pimsUi/gender/add');

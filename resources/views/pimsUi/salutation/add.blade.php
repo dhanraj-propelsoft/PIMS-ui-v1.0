@@ -37,8 +37,8 @@
     <button type="button" class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Cancel</button>
     <button type="reset" class="propelbtn propelbtncurved propelcancel">Reset</button>
 
-    <button class="propelbtn propelbtncurved propelsubmit" type="submit" name="saveAndClose">Save & Close</button>
-    <button class="propelbtn propelbtncurved propelsubmit" type="submit" name="saveAndNew">Save & New</button>
+    <button class="propelbtn propelbtncurved propelsubmit" type="submit" value="saveAndClose" name="link">Save & Close</button>
+    <button class="propelbtn propelbtncurved propelsubmit" type="submit" value="saveAndNew" name="link">Save & New</button>
   </div>
 
 </form>
@@ -50,7 +50,7 @@
 
   // function closePage(id){
   //   var url = '{{ route("salutation.edit", ":id") }}';
-  //       url = url.replace(':id', id);    
+  //       url = url.replace(':id', id);
   //   window.location.href = url;
   // }
 </script>

@@ -11,9 +11,8 @@
     <table class="table shadow mt-4">
       <thead>
         <tr>
-          <th>Person Salutation</th>
-          <th>Created By</th>
-          <th>Modified By</th>
+          <th> Salutation</th>
+          <th>Description</th>
           <th>Active Status</th>
         </tr>
       </thead>
@@ -21,8 +20,7 @@
         @foreach($modeldatas as $modeldata)
         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
           <td>{{$modeldata['name']}}</td>
-          <td>John Doe</td>
-          <td>Jane Smith</td>
+          <td>{{$modeldata['description']}}</td>
           <td>{{$modeldata['status']}}</td>
         </tr>
         @endforeach
@@ -42,7 +40,7 @@
 
 function viewPage(id){
   var url = '{{ route("salutation.show", ":id") }}';
-      url = url.replace(':id', id);    
+      url = url.replace(':id', id);
   window.location.href = url;
 }
 </script>

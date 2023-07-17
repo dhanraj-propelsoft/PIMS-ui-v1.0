@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="common-master0 salutation0 edit0 for-active">
+    <div class="common-master0 gender0 edit0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="edit">
@@ -15,12 +15,12 @@
     </div> <!-- | -->
 
 
-    <form action="{{ url('salutation') }}" method="post" class="m-auto col-md-6 card p-2 rounded">
+    <form action="{{ url('gender') }}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="salutation" placeholder="Person Salutation..." class="form-control AlterInput "
+            <input type="text" name="gender" placeholder="Person gender..." class="form-control AlterInput "
                 autocomplete="off" value="{{ $modeldata['name'] }}">
-            <span class="AlterInputLabel">Person Salutation</span>
+            <span class="AlterInputLabel">Person gender</span>
         </label>
         <div class=" mb-5  InputLabel">
             <textarea name="description" id=" description" cols="30" rows="5" class="col-12 form-control AlterInput "
@@ -41,28 +41,19 @@
         </div>
         <div class="row justify-content-between  mx-1  mt-3">
             <button type="button" class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Close</button>
-            <button class="propelbtn propelbtncurved propelsubmit">update</button>
 
+            <button class="propelbtn propelbtncurved propelsubmit">update</button>
     </form>
-    <form action="{{ route('salutation.destroy', $modeldata['id']) }}" method="POST">
+    <form action="{{ route('gender.destroy', $modeldata['id']) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="propelbtn propelbtncurved propeldelete">Delete</button>
     </form>
-
     </div>
-
-
     <script>
         function cancelPage() {
-            var url = '{{ route('salutation.index') }}';
+            var url = '{{ route('gender.index') }}';
             window.location.href = url;
         }
-
-        // function closePage(id){
-        //   var url = '{{ route('salutation.edit', ':id') }}';
-        //       url = url.replace(':id', id);
-        //   window.location.href = url;
-        // }
     </script>
 @endsection

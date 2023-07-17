@@ -11,19 +11,17 @@
     <table class="table shadow mt-4">
       <thead>
         <tr>
-          <th>Person gender</th>
-          <th>Created By</th>
-          <th>Modified By</th>
-          <th>Active Status</th>
+          <th>gender</th>
+          <th>Description</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
         @foreach($modeldatas as $modeldata)
-        <tr ondblclick="window.location.href='/genderView'">
-          <td>Mr.</td>
-          <td>John Doe</td>
-          <td>Jane Smith</td>
-          <td>Active</td>
+        <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
+          <td>{{$modeldata['name']}}</td>
+          <td>{{$modeldata['description']}}</td>
+          <td>{{$modeldata['status']}}</td>
         </tr>
         @endforeach
       </tbody>
@@ -38,6 +36,12 @@
 
 <script>
   document.querySelector(".propel-breadcrumb-extra-content").innerHTML =
-    `<a href="/genderAdd"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
+    `<a href="{{route('gender.create')}}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
+
+    function viewPage(id){
+  var url = '{{ route("gender.show", ":id") }}';
+      url = url.replace(':id', id);
+  window.location.href = url;
+}
 </script>
 @endsection
