@@ -32,6 +32,10 @@
                 Is Active
             </span>
             <span>
+              <div class="col-6">
+                <input name="status" class="custom-switch-input" id="switch" type="checkbox" checked>
+                <label class="custom-switch-btn float-right" for="switch"></label>
+              </div>
                 <input type="hidden" value="{{ $modeldata['activeStatus'] }}" name="activeStatus">
                 <input type="hidden" value="{{ $modeldata['id'] }}" name="id">
 

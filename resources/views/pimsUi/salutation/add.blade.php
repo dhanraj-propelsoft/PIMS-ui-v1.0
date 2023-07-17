@@ -29,7 +29,10 @@
       Is Active
     </span>
     <span>
-      YES
+      <div class="col-6">
+        <input name="status" class="custom-switch-input" id="switch" type="checkbox" checked>
+        <label class="custom-switch-btn float-right" for="switch"></label>
+      </div>
     </span>
 
   </div>
