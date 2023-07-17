@@ -290,3 +290,7 @@ transition: background-color 0.3s ease;
     height: 25px;
     padding: 0 8px;
 }
+.propeldelete{
+    background-color: rgb(195, 2, 2);
+    color: white;
+}
