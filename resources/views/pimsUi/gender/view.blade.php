@@ -26,14 +26,14 @@
                 placeholder="Write Your Description" spellcheck="true" disabled>{{ $modeldata['description'] }}</textarea>
             <span class="AlterInputLabel">Description</span>
         </div>
-        <div class="row justify-content-between mx-1">
-            <span>
-                Is Active
-            </span>
-            <span>
-                {{ $modeldata['status'] }}
-            </span>
-
+        <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
+          <div class="">
+            <p>Is Active</p>
+          </div>
+          <div class="">
+            <input name="active_status" value="{{$modeldata['activeStatus']}}" class="custom-switch-input" id="switch" type="checkbox" disabled {{ $modeldata['activeStatus'] == 1 ? 'checked' : '' }}>
+            <label class="custom-switch-btn float-right" for="switch"></label>
+          </div>
         </div>
         <div class="row justify-content-between  mx-1  mt-3">
             <button class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Close</button>

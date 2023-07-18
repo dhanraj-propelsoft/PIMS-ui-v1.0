@@ -27,22 +27,17 @@
                 placeholder="Write Your Description" spellcheck="true">{{ $modeldata['description'] }}</textarea>
             <span class="AlterInputLabel">Description</span>
         </div>
-        <div class="row justify-content-between mx-1">
-            <span>
-                Is Active
-            </span>
-            <span>
-                <div class="col-6">
-                    <input name="status" class="custom-switch-input" id="switch" type="checkbox" checked>
-                    <label class="custom-switch-btn float-right" for="switch"></label>
-                  </div>
-                <input type="hidden" value="{{ $modeldata['activeStatus'] }}" name="activeStatus">
-                <input type="hidden" value="{{ $modeldata['id'] }}" name="id">
-
-                {{ $modeldata['status'] }}
-            </span>
-
+        <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
+            <div class="">
+                <p>Is Active</p>
+            </div>
+            <div class="">
+                <input name="active_status" value="{{ $modeldata['activeStatus'] }}" class="custom-switch-input"
+                    id="switch" type="checkbox"  {{ $modeldata['activeStatus'] == 1 ? 'checked' : '' }}>
+                <label class="custom-switch-btn float-right" for="switch"></label>
+            </div>
         </div>
+        <input type="hidden" value="{{ $modeldata['id'] }}" name="id">
         <div class="row justify-content-between  mx-1  mt-3">
             <button type="button" class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Close</button>
 
@@ -55,6 +50,19 @@
     </form>
     </div>
     <script>
+        $(document).ready(function() {
+            const checkbox = $('#switch');
+            const statusInput = $('[name="active_status"]').eq(0);
+
+            checkbox.on('change', function() {
+                if (this.checked) {
+                    statusInput.val(1);
+                } else {
+                    statusInput.val(0);
+                }
+            });
+        });
+
         function cancelPage() {
             var url = '{{ route('gender.index') }}';
             window.location.href = url;

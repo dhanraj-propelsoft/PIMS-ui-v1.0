@@ -24,17 +24,14 @@
     <textarea name="description" id="description" cols="30" rows="5" class="col-12 form-control AlterInput " placeholder="Write Your Description" spellcheck="true"></textarea>
     <span class="AlterInputLabel">Description</span>
   </div>
-  <div class="row justify-content-between mx-1">
-    <span>
-      Is Active
-    </span>
-    <span>
-      <div class="col-6">
-        <input name="status" class="custom-switch-input" id="switch" type="checkbox" checked>
-        <label class="custom-switch-btn float-right" for="switch"></label>
-      </div>
-    </span>
-
+  <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
+    <div class="">
+      <p>Is Active</p>
+    </div>
+    <div class="">
+      <input name="active_status" value="1" class="custom-switch-input" id="switch" type="checkbox" checked>
+      <label class="custom-switch-btn float-right" for="switch"></label>
+    </div>
   </div>
   <div class="row justify-content-between  mx-1  mt-3">
     <button type="button" class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Cancel</button>
@@ -46,16 +43,25 @@
 
 </form>
 <script>
+
+
+$(document).ready(function() {
+    const checkbox = $('#switch');
+    const statusInput = $('[name="active_status"]').eq(0);
+
+    checkbox.on('change', function() {
+      if (this.checked) {
+        statusInput.val(1);
+      } else {
+        statusInput.val(0);
+      }
+    });
+  });
   function cancelPage() {
     var url = '{{ route("salutation.index") }}';
     window.location.href = url;
   }
 
-  // function closePage(id){
-  //   var url = '{{ route("salutation.edit", ":id") }}';
-  //       url = url.replace(':id', id);
-  //   window.location.href = url;
-  // }
 </script>
 
 @endsection
