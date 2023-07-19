@@ -25,11 +25,11 @@
 
     <link rel="stylesheet" href="{{ asset('css/vendor/propelDropdownSearch.min.css')}}" />
     <link rel="stylesheet" href="http://127.0.0.1:8001/css/vendor/bootstrap-datepicker3.min.css" />
-    <link rel="shortcut icon" href="{{ asset('assets/images/logo.ico') }}" type="image/x-icon">  
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('assets/images/logo.svg') }}" type="image/x-icon">
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js')}}"></script>
 </head>
 
 <body class="background propel-spinner no-footer">
-    <section class="spinner-container"><span class="loader-83"> </span></section>
-    <div class="fixed-background"></div>
+    {{-- <section class="spinner-container"><span class="loader-83"> </span></section>
+    <div class="fixed-background"></div> --}}

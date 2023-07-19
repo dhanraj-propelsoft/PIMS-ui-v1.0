@@ -44,7 +44,7 @@
 </head>
 
 <body class="propel-spinner">
-    <section class="spinner-container"><span class="loader-83"> </span></section>
+    {{-- <section class="spinner-container"><span class="loader-83"> </span></section> --}}
     @include('layouts.dashboard.module-bar')
 
     <div class="propel-right-side">
