@@ -15,14 +15,24 @@ class UserController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             $datas = $result['data'];
-            if ($datas['type'] == 1) {
+            if ($datas==1) {
                 return view('home');
-            } else if ($datas['type'] == 2) {
+            } else {
                 return redirect()->back()->with('message', 'Email or  Password Is Wrong');
 
             }
 
         }
 
+    }
+    public function userRegister(Request $request)
+    {
+        $datas = $request->all();
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'userRegister', $datas);
+        $result = $response->json();
+        if ($response->status() == 200) {
+           return redirect()->back();
+        }
     }
 }

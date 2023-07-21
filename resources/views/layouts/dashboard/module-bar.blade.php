@@ -131,6 +131,6 @@
                     <span>Sign Out</span>
                     </li>
                 </ul>
-                <form action="{{route('logOut')}}"  class="d-none" id="logout-form"></form>
+                <form action="{{url('/')}}"  class="d-none" id="logout-form"></form>
         </div>
     </div>

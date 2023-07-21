@@ -38,8 +38,10 @@ Route::middleware(['guest:web', 'PreventBackHistory'])->group(function () {
 Route::Resource('salutation', 'App\Http\Controllers\PIMS\Master\SalutationController');
 Route::Resource('gender', 'App\Http\Controllers\PIMS\Master\GenderController');
 Route::post('/userLogin', [UserController::class, 'userLogin'])->name('userLogin');
+Route::post('/userRegister', [UserController::class, 'userRegister'])->name('userRegister');
 
-Route::view('/logOut', 'pimsUi/UserLogin/loginPage')->name('logOut');
+
+// Route::view('/logOut', 'pimsUi/UserLogin/loginPage')->name('logOut');
 // Route::view('/genderView', 'pimsUi/gender/view');
 // Route::view('/genderEdit', 'pimsUi/gender/edit');
 // Route::view('/genderAdd', 'pimsUi/gender/add');
