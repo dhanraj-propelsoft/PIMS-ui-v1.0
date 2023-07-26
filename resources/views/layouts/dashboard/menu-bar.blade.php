@@ -76,7 +76,7 @@
             <a href="{{url('pdt')}}">
                 <li class="bloodGroup">
                     <i class="fas fa-tint"></i>
-                    <span class='propel-menu-bar-text'>BloodGroup</span>
+                    <span class='propel-menu-bar-text'>Blood Group</span>
                 </li>
             </a>
             <a href="{{url('pdt')}}">
@@ -91,7 +91,43 @@
                     <span class='propel-menu-bar-text'>RelationShip</span>
                 </li>
             </a>
-
+            <a href="{{url('state')}}">
+                <li class="state">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class='propel-menu-bar-text'>State</span>
+                </li>
+            </a>
+            <a href="{{url('city')}}">
+                <li class="city">
+                    <i class="fas fa-city"></i>
+                    <span class='propel-menu-bar-text'>City</span>
+                </li>
+            </a>
+            
+            <a href="{{url('bank_account_types')}}">
+                <li class="bankAccountTypes">
+                    <i class="fas fa-credit-card"></i>
+                    <span class='propel-menu-bar-text'>Bank Account Types</span>
+                </li>
+            </a>
+            <a href="{{url('banks')}}">
+                <li class="banks">
+                    <i class="fas fa-university"></i>
+                    <span class='propel-menu-bar-text'>Banks</span>
+                </li>
+            </a>
+            <a href="{{url('address_type')}}">
+                <li class="addressType">
+                    <i class="fas fa-address-card"></i>
+                    <span class='propel-menu-bar-text'>Address Type</span>
+                </li>
+            </a>
+            <a href="{{url('languages')}}">
+                <li class="language">
+                    <i class="fas fa-language"></i>
+                    <span class='propel-menu-bar-text'>Languages</span>
+                </li>
+            </a>
         </ul>
         <ul class="propel-menu-bar-list-container hrm-menu-bar ">
             {{-- <p class="propel-menu-bar-title">HRM</p> --}}
