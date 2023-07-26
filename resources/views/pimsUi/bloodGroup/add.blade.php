@@ -4,7 +4,7 @@
 {{-- This is For Navigation and Breadcrumbs --}}
 
 <!-- | -->
-<div class="common-master0 salutation0 add0 for-active"><!-- | -->
+<div class="common-master0 bloodGroup0 add0 for-active"><!-- | -->
   <!-- | -->
   <div class="add"> <!-- | -->
     <!-- | --> <span>add</span> <!-- | -->
@@ -14,16 +14,13 @@
 </div> <!-- | -->
 
 
-<form action="{{url('salutation')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
+<form action="" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="salutation" required  placeholder="Person Salutation..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person Salutation</span>
+    <input type="text" name="bloodGroup" required  placeholder="Person Blood Group..." class="form-control AlterInput" autocomplete="off">
+    <span class="AlterInputLabel">Person Blood Group</span>
   </label>
-  <div class=" mb-5  InputLabel">
-    <textarea name="description" id="description" cols="30" rows="5" class="col-12 form-control AlterInput " placeholder="Write Your Description..." spellcheck="true"></textarea>
-    <span class="AlterInputLabel">Description</span>
-  </div>
+
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
     <div class="">
       <p>Is Active</p>
@@ -32,6 +29,10 @@
       <input name="active_status" value="1" class="custom-switch-input" id="switch" type="checkbox" checked>
       <label class="custom-switch-btn float-right" for="switch"></label>
     </div>
+  </div>
+  <div class=" mb-5  InputLabel">
+    <textarea name="description" id="description" cols="30" rows="5" class="col-12 form-control AlterInput " placeholder="Write Your Description..." spellcheck="true"></textarea>
+    <span class="AlterInputLabel">Description</span>
   </div>
   <div class="row justify-content-between  mx-1  mt-3">
     <button type="button" class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Cancel</button>
@@ -58,7 +59,7 @@ $(document).ready(function() {
     });
   });
   function cancelPage() {
-    var url = '{{ route("salutation.index") }}';
+    var url = '';
     window.location.href = url;
   }
 
