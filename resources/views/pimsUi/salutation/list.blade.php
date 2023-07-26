@@ -6,7 +6,7 @@
 <!--Table-->
 <div class="container col-md-10 m-4 mx-auto">
   <div class="row ">
-    <h2 class="text-center col-12">Select an Account to manage settings</h2>
+
 
     <table class="table shadow mt-4">
       <thead>
