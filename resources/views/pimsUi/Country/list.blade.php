@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 @section('content')
 
-<div class="common-master0 Country0 for-active"></div>
+<div class="common-master0 country0 for-active"></div>
 
 <!--Table-->
 <div class="container col-md-10 m-4 mx-auto">
