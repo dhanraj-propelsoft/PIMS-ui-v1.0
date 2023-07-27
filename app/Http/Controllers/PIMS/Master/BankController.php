@@ -5,7 +5,7 @@ namespace App\Http\Controllers\PIMS\Master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SalutationController extends Controller
+class BankController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +15,11 @@ class SalutationController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-
-        $response = apiHeaders()->get($baseUrl . 'salutation');
-
+        $response = apiHeaders()->get($baseUrl . 'bank');
         $datas = $response->json();
-
         if ($response->status() == 200) {
-
             $modeldatas = $datas['data'];
-            return view('pimsUi/Master/salutation/list', compact('modeldatas'));
+            return view('pimsUi/Master/banks/list', compact('modeldatas'));
         } else {
             dd("un authendicated");
         }
@@ -37,7 +33,7 @@ class SalutationController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/Master/salutation/add');
+        return view('pimsUi/Master/banks/add');
     }
 
     /**
@@ -50,19 +46,17 @@ class SalutationController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'salutation', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'bank', $datas);
         $result = $response->json();
-
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/Master/salutation/add');
+                return view('pimsUi/Master/banks/add');
             } else {
-                return redirect()->route('salutation.index');
+                return redirect()->route('bank.index');
             }
         } else {
             dd("un authendicated");
         }
-
     }
 
     /**
@@ -73,14 +67,12 @@ class SalutationController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'salutation/' . $id);
 
+        $response = apiHeaders()->get(getBaseUrl() . 'bank/' . $id);
         $datas = $response->json();
-
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/salutation/view', compact('modeldata'));
+            return view('pimsUi/Master/banks/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -94,16 +86,15 @@ class SalutationController extends Controller
      */
     public function edit($id)
     {
-
-        $response = apiHeaders()->get(getBaseUrl() . 'salutation/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'bank/' . $id);
 
         $datas = $response->json();
-        //  dd($datas);
+
         if ($response->status() == 200) {
 
             $modeldata = $datas['data'];
 
-            return view('pimsUi/Master/salutation/edit', compact('modeldata'));
+            return view('pimsUi/Master/banks/edit', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -131,10 +122,10 @@ class SalutationController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'salutation/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'bank/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
-                return redirect()->route('salutation.index');
+                return redirect()->route('bank.index');
             }
         }
     }

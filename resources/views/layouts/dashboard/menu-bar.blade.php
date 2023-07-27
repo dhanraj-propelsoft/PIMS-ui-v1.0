@@ -76,32 +76,32 @@
                 </li>
             </a>
 
-            <a href="{{ url('pdt') }}">
+            <a href="{{ url('documentType') }}">
                 <li class="personDocumentType">
                     <i class="far fa-file-alt"></i>
                     <span class='propel-menu-bar-text'>Document Type</span>
                 </li>
             </a>
-            <a href="{{ url('pdt') }}">
+            <a href="{{ url('country') }}">
                 <li class="country">
                     <i class="fas fa-globe"></i>
                     <span class='propel-menu-bar-text'>Country</span>
                 </li>
             </a>
-            <a href="{{ url('pdt') }}">
+            <a href="{{ url('bloodGroup') }}">
                 <li class="bloodGroup">
                     <i class="fas fa-tint"></i>
                     <span class='propel-menu-bar-text'>Blood Group</span>
                 </li>
             </a>
-            <a href="{{ url('pdt') }}">
+            <a href="{{ url('maritalStatus') }}">
                 <li class="maritalStatus">
                     <i class="fas fa-ring"></i>
                     <span class='propel-menu-bar-text'>Marital Status</span>
                 </li>
             </a>
-            <a href="{{ url('pdt') }}">
-                <li class="realtionship">
+            <a href="{{ url('relationShip') }}">
+                <li class="relationShip">
                     <i class="fas fa-users"></i>
                     <span class='propel-menu-bar-text'>RelationShip</span>
                 </li>
@@ -119,25 +119,25 @@
                 </li>
             </a>
 
-            <a href="{{ url('bank_account_types') }}">
+            <a href="{{ url('bankAccountType') }}">
                 <li class="bankAccountTypes">
                     <i class="fas fa-credit-card"></i>
                     <span class='propel-menu-bar-text'>Bank Account Types</span>
                 </li>
             </a>
-            <a href="{{ url('banks') }}">
+            <a href="{{ url('bank') }}">
                 <li class="banks">
                     <i class="fas fa-university"></i>
                     <span class='propel-menu-bar-text'>Banks</span>
                 </li>
             </a>
-            <a href="{{ url('address_type') }}">
+            <a href="{{ url('addressType') }}">
                 <li class="addressType">
                     <i class="fas fa-address-card"></i>
                     <span class='propel-menu-bar-text'>Address Type</span>
                 </li>
             </a>
-            <a href="{{ url('languages') }}">
+            <a href="{{ url('language') }}">
                 <li class="language">
                     <i class="fas fa-language"></i>
                     <span class='propel-menu-bar-text'>Languages</span>
@@ -145,44 +145,44 @@
             </a>
         </ul>
         <ul class="propel-menu-bar-list-container organisation-menu-bar ">
-            <a href="{{url('business_activities')}}">
+            <a href="{{url('businessActivity')}}">
                 <li class="businessActivities">
                     <i class="fas fa-briefcase"></i>
                     <span class='propel-menu-bar-text'>Business Activities</span>
                 </li>
             </a>
-            <a href="{{url('administrator_types')}}">
+            <a href="{{url('administratorType')}}">
                 <li class="administratorTypes">
                     <i class="fas fa-user-tie"></i>
                     <span class='propel-menu-bar-text'>Administrator Types</span>
                 </li>
             </a>
-            
-            <a href="{{url('business_sale_subsets')}}">
+
+            <a href="{{url('businessSaleSubset')}}">
                 <li class="businessSaleSubsets">
                     <i class="fas fa-shopping-cart"></i>
                     <span class='propel-menu-bar-text'>Business Sale Subsets</span>
                 </li>
             </a>
-            <a href="{{url('business_sector')}}">
+            <a href="{{url('businessSector')}}">
                 <li class="businessSector">
                     <i class="fas fa-building"></i>
                     <span class='propel-menu-bar-text'>Business Sector</span>
                 </li>
             </a>
-            <a href="{{url('organization_category')}}">
+            <a href="{{url('organizationCategory')}}">
                 <li class="organizationCategory">
                     <i class="fas fa-sitemap"></i>
                     <span class='propel-menu-bar-text'>Organization Category</span>
                 </li>
             </a>
-            <a href="{{url('organization_document_type')}}">
+            <a href="{{url('organizationDocumentType')}}">
                 <li class="organizationDocumentType">
                     <i class="far fa-file-alt"></i>
                     <span class='propel-menu-bar-text'>Organization Document Type</span>
                 </li>
             </a>
-            <a href="{{url('organization_ownerships')}}">
+            <a href="{{url('organizationOwnerShip')}}">
                 <li class="organizationOwnerships">
                     <i class="fas fa-users"></i>
                     <span class='propel-menu-bar-text'>Organization Ownerships</span>

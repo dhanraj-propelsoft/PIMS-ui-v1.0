@@ -14,13 +14,12 @@ class GenderController extends Controller
      */
     public function index()
     {
-
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->get($baseUrl . 'gender');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
-            return view('pimsUi/gender/list', compact('modeldatas'));
+            return view('pimsUi/Master/gender/list', compact('modeldatas'));
         } else {
             dd("un authendicated");
         }
@@ -33,7 +32,7 @@ class GenderController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/gender/add');
+        return view('pimsUi/Master/gender/add');
     }
 
     /**
@@ -50,7 +49,7 @@ class GenderController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/gender/add');
+                return view('pimsUi/Master/gender/add');
             } else {
                 return redirect()->route('gender.index');
             }
@@ -72,7 +71,7 @@ class GenderController extends Controller
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/gender/view', compact('modeldata'));
+            return view('pimsUi/Master/gender/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -94,7 +93,7 @@ class GenderController extends Controller
 
             $modeldata = $datas['data'];
 
-            return view('pimsUi/gender/edit', compact('modeldata'));
+            return view('pimsUi/Master/gender/edit', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
