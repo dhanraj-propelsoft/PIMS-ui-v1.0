@@ -14,7 +14,15 @@ class StateController extends Controller
      */
     public function index()
     {
-
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'commonState');
+        $datas = $response->json();
+        if ($response->status() == 200) {
+            $modeldatas = $datas['data'];
+            return view('pimsUi/Master/state/list', compact('modeldatas'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -24,7 +32,15 @@ class StateController extends Controller
      */
     public function create()
     {
-        //
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'commonCountry');
+        $datas = $response->json();
+        if ($response->status() == 200) {
+            $modeldatas = $datas['data'];
+            return view('pimsUi/Master/state/add', compact('modeldatas'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -35,7 +51,19 @@ class StateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datas = $request->all();
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'commonState', $datas);
+        $result = $response->json();
+        if ($response->status() == 200) {
+            if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
+                return redirect()->route('state.create');
+            } else {
+                return redirect()->route('state.index');
+            }
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -46,7 +74,16 @@ class StateController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $response = apiHeaders()->get(getBaseUrl() . 'commonState/' . $id);
+        $datas = $response->json();
+        if ($response->status() == 200) {
+            $modeldata = $datas['data'];
+            return view('pimsUi/Master/state/view', compact('modeldata'));
+        } else {
+            dd("un authendicated");
+        }
+
     }
 
     /**
@@ -57,7 +94,20 @@ class StateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $response = apiHeaders()->get(getBaseUrl() . 'commonState/' . $id);
+        $datas = $response->json();
+        if ($response->status() == 200) {
+            $result = $datas['data'];
+            $baseUrl = getBaseUrl();
+            $response = apiHeaders()->get($baseUrl . 'commonCountry');
+            $datas = $response->json();
+            $modeldatas = $datas['data'];
+            if ($response->status() == 200) {
+                return view('pimsUi/Master/state/edit', compact('modeldatas', 'result'));
+            }
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -80,6 +130,20 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id) {
+            $baseUrl = getBaseUrl();
+            $response = apiHeaders()->delete(getBaseUrl() . 'commonState/' . $id);
+            $datas = $response->json();
+            if ($response->status() == 200) {
+                $result = $datas['data'];
+                if ($result['type'] == 2) {
+                    return redirect()->back()->with('failed', 'This State  Used in City');
+                } elseif($result['type'] == 1) {
+                    return redirect()->route('state.index');
+                }else{
+                    dd("un authendicated");
+                }
+            }
+        }
     }
 }

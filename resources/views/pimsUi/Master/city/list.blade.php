@@ -6,24 +6,24 @@
 <!--Table-->
 <div class="container col-md-10 m-4 mx-auto">
   <div class="row ">
- 
+
 
     <table class="table shadow mt-4">
       <thead>
         <tr>
-          <th> Country</th>
-          <th>State</th>
+          <th> State</th>
+          <th>City</th>
           <th>Active Status</th>
         </tr>
       </thead>
       <tbody>
-        {{-- @foreach($modeldatas as $modeldata)
+        @foreach($modeldatas as $modeldata)
         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
-          <td>{{$modeldata['name']}}</td>
-          <td>{{$modeldata['description']}}</td>
+          <td>{{$modeldata['state_name']}}</td>
+          <td>{{$modeldata['city']}}</td>
           <td>{{$modeldata['status']}}</td>
         </tr>
-        @endforeach --}}
+        @endforeach
       </tbody>
 
     </table>
@@ -36,10 +36,10 @@
 
 <script>
   document.querySelector(".propel-breadcrumb-extra-content").innerHTML =
-    `<a href=""><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
+    `<a href="{{route('city.create')}}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
 function viewPage(id){
-  var url = '';
+  var url = '{{ route("city.show", ":id") }}';
       url = url.replace(':id', id);
   window.location.href = url;
 }

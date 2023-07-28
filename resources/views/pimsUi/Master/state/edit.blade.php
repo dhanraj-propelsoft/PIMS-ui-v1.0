@@ -15,34 +15,40 @@
     </div> <!-- | -->
 
 
-    <form action="" method="post" class="m-auto col-md-6 card p-2 rounded">
+    <form action="{{route('state.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
+      @if (session('failed'))
+      <div class="alert alert-danger">
+          {{ session('failed') }}
+      </div>
+  @endif
         @csrf
         <label class="form-group p-0 InputLabel w-100">
-          <select class="form-select w-100 AlterInput search-need" name="country" data-minimum-results-for-search="Infinity"
+          <select required class="form-select w-100 AlterInput search-need" name="country_id" data-minimum-results-for-search="Infinity"
               data-placeholder="Select Country">
               <option selected value="" disabled>Select Country</option>
-              <option value="usa">United States of America</option>
-              <option value="uk">United Kingdom</option>
-              <option value="canada" >Canada</option>
+              @foreach($modeldatas as $data)
+              <option value="{{$data['id']}}" {{ $data['id'] == $result['country_id'] ? 'selected' : '' }}>{{$data['country']}}</option>
+              @endforeach
+
           </select>
           <span class="AlterInputLabel box">Country</span>
       </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="state" placeholder="Person State..." class="form-control AlterInput "
-                autocomplete="off" value="">
+            <input required type="text" name="state" placeholder="Person State..." class="form-control AlterInput "
+                autocomplete="off" value="{{ $result['state'] }}">
             <span class="AlterInputLabel">Person State</span>
         </label>
-     
+
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
             <div class="">
               <p>Is Active</p>
             </div>
             <div class="">
-              <input name="active_status" value="" class="custom-switch-input" id="switch" type="checkbox" >
+              <input name="active_status" value="{{ $result['activeStatus'] }}" class="custom-switch-input" id="switch" type="checkbox"  {{ $result['activeStatus'] == 1 ? 'checked' : '' }}>
               <label class="custom-switch-btn float-right" for="switch"></label>
             </div>
           </div>
-                <input type="hidden" value="" name="id">
+                <input type="hidden" value="{{ $result['id'] }}" name="id">
 
 
         <div class="row justify-content-between  mx-1  mt-3">
@@ -50,7 +56,7 @@
             <button class="propelbtn propelbtncurved propelsubmit">update</button>
 
     </form>
-    <form action="" method="POST">
+    <form action="{{ route('state.destroy', $result['id']) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="propelbtn propelbtncurved propeldelete">Delete</button>
@@ -73,7 +79,7 @@
     });
   });
         function cancelPage() {
-            var url = '';
+          var url = "{{ route('state.index') }}";
             window.location.href = url;
         }
 

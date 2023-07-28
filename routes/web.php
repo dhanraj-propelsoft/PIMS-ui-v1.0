@@ -44,6 +44,8 @@ Route::Resource('bloodGroup', 'App\Http\Controllers\PIMS\Master\BloodGroupContro
 Route::Resource('maritalStatus', 'App\Http\Controllers\PIMS\Master\MaritalStatusController');
 Route::Resource('relationShip', 'App\Http\Controllers\PIMS\Master\RelationShipController');
 Route::Resource('state', 'App\Http\Controllers\PIMS\Master\StateController');
+Route::Resource('city', 'App\Http\Controllers\PIMS\Master\CityController');
+
 Route::Resource('bankAccountType', 'App\Http\Controllers\PIMS\Master\BankAccountTypeController');
 Route::Resource('bank', 'App\Http\Controllers\PIMS\Master\BankController');
 Route::Resource('addressType', 'App\Http\Controllers\PIMS\Master\AddressTypeController');

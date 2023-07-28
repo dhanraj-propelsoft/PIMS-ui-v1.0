@@ -14,15 +14,16 @@
 </div> <!-- | -->
 
 
-<form action="" method="post" class="m-auto col-md-6 card p-2 rounded">
-  @csrf 
+<form action="{{route('state.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
+  @csrf
   <label class="form-group p-0 InputLabel w-100">
-    <select class="form-select w-100 AlterInput search-need" name="country" data-minimum-results-for-search="Infinity"
+    <select required class="form-select w-100 AlterInput search-need" name="country_id" data-minimum-results-for-search="Infinity"
         data-placeholder="Select Country">
         <option selected value="" disabled>Select Country</option>
-        <option value="usa">United States of America</option>
-        <option value="uk">United Kingdom</option>
-        <option value="canada" >Canada</option>
+        @foreach($modeldatas as $data)
+        <option value="{{$data['id']}}">{{$data['country']}}</option>
+        @endforeach
+
     </select>
     <span class="AlterInputLabel box">Country</span>
 </label>
@@ -31,7 +32,7 @@
     <input type="text" name="state" required  placeholder="Person State..." class="form-control AlterInput " autocomplete="off">
     <span class="AlterInputLabel">Person State</span>
   </label>
- 
+
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
     <div class="">
       <p>Is Active</p>
@@ -66,7 +67,7 @@ $(document).ready(function() {
     });
   });
   function cancelPage() {
-    var url = '';
+    var url = "{{route('state.index')}}";
     window.location.href = url;
   }
 
