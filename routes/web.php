@@ -1,6 +1,5 @@
 <?php
-
-use App\Http\Controllers\PIMS\Users\UserController;
+use App\Http\Controllers\PIMS\Setting\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,15 +26,13 @@ Route::get('/clear', function () {
     return "Cleared!";
 });
 Route::get('/', function () {
-    return view('pimsUi.UserLogin.loginPage');
+    return view('pimsUi.Setting.Users.loginPage');
 });
 
 // Route::prefix('user')->name('user.')->group(function () {
 Route::middleware(['guest:web', 'PreventBackHistory'])->group(function () {
 
 });
-Route::post('/userLogin', [UserController::class, 'userLogin'])->name('userLogin');
-Route::post('/userRegister', [UserController::class, 'userRegister'])->name('userRegister');
 Route::Resource('salutation', 'App\Http\Controllers\PIMS\Master\SalutationController');
 Route::Resource('gender', 'App\Http\Controllers\PIMS\Master\GenderController');
 Route::Resource('documentType', 'App\Http\Controllers\PIMS\Master\DocumentTypeController');
@@ -45,6 +42,8 @@ Route::Resource('maritalStatus', 'App\Http\Controllers\PIMS\Master\MaritalStatus
 Route::Resource('relationShip', 'App\Http\Controllers\PIMS\Master\RelationShipController');
 Route::Resource('state', 'App\Http\Controllers\PIMS\Master\StateController');
 Route::Resource('city', 'App\Http\Controllers\PIMS\Master\CityController');
+Route::Resource('roles', 'App\Http\Controllers\PIMS\Setting\RoleController');
+Route::Resource('users', 'App\Http\Controllers\PIMS\Setting\UserController');
 
 Route::Resource('bankAccountType', 'App\Http\Controllers\PIMS\Master\BankAccountTypeController');
 Route::Resource('bank', 'App\Http\Controllers\PIMS\Master\BankController');
@@ -60,6 +59,7 @@ Route::Resource('organizationDocumentType', 'App\Http\Controllers\PIMS\Organizat
 Route::Resource('organizationOwnerShip', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnerShipController');
 
 
+Route::post('/userAccess', [UserController::class, 'userAccess'])->name('userAccess');
 
 
 

@@ -203,14 +203,18 @@
         </ul>
         <ul class="propel-menu-bar-list-container cardimage-menu-bar ">
             {{-- <p class="propel-menu-bar-title">Card Image</p> --}}
-            <li>Card Image</li>
-            <li>Analytics</li>
-            <li>CRM</li>
-            <li>Harish</li>
-            <li>Raguram</li>
-            <li>Vallatharsu</li>
-            <li>Lokeshwari</li>
-            <li>Consulting</li>
+            <a href="{{url('roles')}}">
+                <li class="role">
+                    <i class="far fa-file-alt"></i>
+                    <span class='propel-menu-bar-text'>&nbsp; Roles</span>
+                </li>
+            </a>
+            <a href="{{url('users')}}">
+                <li class="user">
+                    <i class="far fa-file-alt"></i>
+                    <span class='propel-menu-bar-text'>&nbsp; Users</span>
+                </li>
+            </a>
         </ul>
         <ul class="propel-menu-bar-list-container emojikiss-menu-bar ">
             {{-- <p class="propel-menu-bar-title">Emoji Kiss</p> --}}
