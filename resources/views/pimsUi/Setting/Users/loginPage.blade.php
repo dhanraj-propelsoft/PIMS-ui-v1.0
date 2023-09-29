@@ -48,7 +48,7 @@
                                 <span class="AlterInputLabel">Enter Mobile Number  <sup>*</sup></span>
                             </label>
                             <label class="form-group  p-0 mb-4 InputLabel w-100">
-                                <input type="passowrd" value="" class="form-control AlterInput propel-key-press-input-mendatory" name="password">
+                                <input type="password" value="" class="form-control AlterInput propel-key-press-input-mendatory" name="password">
                                 <span class="AlterInputLabel">Enter Password  <sup>*</sup></span>
 
                             </label>

@@ -61,31 +61,25 @@
                 <li>Lokeshwari</li>
                 <li>Consulting</li> -->
         </ul>
-        <ul class="propel-menu-bar-list-container common-master-menu-bar  ">
+        <ul class="propel-menu-bar-list-container person-master-menu-bar  ">
             {{-- <p class="propel-menu-bar-title">Organisation</p> --}}
             <a href="{{ url('salutation') }}">
                 <li class="salutation">
-                    <i class="fas fa-user"></i>
-                    <span class='propel-menu-bar-text'>Person Salutation</span>
+                    <i class="fas fa-user"></i> 
+                    <span class='propel-menu-bar-text'>Salutation</span>
                 </li>
             </a>
+            
             <a href="{{ url('gender') }}">
                 <li class="gender">
                     <i class="fas fa-venus-mars"></i>
-                    <span class='propel-menu-bar-text'>Person Gender</span>
+                    <span class='propel-menu-bar-text'>Gender</span>
                 </li>
             </a>
-
             <a href="{{ url('documentType') }}">
                 <li class="personDocumentType">
                     <i class="far fa-file-alt"></i>
                     <span class='propel-menu-bar-text'>Document Type</span>
-                </li>
-            </a>
-            <a href="{{ url('country') }}">
-                <li class="country">
-                    <i class="fas fa-globe"></i>
-                    <span class='propel-menu-bar-text'>Country</span>
                 </li>
             </a>
             <a href="{{ url('bloodGroup') }}">
@@ -106,6 +100,19 @@
                     <span class='propel-menu-bar-text'>RelationShip</span>
                 </li>
             </a>
+        </ul>
+        <ul class="propel-menu-bar-list-container common-master-menu-bar  ">
+            {{-- <p class="propel-menu-bar-title">Organisation</p> --}}
+           
+
+           
+            <a href="{{ url('country') }}">
+                <li class="country">
+                    <i class="fas fa-globe"></i>
+                    <span class='propel-menu-bar-text'>Country</span>
+                </li>
+            </a>
+            
             <a href="{{ url('state') }}">
                 <li class="state">
                     <i class="fas fa-map-marker-alt"></i>
@@ -145,44 +152,44 @@
             </a>
         </ul>
         <ul class="propel-menu-bar-list-container organisation-menu-bar ">
-            <a href="{{url('businessActivity')}}">
+            <a href="{{ url('businessActivity') }}">
                 <li class="businessActivities">
                     <i class="fas fa-briefcase"></i>
                     <span class='propel-menu-bar-text'>Business Activities</span>
                 </li>
             </a>
-            <a href="{{url('administratorType')}}">
+            <a href="{{ url('administratorType') }}">
                 <li class="administratorTypes">
                     <i class="fas fa-user-tie"></i>
                     <span class='propel-menu-bar-text'>Administrator Types</span>
                 </li>
             </a>
 
-            <a href="{{url('businessSaleSubset')}}">
+            <a href="{{ url('businessSaleSubset') }}">
                 <li class="businessSaleSubsets">
                     <i class="fas fa-shopping-cart"></i>
                     <span class='propel-menu-bar-text'>Business Sale Subsets</span>
                 </li>
             </a>
-            <a href="{{url('businessSector')}}">
+            <a href="{{ url('businessSector') }}">
                 <li class="businessSector">
                     <i class="fas fa-building"></i>
                     <span class='propel-menu-bar-text'>Business Sector</span>
                 </li>
             </a>
-            <a href="{{url('organizationCategory')}}">
+            <a href="{{ url('organizationCategory') }}">
                 <li class="organizationCategory">
                     <i class="fas fa-sitemap"></i>
                     <span class='propel-menu-bar-text'>Organization Category</span>
                 </li>
             </a>
-            <a href="{{url('organizationDocumentType')}}">
+            <a href="{{ url('organizationDocumentType') }}">
                 <li class="organizationDocumentType">
                     <i class="far fa-file-alt"></i>
                     <span class='propel-menu-bar-text'>Organization Document Type</span>
                 </li>
             </a>
-            <a href="{{url('organizationOwnerShip')}}">
+            <a href="{{ url('organizationOwnerShip') }}">
                 <li class="organizationOwnerships">
                     <i class="fas fa-users"></i>
                     <span class='propel-menu-bar-text'>Organization Ownerships</span>
@@ -203,13 +210,13 @@
         </ul>
         <ul class="propel-menu-bar-list-container cardimage-menu-bar ">
             {{-- <p class="propel-menu-bar-title">Card Image</p> --}}
-            <a href="{{url('roles')}}">
+            <a href="{{ url('roles') }}">
                 <li class="role">
                     <i class="far fa-file-alt"></i>
                     <span class='propel-menu-bar-text'>&nbsp; Roles</span>
                 </li>
             </a>
-            <a href="{{url('users')}}">
+            <a href="{{ url('users') }}">
                 <li class="user">
                     <i class="far fa-file-alt"></i>
                     <span class='propel-menu-bar-text'>&nbsp; Users</span>

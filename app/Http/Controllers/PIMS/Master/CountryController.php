@@ -15,7 +15,7 @@ class CountryController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'commonCountry');
+        $response = apiHeaders()->get($baseUrl . 'country');
         $datas = $response->json();
 
         if ($response->status() == 200) {
@@ -46,7 +46,7 @@ class CountryController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'commonCountry', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'country', $datas);
         $result = $response->json();
 
         if ($response->status() == 200) {
@@ -68,7 +68,7 @@ class CountryController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'commonCountry/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'country/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -86,7 +86,7 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'commonCountry/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'country/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -118,7 +118,7 @@ class CountryController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'commonCountry/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'country/' . $id);
             $datas = $response->json();
             if ($response->status() == 200) {
                 $result = $datas['data'];

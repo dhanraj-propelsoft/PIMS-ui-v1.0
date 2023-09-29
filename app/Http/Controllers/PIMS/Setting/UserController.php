@@ -4,6 +4,8 @@ namespace App\Http\Controllers\PIMS\Setting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class UserController extends Controller
 {
@@ -17,9 +19,9 @@ class UserController extends Controller
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->get($baseUrl . 'user');
         $datas = $response->json();
-
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
+
             return view('PimsUi.Setting.Users.list', compact('modeldatas'));
         } else {
             dd("un authendicated");
@@ -142,12 +144,14 @@ class UserController extends Controller
     }
     public function userAccess(Request $request)
     {
-        $datas = $request->all();
+     
+        $datas = $request->all(); 
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->Post($baseUrl . 'userAccess', $datas);
         $datas = $response->json();
         if ($response->status() == 200) {
             $result = $datas['data'];
+            Session::put('token', $result['token']);
             if ($result['type'] == 1) {
                 return redirect()->route('users.index');
             } else if ($result['type'] == 2) {
