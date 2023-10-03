@@ -15,7 +15,7 @@ class LanguageController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'commonLanguage');
+        $response = apiHeaders()->get($baseUrl . 'language');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -45,7 +45,7 @@ class LanguageController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'commonLanguage', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'language', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -66,7 +66,7 @@ class LanguageController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'commonLanguage/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'language/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -84,7 +84,7 @@ class LanguageController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'commonLanguage/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'language/' . $id);
 
         $datas = $response->json();
 
@@ -120,7 +120,7 @@ class LanguageController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'commonLanguage/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'language/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('language.index');

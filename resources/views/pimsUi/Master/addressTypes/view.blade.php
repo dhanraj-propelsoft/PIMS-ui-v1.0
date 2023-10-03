@@ -12,7 +12,7 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="addressType" placeholder="Person Address Type..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['name'] }}">
+        <input type="text" name="addressType" placeholder="Person Address Type..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['addressType'] }}">
         <span class="AlterInputLabel" >Person Address Type</span>
       </label>
 

@@ -15,7 +15,7 @@ class AddressTypeController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'commonAddressType');
+        $response = apiHeaders()->get($baseUrl . 'addressType');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -45,7 +45,7 @@ class AddressTypeController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'commonAddressType', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'addressType', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -66,7 +66,7 @@ class AddressTypeController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'commonAddressType/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'addressType/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -84,7 +84,7 @@ class AddressTypeController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'commonAddressType/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'addressType/' . $id);
 
         $datas = $response->json();
 
@@ -120,7 +120,7 @@ class AddressTypeController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'commonAddressType/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'addressType/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('addressType.index');

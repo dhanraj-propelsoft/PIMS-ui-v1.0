@@ -15,7 +15,7 @@ class CityController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'commonCity');
+        $response = apiHeaders()->get($baseUrl . 'city');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -34,7 +34,7 @@ class CityController extends Controller
     public function create()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'commonState');
+        $response = apiHeaders()->get($baseUrl . 'state');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -54,7 +54,7 @@ class CityController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'commonCity', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'city', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -76,7 +76,7 @@ class CityController extends Controller
     public function show($id)
     {
 
-        $response = apiHeaders()->get(getBaseUrl() . 'commonCity/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'city/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -95,12 +95,12 @@ class CityController extends Controller
     public function edit($id)
     {
 
-        $response = apiHeaders()->get(getBaseUrl() . 'commonCity/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'city/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $result = $datas['data'];
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->get($baseUrl . 'commonState');
+            $response = apiHeaders()->get($baseUrl . 'state');
             $datas = $response->json();
             $modeldatas = $datas['data'];
             if ($response->status() == 200) {
@@ -133,7 +133,7 @@ class CityController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'commonCity/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'city/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('city.index');

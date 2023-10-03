@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 @section('content')
 
-<div class="common-master0 maritalStatus0 for-active"></div>
+<div class="person-master0 maritalStatus0 for-active"></div>
 
 <!--Table-->
 <div class="container col-md-10 m-4 mx-auto">

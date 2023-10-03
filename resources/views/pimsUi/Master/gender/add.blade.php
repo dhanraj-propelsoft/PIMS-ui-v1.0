@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="common-master0 gender0 add0 for-active">
+    <div class="person-master0 gender0 add0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="add">
@@ -18,8 +18,8 @@
     <form action="{{url('gender')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-          <input type="text" name="gender" required  placeholder="Person gender..." class="form-control AlterInput " autocomplete="off">
-          <span class="AlterInputLabel">Person gender</span>
+          <input type="text" name="gender" required  placeholder="Person Gender..." class="form-control AlterInput " autocomplete="off">
+          <span class="AlterInputLabel">Person Gender</span>
         </label>
         <div class=" mb-5  InputLabel">
             <textarea name="description" id=" description" cols="30" rows="5" class="col-12 form-control AlterInput "

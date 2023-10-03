@@ -12,7 +12,7 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="language" placeholder="Person Language..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['name'] }}">
+        <input type="text" name="language" placeholder="Person Language..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['language'] }}">
         <span class="AlterInputLabel" >Person Language</span>
       </label>
 

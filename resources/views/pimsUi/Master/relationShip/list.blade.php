@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 @section('content')
 
-<div class="common-master0 relationShip0 for-active"></div>
+<div class="person-master0 relationShip0 for-active"></div>
 
 <!--Table-->
 <div class="container col-md-10 m-4 mx-auto">
@@ -19,7 +19,7 @@
       <tbody>
         @foreach($modeldatas as $modeldata)
         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
-          <td>{{$modeldata['name']}}</td>
+          <td>{{$modeldata['relationship']}}</td>
           <td>{{$modeldata['description']}}</td>
           <td>{{$modeldata['status']}}</td>
         </tr>

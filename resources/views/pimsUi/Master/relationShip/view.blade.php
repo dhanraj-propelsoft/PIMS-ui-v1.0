@@ -3,7 +3,7 @@
 
 {{-- This is For Navigation and Breadcrumbs --}}
 
- <!-- | -->   <div class="common-master0 relationShip0 view0 for-active"><!-- | -->
+ <!-- | -->   <div class="person-master0 relationShip0 view0 for-active"><!-- | -->
  <!-- | -->     <div class="view">                                    <!-- | -->
  <!-- | -->      <span>view</span>                                    <!-- | -->
  <!-- | -->    </div>                                                <!-- | -->
@@ -12,7 +12,7 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="relationShip" placeholder="Person Relationship..." class="form-control AlterInput " autocomplete="off" disabled value="{{$modeldata['name']}}">
+        <input type="text" name="relationShip" placeholder="Person Relationship..." class="form-control AlterInput " autocomplete="off" disabled value="{{$modeldata['relationship']}}">
         <span class="AlterInputLabel" >Person Relationship</span>
       </label>
 

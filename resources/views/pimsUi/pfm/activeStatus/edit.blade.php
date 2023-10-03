@@ -19,7 +19,7 @@
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="activeType" placeholder="Enter Active Status..." class="form-control AlterInput "
-                autocomplete="off" value="{{ $modeldata['activeStatus'] }}">
+                autocomplete="off" value="{{ $modeldata['activeType'] }}">
             <span class="AlterInputLabel">Active Status</span>
         </label>
 

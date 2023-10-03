@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="common-master0 personDocumentType0 edit0 for-active">
+    <div class="person-master0 personDocumentType0 edit0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="edit">

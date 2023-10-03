@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="common-master0 gender0 view0 for-active">
+    <div class="person-master0 gender0 view0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="view">
@@ -17,9 +17,9 @@
 
     <div class="m-auto col-md-6 card p-2 rounded">
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="gender" placeholder="Person gender..." class="form-control AlterInput "
-                autocomplete="off" disabled value="{{ $modeldata['name'] }}">
-            <span class="AlterInputLabel"> gender</span>
+            <input type="text" name="gender" placeholder="Person Gender..." class="form-control AlterInput "
+                autocomplete="off" disabled value="{{ $modeldata['gender'] }}">
+            <span class="AlterInputLabel">Gender</span>
         </label>
         <div class=" mb-5  InputLabel">
             <textarea name="description" id=" description" cols="30" rows="5" class="col-12 form-control AlterInput "

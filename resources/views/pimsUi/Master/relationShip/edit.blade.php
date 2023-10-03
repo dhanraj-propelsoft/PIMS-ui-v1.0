@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="common-master0 relationShip0 edit0 for-active">
+    <div class="person-master0 relationShip0 edit0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="edit">
@@ -19,7 +19,7 @@
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="relationShip" placeholder="Person Relationship..." class="form-control AlterInput "
-                autocomplete="off" value="{{$modeldata['name']}}">
+                autocomplete="off" value="{{$modeldata['relationship']}}">
             <span class="AlterInputLabel">Person Relationship</span>
         </label>
 

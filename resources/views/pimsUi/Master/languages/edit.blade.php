@@ -19,7 +19,7 @@
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="language" placeholder="Person Language..." class="form-control AlterInput "
-                autocomplete="off" value="{{ $modeldata['name']}}">
+                autocomplete="off" value="{{ $modeldata['language']}}">
             <span class="AlterInputLabel">Person Language</span>
         </label>
 
