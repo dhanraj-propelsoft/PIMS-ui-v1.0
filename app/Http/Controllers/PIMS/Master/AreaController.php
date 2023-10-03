@@ -5,7 +5,7 @@ namespace App\Http\Controllers\PIMS\Master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class StateController extends Controller
+class AreaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +15,15 @@ class StateController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'state');
+        $response = apiHeaders()->get($baseUrl . 'area');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
-            return view('pimsUi/Master/state/list', compact('modeldatas'));
+            return view('pimsUi/Master/area/list', compact('modeldatas'));
         } else {
             dd("un authendicated");
         }
+
     }
 
     /**
@@ -33,11 +34,11 @@ class StateController extends Controller
     public function create()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'commonCountry');
+        $response = apiHeaders()->get($baseUrl . 'district');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
-            return view('pimsUi/Master/state/add', compact('modeldatas'));
+            return view('pimsUi/Master/area/add', compact('modeldatas'));
         } else {
             dd("un authendicated");
         }
@@ -53,13 +54,13 @@ class StateController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'state', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'area', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return redirect()->route('state.create');
+                return redirect()->route('area.create');
             } else {
-                return redirect()->route('state.index');
+                return redirect()->route('area.index');
             }
         } else {
             dd("un authendicated");
@@ -75,15 +76,14 @@ class StateController extends Controller
     public function show($id)
     {
 
-        $response = apiHeaders()->get(getBaseUrl() . 'state/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'area/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/state/view', compact('modeldata'));
+            return view('pimsUi/Master/area/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
-
     }
 
     /**
@@ -94,16 +94,17 @@ class StateController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'state/' . $id);
+
+        $response = apiHeaders()->get(getBaseUrl() . 'area/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $result = $datas['data'];
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->get($baseUrl . 'commonCountry');
+            $response = apiHeaders()->get($baseUrl . 'district');
             $datas = $response->json();
             $modeldatas = $datas['data'];
             if ($response->status() == 200) {
-                return view('pimsUi/Master/state/edit', compact('modeldatas', 'result'));
+                return view('pimsUi/Master/area/edit', compact('modeldatas', 'result'));
             }
         } else {
             dd("un authendicated");
@@ -132,17 +133,10 @@ class StateController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'state/' . $id);
-            $datas = $response->json();
+            $response = apiHeaders()->delete(getBaseUrl() . 'area/' . $id);
+            $result = $response->json();
             if ($response->status() == 200) {
-                $result = $datas['data'];
-                if ($result['type'] == 2) {
-                    return redirect()->back()->with('failed', 'This State  Used in City');
-                } elseif($result['type'] == 1) {
-                    return redirect()->route('state.index');
-                }else{
-                    dd("un authendicated");
-                }
+                return redirect()->route('area.index');
             }
         }
     }

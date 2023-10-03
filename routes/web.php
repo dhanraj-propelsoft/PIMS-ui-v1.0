@@ -40,7 +40,10 @@ Route::Resource('country', 'App\Http\Controllers\PIMS\Master\CountryController')
 Route::Resource('bloodGroup', 'App\Http\Controllers\PIMS\Master\BloodGroupController');
 Route::Resource('maritalStatus', 'App\Http\Controllers\PIMS\Master\MaritalStatusController');
 Route::Resource('relationShip', 'App\Http\Controllers\PIMS\Master\RelationShipController');
+Route::Resource('qualification', 'App\Http\Controllers\PIMS\Master\QualificationController');
 Route::Resource('state', 'App\Http\Controllers\PIMS\Master\StateController');
+Route::Resource('district', 'App\Http\Controllers\PIMS\Master\DistrictController');
+Route::Resource('area', 'App\Http\Controllers\PIMS\Master\AreaController');
 Route::Resource('city', 'App\Http\Controllers\PIMS\Master\CityController');
 Route::Resource('roles', 'App\Http\Controllers\PIMS\Setting\RoleController');
 Route::Resource('users', 'App\Http\Controllers\PIMS\Setting\UserController');
@@ -57,6 +60,7 @@ Route::Resource('businessSector', 'App\Http\Controllers\PIMS\OrganizationMaster\
 Route::Resource('organizationCategory', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationCategoryController');
 Route::Resource('organizationDocumentType', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationDocumentTypeController');
 Route::Resource('organizationOwnerShip', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnerShipController');
+Route::Resource('organizationStructure', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationStructureController');
 
 
 Route::post('/userAccess', [UserController::class, 'userAccess'])->name('userAccess');

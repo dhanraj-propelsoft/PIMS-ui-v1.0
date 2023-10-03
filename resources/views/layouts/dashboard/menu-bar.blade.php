@@ -100,6 +100,12 @@
                     <span class='propel-menu-bar-text'>RelationShip</span>
                 </li>
             </a>
+            <a href="{{ url('qualification') }}">
+                <li class="qualification">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class='propel-menu-bar-text'>Qualification</span>
+                </li>
+            </a>
         </ul>
         <ul class="propel-menu-bar-list-container common-master-menu-bar  ">
             {{-- <p class="propel-menu-bar-title">Organisation</p> --}}
@@ -117,6 +123,18 @@
                 <li class="state">
                     <i class="fas fa-map-marker-alt"></i>
                     <span class='propel-menu-bar-text'>State</span>
+                </li>
+            </a>
+            <a href="{{ url('district') }}">
+                <li class="district">
+                    <i class="fas fa-city"></i>
+                    <span class='propel-menu-bar-text'>District</span>
+                </li>
+            </a>
+            <a href="{{ url('area') }}">
+                <li class="area">
+                    <i class="fas fa-map-signs"></i>
+                    <span class='propel-menu-bar-text'>Area</span>
                 </li>
             </a>
             <a href="{{ url('city') }}">
@@ -179,20 +197,26 @@
             </a>
             <a href="{{ url('organizationCategory') }}">
                 <li class="organizationCategory">
-                    <i class="fas fa-sitemap"></i>
-                    <span class='propel-menu-bar-text'>Organization Category</span>
+                    <i class="fas fa-th-large"></i>
+                    <span class='propel-menu-bar-text'>Category</span>
                 </li>
             </a>
             <a href="{{ url('organizationDocumentType') }}">
                 <li class="organizationDocumentType">
                     <i class="far fa-file-alt"></i>
-                    <span class='propel-menu-bar-text'>Organization Document Type</span>
+                    <span class='propel-menu-bar-text'>Document Type</span>
                 </li>
             </a>
             <a href="{{ url('organizationOwnerShip') }}">
                 <li class="organizationOwnerships">
                     <i class="fas fa-users"></i>
-                    <span class='propel-menu-bar-text'>Organization Ownerships</span>
+                    <span class='propel-menu-bar-text'>Ownerships</span>
+                </li>
+            </a>
+            <a href="{{ url('organizationStructure') }}">
+                <li class="organizationStructures">
+                    <i class="fas fa-sitemap"></i>
+                    <span class='propel-menu-bar-text'>Structures</span>
                 </li>
             </a>
 
