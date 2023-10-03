@@ -221,16 +221,63 @@
             </a>
 
         </ul>
-        <ul class="propel-menu-bar-list-container inbox-menu-bar ">
+        <ul class="propel-menu-bar-list-container pfm-menu-bar ">
             {{-- <p class="propel-menu-bar-title">Inbox</p> --}}
-            <li>Inbox</li>
-            <li>Analytics</li>
-            <li>CRM</li>
-            <li>Harish</li>
-            <li>Raguram</li>
-            <li>Vallatharsu</li>
-            <li>Lokeshwari</li>
-            <li>Consulting</li>
+            <a href="{{ url('origin') }}">
+                <li class="origin">
+                    <i class="fas fa-briefcase"></i>
+                    <span class='propel-menu-bar-text'>Origin</span>
+                </li>
+            </a>
+            <a href="{{ url('existence') }}">
+                <li class="existence">
+                    <i class="fas fa-user-tie"></i>
+                    <span class='propel-menu-bar-text'>Existence</span>
+                </li>
+            </a>
+
+            <a href="{{ url('deponeStatus') }}">
+                <li class="deponeStatus">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class='propel-menu-bar-text'>Depone Status</span>
+                </li>
+            </a>
+            <a href="{{ url('cachet') }}">
+                <li class="cachet">
+                    <i class="fas fa-building"></i>
+                    <span class='propel-menu-bar-text'>Cachet</span>
+                </li>
+            </a>
+            <a href="{{ url('validation') }}">
+                <li class="validation">
+                    <i class="fas fa-th-large"></i>
+                    <span class='propel-menu-bar-text'>Validation</span>
+                </li>
+            </a>
+            <a href="{{ url('survival') }}">
+                <li class="survival">
+                    <i class="far fa-file-alt"></i>
+                    <span class='propel-menu-bar-text'>Survival</span>
+                </li>
+            </a>
+            <a href="{{ url('activeStatus') }}">
+                <li class="activeStatus">
+                    <i class="fas fa-users"></i>
+                    <span class='propel-menu-bar-text'>Active Status</span>
+                </li>
+            </a>
+            <a href="{{ url('personStage') }}">
+                <li class="personStage">
+                    <i class="fas fa-sitemap"></i>
+                    <span class='propel-menu-bar-text'>Person Stage</span>
+                </li>
+            </a>
+            <a href="{{ url('authorization') }}">
+                <li class="authorization">
+                    <i class="fas fa-sitemap"></i>
+                    <span class='propel-menu-bar-text'>Authorization</span>
+                </li>
+            </a>
         </ul>
         <ul class="propel-menu-bar-list-container cardimage-menu-bar ">
             {{-- <p class="propel-menu-bar-title">Card Image</p> --}}

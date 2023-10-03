@@ -62,6 +62,16 @@ Route::Resource('organizationDocumentType', 'App\Http\Controllers\PIMS\Organizat
 Route::Resource('organizationOwnerShip', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnerShipController');
 Route::Resource('structure', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationStructureController');
 
+Route::Resource('origin', 'App\Http\Controllers\PIMS\PFM\OriginController');
+Route::Resource('existence', 'App\Http\Controllers\PIMS\PFM\ExistenceController');
+Route::Resource('deponeStatus', 'App\Http\Controllers\PIMS\PFM\DeponeStatusController');
+Route::Resource('cachet', 'App\Http\Controllers\PIMS\PFM\CachetController');
+Route::Resource('validation', 'App\Http\Controllers\PIMS\PFM\ValidationController');
+Route::Resource('survival', 'App\Http\Controllers\PIMS\PFM\SurvivalController');
+Route::Resource('activeStatus', 'App\Http\Controllers\PIMS\PFM\ActiveStatusController');
+Route::Resource('personStage', 'App\Http\Controllers\PIMS\PFM\PersonStageController');
+Route::Resource('authorization', 'App\Http\Controllers\PIMS\PFM\AuthorizationController');
+
 
 Route::post('/userAccess', [UserController::class, 'userAccess'])->name('userAccess');
 
