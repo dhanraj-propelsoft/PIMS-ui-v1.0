@@ -4,7 +4,7 @@
 {{-- This is For Navigation and Breadcrumbs --}}
 
 <!-- | -->
-<div class="organisation0 organizationStructures0 add0 for-active"><!-- | -->
+<div class="organisation0 structures0 add0 for-active"><!-- | -->
   <!-- | -->
   <div class="add"> <!-- | -->
     <!-- | --> <span>add</span> <!-- | -->
@@ -14,10 +14,10 @@
 </div> <!-- | -->
 
 
-<form action="{{route('organizationStructure.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
+<form action="{{route('structure.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="orgStructure" required  placeholder="Enter Structures..." class="form-control AlterInput " autocomplete="off">
+    <input type="text" name="structure" required  placeholder="Enter Structures..." class="form-control AlterInput " autocomplete="off">
     <span class="AlterInputLabel">Structures</span>
   </label>
 
@@ -59,7 +59,7 @@ $(document).ready(function() {
     });
   });
   function cancelPage() {
-    var url = "{{route('organizationStructure.index')}}";
+    var url = "{{route('structure.index')}}";
     window.location.href = url;
   }
 

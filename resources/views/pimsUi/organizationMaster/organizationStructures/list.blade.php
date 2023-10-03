@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 @section('content')
 
-<div class="organisation0 organizationStructures0 for-active"></div>
+<div class="organisation0 structures0 for-active"></div>
 
 <!--Table-->
 <div class="container col-md-10 m-4 mx-auto">
@@ -11,7 +11,7 @@
     <table class="table shadow mt-4">
       <thead>
         <tr>
-          <th> Organization Structures</th>
+          <th>Structures</th>
           <th>Description</th>
           <th>Active Status</th>
         </tr>
@@ -19,7 +19,7 @@
       <tbody>
         @foreach($modeldatas as $modeldata)
         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
-          <td>{{$modeldata['orgStructure']}}</td>
+          <td>{{$modeldata['structure']}}</td>
           <td>{{$modeldata['description']}}</td>
           <td>{{$modeldata['status']}}</td>
         </tr>
@@ -36,10 +36,10 @@
 
 <script>
   document.querySelector(".propel-breadcrumb-extra-content").innerHTML =
-    `<a href="{{route('organizationStructure.create')}}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
+    `<a href="{{route('structure.create')}}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
 function viewPage(id){
-  var url = '{{ route("organizationStructure.show", ":id") }}';
+  var url = '{{ route("structure.show", ":id") }}';
       url = url.replace(':id', id);
   window.location.href = url;
 }

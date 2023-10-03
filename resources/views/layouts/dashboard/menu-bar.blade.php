@@ -213,8 +213,8 @@
                     <span class='propel-menu-bar-text'>Ownerships</span>
                 </li>
             </a>
-            <a href="{{ url('organizationStructure') }}">
-                <li class="organizationStructures">
+            <a href="{{ url('structure') }}">
+                <li class="structures">
                     <i class="fas fa-sitemap"></i>
                     <span class='propel-menu-bar-text'>Structures</span>
                 </li>

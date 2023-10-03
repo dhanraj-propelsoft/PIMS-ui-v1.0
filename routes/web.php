@@ -60,7 +60,7 @@ Route::Resource('businessSector', 'App\Http\Controllers\PIMS\OrganizationMaster\
 Route::Resource('organizationCategory', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationCategoryController');
 Route::Resource('organizationDocumentType', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationDocumentTypeController');
 Route::Resource('organizationOwnerShip', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnerShipController');
-Route::Resource('organizationStructure', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationStructureController');
+Route::Resource('structure', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationStructureController');
 
 
 Route::post('/userAccess', [UserController::class, 'userAccess'])->name('userAccess');

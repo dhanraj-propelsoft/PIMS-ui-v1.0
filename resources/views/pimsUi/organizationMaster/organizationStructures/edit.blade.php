@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="organisation0 organizationStructures0 edit0 for-active">
+    <div class="organisation0 structures0 edit0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="edit">
@@ -15,11 +15,11 @@
     </div> <!-- | -->
 
 
-    <form action="{{route('organizationStructure.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
+    <form action="{{route('structure.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="orgStructure" placeholder="Enter Structures..." class="form-control AlterInput "
-                autocomplete="off" value="{{ $modeldata['orgStructure'] }}">
+            <input type="text" name="structure" placeholder="Enter Structures..." class="form-control AlterInput "
+                autocomplete="off" value="{{ $modeldata['structure'] }}">
             <span class="AlterInputLabel">Structures</span>
         </label>
 
@@ -44,7 +44,7 @@
             <button class="propelbtn propelbtncurved propelsubmit">update</button>
 
     </form>
-    <form action="{{ route('organizationStructure.destroy', $modeldata['id']) }}" method="POST">
+    <form action="{{ route('structure.destroy', $modeldata['id']) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="propelbtn propelbtncurved propeldelete">Delete</button>
@@ -67,7 +67,7 @@
     });
   });
         function cancelPage() {
-          var url = "{{ route('organizationStructure.index') }}";
+          var url = "{{ route('structure.index') }}";
             window.location.href = url;
         }
 

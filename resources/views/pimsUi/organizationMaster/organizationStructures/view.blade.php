@@ -3,7 +3,7 @@
 
 {{-- This is For Navigation and Breadcrumbs --}}
 
- <!-- | -->   <div class="organisation0 organizationStructures0 view0 for-active"><!-- | -->
+ <!-- | -->   <div class="organisation0 structures0 view0 for-active"><!-- | -->
  <!-- | -->     <div class="view">                                    <!-- | -->
  <!-- | -->      <span>view</span>                                    <!-- | -->
  <!-- | -->    </div>                                                <!-- | -->
@@ -12,7 +12,7 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="orgStructure" placeholder="Enter Structures..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['orgStructure'] }}">
+        <input type="text" name="structure" placeholder="Enter Structures..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['structure'] }}">
         <span class="AlterInputLabel" >Structures</span>
       </label>
 
@@ -38,12 +38,12 @@
 
  <script>
 function viewPage(id){
-  var url = "{{ route('organizationStructure.edit', ':id') }}";
+  var url = "{{ route('structure.edit', ':id') }}";
       url = url.replace(':id', id);
   window.location.href = url;
 }
 function cancelPage(){
-  var url = "{{ route('organizationStructure.index') }}";
+  var url = "{{ route('structure.index') }}";
   window.location.href = url;
 }
 </script>

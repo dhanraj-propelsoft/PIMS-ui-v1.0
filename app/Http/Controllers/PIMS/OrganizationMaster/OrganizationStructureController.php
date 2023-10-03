@@ -15,7 +15,7 @@ class OrganizationStructureController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'orgStructure');
+        $response = apiHeaders()->get($baseUrl . 'structure');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -46,13 +46,13 @@ class OrganizationStructureController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'orgStructure', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'structure', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
                 return view('pimsUi/organizationMaster/organizationStructures/add');
             } else {
-                return redirect()->route('organizationStructure.index');
+                return redirect()->route('structure.index');
             }
         } else {
             dd("un authendicated");
@@ -67,7 +67,7 @@ class OrganizationStructureController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgStructure/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'structure/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -85,7 +85,7 @@ class OrganizationStructureController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgStructure/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'structure/' . $id);
 
         $datas = $response->json();
 
@@ -121,10 +121,10 @@ class OrganizationStructureController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'orgStructure/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'structure/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
-                return redirect()->route('organizationStructure.index');
+                return redirect()->route('structure.index');
             }
         }
     }
