@@ -31,9 +31,9 @@
       </label>
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="city" placeholder="Person City..." class="form-control AlterInput "
+            <input type="text" name="city" placeholder="City..." class="form-control AlterInput "
                 autocomplete="off" value="{{ $result['city'] }}">
-            <span class="AlterInputLabel">Person City</span>
+            <span class="AlterInputLabel">City</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

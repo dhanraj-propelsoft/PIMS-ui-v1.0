@@ -18,9 +18,9 @@
     <form action="{{route('bankAccountType.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="bankAccountType" placeholder="Person Bank Account Types..." class="form-control AlterInput "
-                autocomplete="off" value="{{ $modeldata['name'] }}">
-            <span class="AlterInputLabel">Person Bank Account Types</span>
+            <input type="text" name="bankAccountType" placeholder="Bank Account Types..." class="form-control AlterInput "
+                autocomplete="off" value="{{ $modeldata['bankAccountType'] }}">
+            <span class="AlterInputLabel">Bank Account Types</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

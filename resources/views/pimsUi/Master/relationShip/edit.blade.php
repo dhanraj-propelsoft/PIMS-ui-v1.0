@@ -18,9 +18,9 @@
     <form action="{{route('relationShip.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="relationShip" placeholder="Person Relationship..." class="form-control AlterInput "
+            <input type="text" name="relationShip" placeholder="Relationship..." class="form-control AlterInput "
                 autocomplete="off" value="{{$modeldata['relationship']}}">
-            <span class="AlterInputLabel">Person Relationship</span>
+            <span class="AlterInputLabel">Relationship</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

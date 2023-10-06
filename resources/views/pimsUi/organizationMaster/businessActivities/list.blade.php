@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 @section('content')
 
-<div class="common-master0 businessActivities0 for-active"></div>
+<div class="organisation0 businessActivities0 for-active"></div>
 
 <!--Table-->
 <div class="container col-md-10 m-4 mx-auto">
@@ -19,7 +19,7 @@
       <tbody>
         @foreach($modeldatas as $modeldata)
         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
-          <td>{{$modeldata['name']}}</td>
+          <td>{{$modeldata['businessActivity']}}</td>
           <td>{{$modeldata['status']}}</td>
         </tr>
         @endforeach

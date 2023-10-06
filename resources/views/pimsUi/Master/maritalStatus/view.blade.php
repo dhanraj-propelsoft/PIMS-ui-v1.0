@@ -12,8 +12,8 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="maritalStatus" placeholder="Person Marital Status..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['name']}}">
-        <span class="AlterInputLabel" >Person Marital Status</span>
+        <input type="text" name="maritalStatus" placeholder="Marital Status..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['maritalStatus']}}">
+        <span class="AlterInputLabel" >Marital Status</span>
       </label>
 
       <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

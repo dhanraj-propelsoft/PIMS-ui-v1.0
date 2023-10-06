@@ -57,9 +57,9 @@ Route::Resource('businessActivity', 'App\Http\Controllers\PIMS\OrganizationMaste
 Route::Resource('administratorType', 'App\Http\Controllers\PIMS\OrganizationMaster\AdministratorTypeController');
 Route::Resource('businessSaleSubset', 'App\Http\Controllers\PIMS\OrganizationMaster\BusinessSaleSubsetController');
 Route::Resource('businessSector', 'App\Http\Controllers\PIMS\OrganizationMaster\BusinessSectorController');
-Route::Resource('organizationCategory', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationCategoryController');
-Route::Resource('organizationDocumentType', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationDocumentTypeController');
-Route::Resource('organizationOwnerShip', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnerShipController');
+Route::Resource('category', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationCategoryController');
+Route::Resource('orgDocumentType', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationDocumentTypeController');
+Route::Resource('ownerShip', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnerShipController');
 Route::Resource('structure', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationStructureController');
 
 Route::Resource('origin', 'App\Http\Controllers\PIMS\PFM\OriginController');

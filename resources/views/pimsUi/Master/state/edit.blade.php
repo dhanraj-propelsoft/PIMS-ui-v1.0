@@ -34,9 +34,9 @@
           <span class="AlterInputLabel box">Country</span>
       </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input required type="text" name="state" placeholder="Person State..." class="form-control AlterInput "
+            <input required type="text" name="state" placeholder="State..." class="form-control AlterInput "
                 autocomplete="off" value="{{ $result['state'] }}">
-            <span class="AlterInputLabel">Person State</span>
+            <span class="AlterInputLabel">State</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

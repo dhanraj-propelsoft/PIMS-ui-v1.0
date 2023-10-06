@@ -3,7 +3,7 @@
 
 {{-- This is For Navigation and Breadcrumbs --}}
 
- <!-- | -->   <div class="common-master0 organizationCategory0 view0 for-active"><!-- | -->
+ <!-- | -->   <div class="organisation0 category0 view0 for-active"><!-- | -->
  <!-- | -->     <div class="view">                                    <!-- | -->
  <!-- | -->      <span>view</span>                                    <!-- | -->
  <!-- | -->    </div>                                                <!-- | -->
@@ -12,8 +12,8 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="organizationCategory" placeholder="Person Organization Category..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['name'] }}">
-        <span class="AlterInputLabel" >Person Organization Category</span>
+        <input type="text" name="category" placeholder="Category..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['category'] }}">
+        <span class="AlterInputLabel" >Category</span>
       </label>
 
       <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
@@ -34,12 +34,12 @@
 
  <script>
 function viewPage(id){
-  var url = "{{ route('organizationCategory.edit', ':id') }}";
+  var url = "{{ route('category.edit', ':id') }}";
       url = url.replace(':id', id);
   window.location.href = url;
 }
 function cancelPage(){
-  var url = "{{ route('organizationCategory.index') }}";
+  var url = "{{ route('category.index') }}";
   window.location.href = url;
 }
 </script>

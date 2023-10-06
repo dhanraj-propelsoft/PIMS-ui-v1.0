@@ -15,7 +15,7 @@ class BusinessSaleSubsetController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'orgBusinessSaleSubset');
+        $response = apiHeaders()->get($baseUrl . 'businessSaleSubset');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -45,7 +45,7 @@ class BusinessSaleSubsetController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'orgBusinessSaleSubset', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'businessSaleSubset', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -66,7 +66,7 @@ class BusinessSaleSubsetController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgBusinessSaleSubset/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'businessSaleSubset/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -85,7 +85,7 @@ class BusinessSaleSubsetController extends Controller
     public function edit($id)
     {
 
-        $response = apiHeaders()->get(getBaseUrl() . 'orgBusinessSaleSubset/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'businessSaleSubset/' . $id);
 
         $datas = $response->json();
 
@@ -121,7 +121,7 @@ class BusinessSaleSubsetController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'orgBusinessSaleSubset/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'businessSaleSubset/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('businessSaleSubset.index');

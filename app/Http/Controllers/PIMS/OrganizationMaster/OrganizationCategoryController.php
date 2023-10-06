@@ -15,7 +15,7 @@ class OrganizationCategoryController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'orgCategory');
+        $response = apiHeaders()->get($baseUrl . 'category');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -46,7 +46,7 @@ class OrganizationCategoryController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'orgCategory', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'category', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -67,7 +67,7 @@ class OrganizationCategoryController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgCategory/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'category/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -85,7 +85,7 @@ class OrganizationCategoryController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgCategory/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'category/' . $id);
 
         $datas = $response->json();
 
@@ -121,7 +121,7 @@ class OrganizationCategoryController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'orgCategory/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'category/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('organizationCategory.index');

@@ -15,7 +15,7 @@ class BusinessSectorController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'orgBusinessSector');
+        $response = apiHeaders()->get($baseUrl . 'businessSector');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -45,7 +45,7 @@ class BusinessSectorController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'orgBusinessSector', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'businessSector', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -66,7 +66,7 @@ class BusinessSectorController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgBusinessSector/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'businessSector/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -84,7 +84,7 @@ class BusinessSectorController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgBusinessSector/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'businessSector/' . $id);
 
         $datas = $response->json();
 
@@ -120,7 +120,7 @@ class BusinessSectorController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'orgBusinessSector/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'businessSector/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('businessSector.index');

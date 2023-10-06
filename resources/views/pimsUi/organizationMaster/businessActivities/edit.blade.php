@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="common-master0 businessActivities0 edit0 for-active">
+    <div class="organisation0 businessActivities0 edit0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="edit">
@@ -18,9 +18,9 @@
     <form action="{{route('businessActivity.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="businessActivity" placeholder="Person Business Activities..." class="form-control AlterInput "
-                autocomplete="off" value="{{ $modeldata['name'] }}">
-            <span class="AlterInputLabel">Person Business Activities</span>
+            <input type="text" name="businessActivity" placeholder="Business Activities..." class="form-control AlterInput "
+                autocomplete="off" value="{{ $modeldata['businessActivity'] }}">
+            <span class="AlterInputLabel">Business Activities</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

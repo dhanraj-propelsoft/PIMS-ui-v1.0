@@ -17,8 +17,8 @@
 <form action="{{route('language.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="language" required  placeholder="Person Language..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person Language</span>
+    <input type="text" name="language" required  placeholder="Language..." class="form-control AlterInput " autocomplete="off">
+    <span class="AlterInputLabel">Language</span>
   </label>
 
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

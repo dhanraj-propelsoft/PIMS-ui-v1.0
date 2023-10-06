@@ -18,9 +18,9 @@
     <form action="{{ url('gender') }}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="gender" placeholder="Person Gender..." class="form-control AlterInput "
+            <input type="text" name="gender" placeholder="Gender..." class="form-control AlterInput "
                 autocomplete="off" value="{{ $modeldata['gender'] }}">
-            <span class="AlterInputLabel">Person Gender</span>
+            <span class="AlterInputLabel">Gender</span>
         </label>
         <div class=" mb-5  InputLabel">
             <textarea name="description" id=" description" cols="30" rows="5" class="col-12 form-control AlterInput "

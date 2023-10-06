@@ -18,9 +18,9 @@
     <form action="{{route('addressType.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="addressType" placeholder="Person Address Type..." class="form-control AlterInput "
+            <input type="text" name="addressType" placeholder="Address Type..." class="form-control AlterInput "
                 autocomplete="off" value="{{ $modeldata['addressType'] }}">
-            <span class="AlterInputLabel">Person Address Type</span>
+            <span class="AlterInputLabel">Address Type</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

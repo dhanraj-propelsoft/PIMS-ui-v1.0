@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 @section('content')
 
-<div class="common-master0 organizationCategory0 for-active"></div>
+<div class="organisation0 category0 for-active"></div>
 
 <!--Table-->
 <div class="container col-md-10 m-4 mx-auto">
@@ -11,7 +11,7 @@
     <table class="table shadow mt-4">
       <thead>
         <tr>
-          <th> Organization Category</th>
+          <th>Category</th>
 
           <th>Active Status</th>
         </tr>
@@ -19,7 +19,7 @@
       <tbody>
         @foreach($modeldatas as $modeldata)
         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
-          <td>{{$modeldata['name']}}</td>
+          <td>{{$modeldata['category']}}</td>
           <td>{{$modeldata['status']}}</td>
         </tr>
         @endforeach
@@ -35,10 +35,10 @@
 
 <script>
   document.querySelector(".propel-breadcrumb-extra-content").innerHTML =
-    `<a href="{{route('organizationCategory.create')}}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
+    `<a href="{{route('category.create')}}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
 function viewPage(id){
-  var url = '{{ route("organizationCategory.show", ":id") }}';
+  var url = '{{ route("category.show", ":id") }}';
       url = url.replace(':id', id);
   window.location.href = url;
 }

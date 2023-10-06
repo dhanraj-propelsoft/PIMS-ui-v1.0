@@ -15,7 +15,7 @@ class AdministratorTypeController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'orgAdministratorType');
+        $response = apiHeaders()->get($baseUrl . 'administratorType');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -46,7 +46,7 @@ class AdministratorTypeController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'orgAdministratorType', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'administratorType', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -67,7 +67,7 @@ class AdministratorTypeController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgAdministratorType/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'administratorType/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -85,7 +85,7 @@ class AdministratorTypeController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgAdministratorType/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'administratorType/' . $id);
 
         $datas = $response->json();
 
@@ -121,7 +121,7 @@ class AdministratorTypeController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'orgAdministratorType/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'administratorType/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('administratorType.index');

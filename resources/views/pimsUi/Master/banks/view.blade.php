@@ -11,22 +11,22 @@
 
 
  <div class="m-auto col-md-6 card p-2 rounded">
-         <!-- Person Bank -->
+         <!-- Bank -->
    <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="bank" required placeholder="Person Bank..." value="{{$modeldata['bankName']}}" class="form-control AlterInput" autocomplete="off" disabled>
-    <span class="AlterInputLabel">Person Bank</span>
+    <input type="text" name="bank" required placeholder="Bank..." value="{{$modeldata['bankName']}}" class="form-control AlterInput" autocomplete="off" disabled>
+    <span class="AlterInputLabel">Bank</span>
 </label>
 
-<!-- Person IFSC Code -->
+<!-- IFSC Code -->
 <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="ifsc_code" required placeholder="Person IFSC Code..." value="{{$modeldata['ifsc']}}" class="form-control AlterInput" autocomplete="off" disabled>
-    <span class="AlterInputLabel">Person IFSC Code</span>
+    <input type="text" name="ifsc_code" required placeholder="IFSC Code..." value="{{$modeldata['ifsc']}}" class="form-control AlterInput" autocomplete="off" disabled>
+    <span class="AlterInputLabel">IFSC Code</span>
 </label>
 
-<!-- Person MICR Code -->
+<!-- MICR Code -->
 <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="micr_code" required placeholder="Person MICR Code..." value="{{$modeldata['micr']}}" class="form-control AlterInput" autocomplete="off" disabled>
-    <span class="AlterInputLabel">Person MICR Code</span>
+    <input type="text" name="micr_code" required placeholder="MICR Code..." value="{{$modeldata['micr']}}" class="form-control AlterInput" autocomplete="off" disabled>
+    <span class="AlterInputLabel">MICR Code</span>
 </label>
       <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
         <div class="">

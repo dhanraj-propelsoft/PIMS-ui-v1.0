@@ -4,7 +4,7 @@
 {{-- This is For Navigation and Breadcrumbs --}}
 
 <!-- | -->
-<div class="common-master0 businessSector0 add0 for-active"><!-- | -->
+<div class="organisation0 businessSector0 add0 for-active"><!-- | -->
   <!-- | -->
   <div class="add"> <!-- | -->
     <!-- | --> <span>add</span> <!-- | -->
@@ -17,8 +17,8 @@
 <form action="{{route('businessSector.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="businessSector" required  placeholder="Person Business Sector..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person Business Sector</span>
+    <input type="text" name="businessSector" required  placeholder="Business Sector..." class="form-control AlterInput " autocomplete="off">
+    <span class="AlterInputLabel">Business Sector</span>
   </label>
 
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

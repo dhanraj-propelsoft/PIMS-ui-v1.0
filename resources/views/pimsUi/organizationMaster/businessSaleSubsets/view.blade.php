@@ -3,7 +3,7 @@
 
 {{-- This is For Navigation and Breadcrumbs --}}
 
- <!-- | -->   <div class="common-master0 businessSaleSubsets0 view0 for-active"><!-- | -->
+ <!-- | -->   <div class="organisation0 businessSaleSubsets0 view0 for-active"><!-- | -->
  <!-- | -->     <div class="view">                                    <!-- | -->
  <!-- | -->      <span>view</span>                                    <!-- | -->
  <!-- | -->    </div>                                                <!-- | -->
@@ -12,8 +12,8 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="businessSaleSubsets" placeholder="Person Business Sale Subsets..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['name'] }}">
-        <span class="AlterInputLabel" >Person Business Sale Subsets</span>
+        <input type="text" name="businessSaleSubsets" placeholder="Business Sale Subsets..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['businessSaleSubset'] }}">
+        <span class="AlterInputLabel" >Business Sale Subsets</span>
       </label>
 
       <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

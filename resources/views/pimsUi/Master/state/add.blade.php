@@ -29,8 +29,8 @@
 </label>
 
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="state" required  placeholder="Person State..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person State</span>
+    <input type="text" name="state" required  placeholder="State..." class="form-control AlterInput " autocomplete="off">
+    <span class="AlterInputLabel">State</span>
   </label>
 
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

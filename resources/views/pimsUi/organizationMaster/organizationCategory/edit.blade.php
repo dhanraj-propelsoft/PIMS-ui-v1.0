@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="common-master0 organizationCategory0 edit0 for-active">
+    <div class="organisation0 category0 edit0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="edit">
@@ -15,12 +15,12 @@
     </div> <!-- | -->
 
 
-    <form action="{{route('organizationCategory.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
+    <form action="{{route('category.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="orgCategory" placeholder="Person Organization Category..." class="form-control AlterInput "
-                autocomplete="off" value="{{ $modeldata['name'] }}">
-            <span class="AlterInputLabel">Person Organization Category</span>
+            <input type="text" name="category" placeholder="Category..." class="form-control AlterInput "
+                autocomplete="off" value="{{ $modeldata['category'] }}">
+            <span class="AlterInputLabel">Category</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
@@ -40,7 +40,7 @@
             <button class="propelbtn propelbtncurved propelsubmit">update</button>
 
     </form>
-    <form action="{{ route('organizationCategory.destroy', $modeldata['id']) }}" method="POST">
+    <form action="{{ route('category.destroy', $modeldata['id']) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="propelbtn propelbtncurved propeldelete">Delete</button>
@@ -63,7 +63,7 @@
     });
   });
         function cancelPage() {
-          var url = "{{ route('organizationCategory.index') }}";
+          var url = "{{ route('category.index') }}";
             window.location.href = url;
         }
 

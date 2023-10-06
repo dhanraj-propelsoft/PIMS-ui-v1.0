@@ -17,8 +17,8 @@
 <form action="{{ url('documentType') }}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="documentType" required  placeholder="Person Document Type..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person Document Type</span>
+    <input type="text" name="documentType" required  placeholder="Document Type..." class="form-control AlterInput " autocomplete="off">
+    <span class="AlterInputLabel">Document Type</span>
   </label>
 
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

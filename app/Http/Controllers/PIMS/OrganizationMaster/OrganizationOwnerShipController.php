@@ -15,7 +15,7 @@ class OrganizationOwnerShipController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'orgOwnerShip');
+        $response = apiHeaders()->get($baseUrl . 'ownerShip');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -46,13 +46,13 @@ class OrganizationOwnerShipController extends Controller
     {
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'orgOwnerShip', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'ownerShip', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
                 return view('pimsUi/organizationMaster/organizationOwnerShips/add');
             } else {
-                return redirect()->route('organizationOwnerShip.index');
+                return redirect()->route('organizationOwnerShips.index');
             }
         } else {
             dd("un authendicated");
@@ -67,7 +67,7 @@ class OrganizationOwnerShipController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgOwnerShip/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'ownerShip/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -85,7 +85,7 @@ class OrganizationOwnerShipController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgOwnerShip/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'ownerShip/' . $id);
 
         $datas = $response->json();
 
@@ -121,10 +121,10 @@ class OrganizationOwnerShipController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'orgOwnerShip/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'ownerShip/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
-                return redirect()->route('organizationOwnerShip.index');
+                return redirect()->route('organizationOwnerShips.index');
             }
         }
     }

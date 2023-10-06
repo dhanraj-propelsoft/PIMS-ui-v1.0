@@ -15,7 +15,7 @@ class BusinessActivityController extends Controller
     public function index()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'orgBusinessActivities');
+        $response = apiHeaders()->get($baseUrl . 'businessActivities');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -46,7 +46,7 @@ class BusinessActivityController extends Controller
 
         $datas = $request->all();
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'orgBusinessActivities', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'businessActivities', $datas);
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -67,7 +67,7 @@ class BusinessActivityController extends Controller
      */
     public function show($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgBusinessActivities/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'businessActivities/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
@@ -85,7 +85,7 @@ class BusinessActivityController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'orgBusinessActivities/' . $id);
+        $response = apiHeaders()->get(getBaseUrl() . 'businessActivities/' . $id);
 
         $datas = $response->json();
 
@@ -121,7 +121,7 @@ class BusinessActivityController extends Controller
     {
         if ($id) {
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->delete(getBaseUrl() . 'orgBusinessActivities/' . $id);
+            $response = apiHeaders()->delete(getBaseUrl() . 'businessActivities/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('businessActivity.index');

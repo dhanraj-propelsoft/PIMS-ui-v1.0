@@ -4,7 +4,7 @@
 {{-- This is For Navigation and Breadcrumbs --}}
 
 <!-- | -->
-<div class="common-master0 organizationOwnerships0 add0 for-active"><!-- | -->
+<div class="organisation0 ownerships0 add0 for-active"><!-- | -->
   <!-- | -->
   <div class="add"> <!-- | -->
     <!-- | --> <span>add</span> <!-- | -->
@@ -14,11 +14,11 @@
 </div> <!-- | -->
 
 
-<form action="{{route('organizationOwnerShip.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
+<form action="{{route('ownerShip.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="orgOwnerShip" required  placeholder="Person Organization Ownerships..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person Organization Ownerships</span>
+    <input type="text" name="ownerShip" required  placeholder="Ownerships..." class="form-control AlterInput " autocomplete="off">
+    <span class="AlterInputLabel">Ownerships</span>
   </label>
 
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
@@ -55,7 +55,7 @@ $(document).ready(function() {
     });
   });
   function cancelPage() {
-    var url = "{{route('organizationOwnerShip.index')}}";
+    var url = "{{route('ownerShip.index')}}";
     window.location.href = url;
   }
 

@@ -4,7 +4,7 @@
 {{-- This is For Navigation and Breadcrumbs --}}
 
 <!-- | -->
-<div class="common-master0 organizationDocumentType0 add0 for-active"><!-- | -->
+<div class="organisation0 orgDocumentType0 add0 for-active"><!-- | -->
   <!-- | -->
   <div class="add"> <!-- | -->
     <!-- | --> <span>add</span> <!-- | -->
@@ -14,11 +14,11 @@
 </div> <!-- | -->
 
 
-<form action="{{route('organizationDocumentType.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
+<form action="{{route('orgDocumentType.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="orgDocumentType" required  placeholder="Person Organization Document Type..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person Organization Document Type</span>
+    <input type="text" name="documentType" required  placeholder="Document Type..." class="form-control AlterInput " autocomplete="off">
+    <span class="AlterInputLabel">Document Type</span>
   </label>
 
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
@@ -55,7 +55,7 @@ $(document).ready(function() {
     });
   });
   function cancelPage() {
-    var url = '{{route("organizationDocumentType.index")}}';
+    var url = '{{route("orgDocumentType.index")}}';
     window.location.href = url;
   }
 

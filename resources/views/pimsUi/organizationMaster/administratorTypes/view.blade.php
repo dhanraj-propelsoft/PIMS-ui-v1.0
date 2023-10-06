@@ -3,7 +3,7 @@
 
 {{-- This is For Navigation and Breadcrumbs --}}
 
- <!-- | -->   <div class="common-master0 administratorTypes0 view0 for-active"><!-- | -->
+ <!-- | -->   <div class="organisation0 administratorTypes0 view0 for-active"><!-- | -->
  <!-- | -->     <div class="view">                                    <!-- | -->
  <!-- | -->      <span>view</span>                                    <!-- | -->
  <!-- | -->    </div>                                                <!-- | -->
@@ -12,8 +12,8 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="administratorTypes" placeholder="Person Administrator Type..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['name'] }}">
-        <span class="AlterInputLabel" >Person Administrator Type</span>
+        <input type="text" name="administratorTypes" placeholder="Administrator Type..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['administratorType'] }}">
+        <span class="AlterInputLabel" >Administrator Type</span>
       </label>
 
       <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

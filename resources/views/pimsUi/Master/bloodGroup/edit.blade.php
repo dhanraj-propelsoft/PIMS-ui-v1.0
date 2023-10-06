@@ -18,9 +18,9 @@
     <form action="{{route('bloodGroup.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="bloodGroup" placeholder="Person Blood Group..." class="form-control AlterInput "
+            <input type="text" name="bloodGroup" placeholder="Blood Group..." class="form-control AlterInput "
                 autocomplete="off" value="{{$modeldata['bloodGroup']}}">
-            <span class="AlterInputLabel">Person Blood Group</span>
+            <span class="AlterInputLabel">Blood Group</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

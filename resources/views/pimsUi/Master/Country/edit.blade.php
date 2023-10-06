@@ -23,9 +23,9 @@
         @endif
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="country" placeholder="Person Country..." class="form-control AlterInput "
+            <input type="text" name="country" placeholder="Country..." class="form-control AlterInput "
                 autocomplete="off" value="{{ $modeldata['country'] }}">
-            <span class="AlterInputLabel">Person Country</span>
+            <span class="AlterInputLabel">Country</span>
         </label>
 
         <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

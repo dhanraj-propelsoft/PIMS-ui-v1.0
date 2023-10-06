@@ -4,7 +4,7 @@
 {{-- This is For Navigation and Breadcrumbs --}}
 
 <!-- | -->
-<div class="common-master0 administratorTypes0 add0 for-active"><!-- | -->
+<div class="organisation0 administratorTypes0 add0 for-active"><!-- | -->
   <!-- | -->
   <div class="add"> <!-- | -->
     <!-- | --> <span>add</span> <!-- | -->
@@ -17,8 +17,8 @@
 <form action="{{route('administratorType.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="administratorType" required  placeholder="Person Administrator Type..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person Administrator Type</span>
+    <input type="text" name="administratorType" required  placeholder="Administrator Type..." class="form-control AlterInput " autocomplete="off">
+    <span class="AlterInputLabel">Administrator Type</span>
   </label>
 
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

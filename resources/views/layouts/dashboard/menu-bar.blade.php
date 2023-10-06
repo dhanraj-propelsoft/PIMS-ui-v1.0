@@ -195,20 +195,20 @@
                     <span class='propel-menu-bar-text'>Business Sector</span>
                 </li>
             </a>
-            <a href="{{ url('organizationCategory') }}">
-                <li class="organizationCategory">
+            <a href="{{ url('category') }}">
+                <li class="category">
                     <i class="fas fa-th-large"></i>
                     <span class='propel-menu-bar-text'>Category</span>
                 </li>
             </a>
-            <a href="{{ url('organizationDocumentType') }}">
-                <li class="organizationDocumentType">
+            <a href="{{ url('orgDocumentType') }}">
+                <li class="orgDocumentType">
                     <i class="far fa-file-alt"></i>
                     <span class='propel-menu-bar-text'>Document Type</span>
                 </li>
             </a>
-            <a href="{{ url('organizationOwnerShip') }}">
-                <li class="organizationOwnerships">
+            <a href="{{ url('ownerShip') }}">
+                <li class="ownerships">
                     <i class="fas fa-users"></i>
                     <span class='propel-menu-bar-text'>Ownerships</span>
                 </li>

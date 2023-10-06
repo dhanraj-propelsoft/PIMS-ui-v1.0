@@ -17,8 +17,8 @@
 <form action="{{url('salutation')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
   <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="salutation" required  placeholder="Person Salutation..." class="form-control AlterInput " autocomplete="off">
-    <span class="AlterInputLabel">Person Salutation</span>
+    <input type="text" name="salutation" required  placeholder="Salutation..." class="form-control AlterInput " autocomplete="off">
+    <span class="AlterInputLabel">Salutation</span>
   </label>
   <div class=" mb-5  InputLabel">
     <textarea name="description" id="description" cols="30" rows="5" class="col-12 form-control AlterInput " placeholder="Write Your Description..." spellcheck="true"></textarea>

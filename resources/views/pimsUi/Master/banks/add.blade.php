@@ -16,22 +16,22 @@
 
 <form action="{{route('bank.store')}}" method="post" class="m-auto col-md-6 card p-2 rounded">
   @csrf
-   <!-- Person Bank -->
+   <!-- Bank -->
    <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="bank" required placeholder="Person Bank..." class="form-control AlterInput" autocomplete="off">
-    <span class="AlterInputLabel">Person Bank</span>
+    <input type="text" name="bank" required placeholder="Bank..." class="form-control AlterInput" autocomplete="off">
+    <span class="AlterInputLabel">Bank</span>
 </label>
 
-<!-- Person IFSC Code -->
+<!-- IFSC Code -->
 <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="ifsc" required placeholder="Person IFSC Code..." class="form-control AlterInput" autocomplete="off">
-    <span class="AlterInputLabel">Person IFSC Code</span>
+    <input type="text" name="ifsc" required placeholder="IFSC Code..." class="form-control AlterInput" autocomplete="off">
+    <span class="AlterInputLabel">IFSC Code</span>
 </label>
 
-<!-- Person MICR Code -->
+<!-- MICR Code -->
 <label class="form-group p-0 mb-4 InputLabel w-100">
-    <input type="text" name="micr" required placeholder="Person MICR Code..." class="form-control AlterInput" autocomplete="off">
-    <span class="AlterInputLabel">Person MICR Code</span>
+    <input type="text" name="micr" required placeholder="MICR Code..." class="form-control AlterInput" autocomplete="off">
+    <span class="AlterInputLabel">MICR Code</span>
 </label>
 
   <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">

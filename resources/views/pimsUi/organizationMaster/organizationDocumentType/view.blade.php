@@ -3,7 +3,7 @@
 
 {{-- This is For Navigation and Breadcrumbs --}}
 
- <!-- | -->   <div class="common-master0 organizationDocumentType0 view0 for-active"><!-- | -->
+ <!-- | -->   <div class="organisation0 orgDocumentType0 view0 for-active"><!-- | -->
  <!-- | -->     <div class="view">                                    <!-- | -->
  <!-- | -->      <span>view</span>                                    <!-- | -->
  <!-- | -->    </div>                                                <!-- | -->
@@ -12,8 +12,8 @@
 
  <div class="m-auto col-md-6 card p-2 rounded">
     <label class="form-group p-0 mb-4 InputLabel w-100">
-        <input type="text" name="organizationDocumentType" placeholder="Person Organization Document Type..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['name'] }}">
-        <span class="AlterInputLabel" >Person Organization Document Type</span>
+        <input type="text" name="documentType" placeholder="Document Type..." class="form-control AlterInput " autocomplete="off" disabled value="{{ $modeldata['documentType'] }}">
+        <span class="AlterInputLabel" >Document Type</span>
       </label>
 
       <div class="custom-switch custom-switch-primary mb-5 row justify-content-between mx-1">
@@ -34,12 +34,12 @@
 
  <script>
 function viewPage(id){
-  var url = "{{ route('organizationDocumentType.edit', ':id') }}";
+  var url = "{{ route('orgDocumentType.edit', ':id') }}";
       url = url.replace(':id', id);
   window.location.href = url;
 }
 function cancelPage(){
-  var url = "{{ route('organizationDocumentType.index') }}";
+  var url = "{{ route('orgDocumentType.index') }}";
   window.location.href = url;
 }
 </script>
