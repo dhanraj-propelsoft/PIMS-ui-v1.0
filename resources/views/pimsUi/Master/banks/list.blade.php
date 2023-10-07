@@ -14,17 +14,19 @@
                         <th>IFSC Code</th>
                         <th>MICR Code</th>
                         <th>Active Status</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($modeldatas as $modeldata)
-        <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
-          <td>{{$modeldata['bankName']}}</td>
-          <td>{{$modeldata['ifsc']}}</td>
-          <td>{{$modeldata['micr']}}</td>
-          <td>{{$modeldata['status']}}</td>
-        </tr>
-        @endforeach
+                        <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
+                            <td>{{ $modeldata['bankName'] }}</td>
+                            <td>{{ $modeldata['ifsc'] }}</td>
+                            <td>{{ $modeldata['micr'] }}</td>
+                            <td>{{ $modeldata['status'] }}</td>
+                            <td>{{ $modeldata['description'] }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
 
             </table>
@@ -37,7 +39,7 @@
 
     <script>
         document.querySelector(".propel-breadcrumb-extra-content").innerHTML =
-            `<a href="{{route('bank.create')}}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
+            `<a href="{{ route('bank.create') }}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
         function viewPage(id) {
             var url = "{{ route('bank.show', ':id') }}";

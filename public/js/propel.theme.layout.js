@@ -1,5 +1,4 @@
-var audio = new Audio(
-    'http://127.0.0.1:8001/assets/sound/sound1.mp3');
+var audio = new Audio('http://127.0.0.1:8001/assets/sound/sound1.mp3');
 //full screen mode
 var fullscreen = document.documentElement;
 
@@ -474,10 +473,19 @@ function DefaultPropelAlert(info, form) {
         $('.default-alert-container').show();
     }
 }
+$('.propelDelPopup').click(function () {
+    audio.play();
+    $('.propel-alert-info').html("Are you sure you want to delete?");
+    $('.default-alert-btns').html("<button type='submit' class='propelbtn propelsubmit propel-hover hoverable-btn  w-30 ' id='form-submit' onclick='DelPopupSubmit()'>Yes</button> <button  class=' propelbtn propelsubmit propel-hover hoverable-btn   w-30' onclick='closeSuperGrandpa(this)'>Cancel</button>");
+    $('.default-alert-container').show();
+});
 function submitform(event) {
     let submitNameCommon = $(event).attr('id');
     let submitName = submitNameCommon.split("-");
     $("#" + submitName[0]).submit();
+}
+function DelPopupSubmit() {
+    $(".propelDelPopup").parent().submit();
 }
 
 function closeSuperGrandpa(event) {
@@ -487,20 +495,25 @@ $(document).on('click', '.close-parent', function(){
     $(this).parent().fadeOut(300);
 });
 
+  $("select.AlterInput").next('.AlterInputLabel').css("visibility","hidden");
 
- $("select.AlterInput").next('.AlterInputLabel').css("visibility","hidden");
-
-$("select").change(function(){
-    $(this).next('.AlterInputLabel').css("visibility","visible");
- 
-});
-$('select.search-need').select2({
-  
-    templateSelection: function (data) {
-    
-      return data.text;
-    }
+  $('select.AlterInput').each(function() {
+      if(($(this).find('option').attr('selected')) == 'selected')
+      {
+          $(this).next('.AlterInputLabel').css("visibility","visible");
+      }
   });
+  $('select.AlterInput').change(function(){
+      $(this).next('.AlterInputLabel').css("visibility","visible");
+
+  });
+  $('select.search-need').select2({
+
+        templateSelection: function (data) {
+
+        return data.text;
+        }
+    });
 
 //vh function
 $("[vh]").each(function() {

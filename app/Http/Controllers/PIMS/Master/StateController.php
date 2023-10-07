@@ -33,7 +33,7 @@ class StateController extends Controller
     public function create()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'commonCountry');
+        $response = apiHeaders()->get($baseUrl . 'country');
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -99,7 +99,7 @@ class StateController extends Controller
         if ($response->status() == 200) {
             $result = $datas['data'];
             $baseUrl = getBaseUrl();
-            $response = apiHeaders()->get($baseUrl . 'commonCountry');
+            $response = apiHeaders()->get($baseUrl . 'country');
             $datas = $response->json();
             $modeldatas = $datas['data'];
             if ($response->status() == 200) {

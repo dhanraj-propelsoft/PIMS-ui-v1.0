@@ -11,9 +11,13 @@
     <table class="table shadow mt-4">
       <thead>
         <tr>
-          <th> Country</th>
-
+          <th>Country</th>
           <th>Active Status</th>
+          <th>Numeric Code</th>
+          <th>Phone Code</th>
+          <th>Capital</th>
+          <th>Flag</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +25,11 @@
         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
           <td>{{$modeldata['country']}}</td>
           <td>{{$modeldata['status']}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{$modeldata['description']}}</td>
         </tr>
         @endforeach
       </tbody>

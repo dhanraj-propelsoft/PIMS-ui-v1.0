@@ -96,6 +96,13 @@ select ~ .AlterInputLabel{
     left: 15px;
     opacity: 1;
   }
+  .AlterInput select[placeholder="selectPH"]~.AlterInputLabel {
+    /* You need to add a placeholder to your fields. For example: <input "placeholder=" "/> */
+
+    top: -8px;
+    left: 15px;
+    opacity: 1;
+  }
  
 
   input[placeholder="Search..."] {
@@ -124,6 +131,14 @@ select ~ .AlterInputLabel{
   background-position: calc(100% - 10px) center;
 
  }
+
+ select[validate="failure"]{
+  border-color: var(--sandal-color-1);
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) center;
+  color: var(--red-color-2);
+ }
  /* input[validate="success"]~.AlterInputLabel{
   background-image: linear-gradient(180deg,white,rgb(217, 250, 217));
   background-color:rgb(217, 250, 217); 
@@ -135,7 +150,13 @@ select ~ .AlterInputLabel{
    /* background-color:rgb(217, 250, 217); */
    /* border: 1px solid rgb(70, 232, 70);  */
  color: var(--red-color-2);
-  } 
+  }  
+  select[validate="failure"]~.AlterInputLabel{ 
+
+   /* background-color:rgb(217, 250, 217); */
+   /* border: 1px solid rgb(70, 232, 70);  */
+   color: var(--red-color-2);
+   } 
   .propel-input-error{
     color: var(--red-color);
     font-size: 10px;
@@ -148,7 +169,7 @@ select ~ .AlterInputLabel{
 .input-group .propel-input-error{
   bottom: -25px;
 }
-.input-group:has(.propel-input-error) input , .input-group:has(.propel-input-error) .input-group-addon{
+.input-group:has(.propel-input-error) input , .input-group:has(.propel-input-error) .input-group-addon , input[validate="failure"]~ .input-group-addon {
   border-color: var(--red-color) !important;
   color: red;
 }
@@ -367,6 +388,9 @@ select ~ .AlterInputLabel{
   border-right: none;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+}
+.input-group .AlterInput:focus{
+  border-color: var(--propel) !important;
 }
 #passwordStrength{
 width: 100%;
