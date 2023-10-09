@@ -14,17 +14,15 @@ class OrganizationActivationController extends Controller
      */
     public function index()
     {
-        $modeldatas = array();
-        return view('pimsUi/organizationMaster/organizationActivation/list', compact('modeldatas'));
-        // $baseUrl = getBaseUrl();
-        // $response = apiHeaders()->get($baseUrl . 'orgActivation');
-        // $datas = $response->json();
-        // if ($response->status() == 200) {
-        //     $modeldatas = $datas['data'];
-        //     return view('pimsUi/organizationMaster/organizationActivation/list', compact('modeldatas'));
-        // } else {
-        //     dd("un authendicated");
-        // }
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'tempOrganizationList');
+        $datas = $response->json();
+        if ($response->status() == 200) {
+            $modeldatas = $datas['data'];
+            return view('pimsUi/organizationMaster/organizationActivation/list', compact('modeldatas'));
+        } else {
+            dd("un authendicated");
+        }
 
     }
 

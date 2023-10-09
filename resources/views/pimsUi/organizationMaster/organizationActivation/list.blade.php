@@ -10,19 +10,19 @@
             <table class="table shadow mt-4">
                 <thead>
                     <tr>
-                        <th>Organization</th>
-                        <th>Active Status</th>
+                        <th>Organization Name</th>
+                        <th>Organization Mail</th>
                         <th>Activation</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for ($i=1; $i<5; $i++)
+                    @foreach ($modeldatas as $modeldata)
                         <tr ondblclick="">  {{-- viewPage(<?php //echo $modeldata['id']; ?>) --}}
-                            <td>{{ $i }}</td>
-                            <td>In-Active</td>
-                            <td><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover' onclick='activePopup({{ $i }})'>Activate</button></td>
+                            <td>{{ $modeldata['orgName'] }}</td>
+                            <td>{{ $modeldata['orgEmail'] }}</td>
+                            <td><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover' onclick='activePopup({{ $modeldata["orgId"] }})'>Activate</button></td>
                         </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
 
             </table>
