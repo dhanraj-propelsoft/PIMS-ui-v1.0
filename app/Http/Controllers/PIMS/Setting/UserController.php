@@ -37,6 +37,7 @@ class UserController extends Controller
     {
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->get($baseUrl . 'getRoleMaster');
+        dd($response->json());
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
@@ -149,10 +150,13 @@ class UserController extends Controller
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->Post($baseUrl . 'userAccess', $datas);
         $datas = $response->json();
+      
         if ($response->status() == 200) {
             $result = $datas['data'];
-            Session::put('token', $result['token']);
+           
+           
             if ($result['type'] == 1) {
+                Session::put('token', $result['token']);
                 return redirect()->route('users.index');
             } else if ($result['type'] == 2) {
                 return redirect()->back()->with('error', 'Mobile or Password is Wrong');            }

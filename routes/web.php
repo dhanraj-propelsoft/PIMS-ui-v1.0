@@ -30,9 +30,8 @@ Route::get('/', function () {
 });
 
 // Route::prefix('user')->name('user.')->group(function () {
-Route::middleware(['guest:web', 'PreventBackHistory'])->group(function () {
+    Route::group(['middleware' => 'token.auth'], function () {
 
-});
 Route::Resource('salutation', 'App\Http\Controllers\PIMS\Master\SalutationController');
 Route::Resource('gender', 'App\Http\Controllers\PIMS\Master\GenderController');
 Route::Resource('documentType', 'App\Http\Controllers\PIMS\Master\DocumentTypeController');
@@ -71,7 +70,7 @@ Route::Resource('survival', 'App\Http\Controllers\PIMS\PFM\SurvivalController');
 Route::Resource('activeStatus', 'App\Http\Controllers\PIMS\PFM\ActiveStatusController');
 Route::Resource('personStage', 'App\Http\Controllers\PIMS\PFM\PersonStageController');
 Route::Resource('authorization', 'App\Http\Controllers\PIMS\PFM\AuthorizationController');
-
+});
 
 Route::post('/userAccess', [UserController::class, 'userAccess'])->name('userAccess');
 

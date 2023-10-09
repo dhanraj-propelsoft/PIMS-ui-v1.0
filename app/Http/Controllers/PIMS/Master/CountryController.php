@@ -14,6 +14,7 @@ class CountryController extends Controller
      */
     public function index()
     {
+      
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->get($baseUrl . 'country');
         $datas = $response->json();
@@ -22,7 +23,7 @@ class CountryController extends Controller
             $modeldatas = $datas['data'];
             return view('pimsUi/Master/Country/list', compact('modeldatas'));
         } else {
-            dd("un authendicated");
+            return redirect()->route('logout');
         }
     }
 
@@ -74,7 +75,7 @@ class CountryController extends Controller
             $modeldata = $datas['data'];
             return view('pimsUi/Master/Country/view', compact('modeldata'));
         } else {
-            dd("un authendicated");
+           return redirect()->route('/');
         }
     }
 
