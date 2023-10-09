@@ -46,7 +46,7 @@ class OrganizationActivationController extends Controller
     {
         // $datas = $request->all();
         // $baseUrl = getBaseUrl();
-        // $response = apiHeaders()->Post($baseUrl . 'orgActivation', $datas);
+        // $response = apiHeaders()->Post($baseUrl . 'tempOrganizationList', $datas);
         // $result = $response->json();
         // if ($response->status() == 200) {
         //     if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
@@ -70,7 +70,7 @@ class OrganizationActivationController extends Controller
         if ($id) {
             dd($id);
         }
-        // $response = apiHeaders()->get(getBaseUrl() . 'orgActivation/' . $id);
+        // $response = apiHeaders()->get(getBaseUrl() . 'tempOrganizationList/' . $id);
         // $datas = $response->json();
         // if ($response->status() == 200) {
         //     $modeldata = $datas['data'];
@@ -88,7 +88,7 @@ class OrganizationActivationController extends Controller
      */
     public function edit($id)
     {
-        // $response = apiHeaders()->get(getBaseUrl() . 'orgActivation/' . $id);
+        // $response = apiHeaders()->get(getBaseUrl() . 'tempOrganizationList/' . $id);
 
         // $datas = $response->json();
 
@@ -124,7 +124,7 @@ class OrganizationActivationController extends Controller
     {
         // if ($id) {
         //     $baseUrl = getBaseUrl();
-        //     $response = apiHeaders()->delete(getBaseUrl() . 'orgActivation/' . $id);
+        //     $response = apiHeaders()->delete(getBaseUrl() . 'tempOrganizationList/' . $id);
         //     $result = $response->json();
         //     if ($response->status() == 200) {
         //         return redirect()->route('orgActivation.index');

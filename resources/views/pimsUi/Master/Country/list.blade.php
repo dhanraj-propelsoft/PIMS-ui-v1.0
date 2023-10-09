@@ -24,11 +24,11 @@
         @foreach($modeldatas as $modeldata)
         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
           <td>{{$modeldata['country']}}</td>
-          <td>{{$modeldata['status']}}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{$modeldata['activeStatusId']}}</td>
+          <td>{{$modeldata['numericCode']}}</td>
+          <td>{{$modeldata['phoneCode']}}</td>
+          <td>{{$modeldata['capital']}}</td>
+          <td>{{$modeldata['flag']}}</td>
           <td>{{$modeldata['description']}}</td>
         </tr>
         @endforeach

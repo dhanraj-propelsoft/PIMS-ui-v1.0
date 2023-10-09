@@ -48,7 +48,7 @@
                                 <span class="AlterInputLabel">Enter Mobile Number  <sup>*</sup></span>
                             </label>
                             <label class="form-group  p-0 mb-4 InputLabel w-100">
-                                <input type="password" value="" class="form-control AlterInput propel-key-press-input-mendatory" name="password">
+                                <input type="password" value="" class="form-control AlterInput propel-key-press-input-mendatory" placeholder="Password..." name="password">
                                 <span class="AlterInputLabel">Enter Password  <sup>*</sup></span>
 
                             </label>
@@ -56,7 +56,7 @@
                                 <button class="propelbtn propelbtncurved propelsubmit" type="submit" id="nextButton" loader="submit">Submit</button>
                             </div>
                             <p class="ExtraInfo">
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Don’t have a login yet...!<br> Just enter your mobile number and follow us. we ensure your Signup for a NewAccount in few steps.
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Don’t have a login yet...!<br> Just enter your mobile number and follow us. We ensure your Signup for a New Account in few steps.
 
                             </p>
                         </form>
