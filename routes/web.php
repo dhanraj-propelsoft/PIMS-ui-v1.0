@@ -60,6 +60,7 @@ Route::Resource('category', 'App\Http\Controllers\PIMS\OrganizationMaster\Organi
 Route::Resource('orgDocumentType', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationDocumentTypeController');
 Route::Resource('ownerShip', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnerShipController');
 Route::Resource('structure', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationStructureController');
+Route::Resource('orgActivation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationActivationController');
 
 Route::Resource('origin', 'App\Http\Controllers\PIMS\PFM\OriginController');
 Route::Resource('existence', 'App\Http\Controllers\PIMS\PFM\ExistenceController');

@@ -170,6 +170,12 @@
             </a>
         </ul>
         <ul class="propel-menu-bar-list-container organisation-menu-bar ">
+            <a href="{{ url('orgActivation') }}">
+                <li class="orgActivation">
+                    <i class="fas fa-briefcase"></i>
+                    <span class='propel-menu-bar-text'>Organization Activation</span>
+                </li>
+            </a>
             <a href="{{ url('businessActivity') }}">
                 <li class="businessActivities">
                     <i class="fas fa-briefcase"></i>
