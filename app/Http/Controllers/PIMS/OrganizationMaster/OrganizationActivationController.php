@@ -17,13 +17,13 @@ class OrganizationActivationController extends Controller
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->get($baseUrl . 'tempOrganizationList');
         $datas = $response->json();
+
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
             return view('pimsUi/organizationMaster/organizationActivation/list', compact('modeldatas'));
         } else {
             dd("un authendicated");
         }
-
     }
 
     /**
@@ -67,17 +67,22 @@ class OrganizationActivationController extends Controller
      */
     public function show($id)
     {
-        if ($id) {
-            dd($id);
+      
+        //     if ($id) {
+        //         dd($id);
+        //     }
+        $baseUrl = getBaseUrl();
+
+        $response = apiHeaders()->get($baseUrl . 'organizationStore/'. $id);
+      
+        $datas = $response->json();
+ 
+        if ($response->status() == 200) {
+            $modeldata = $datas['data'];
+            return redirect()->route('orgActivation.index');
+        } else {
+            dd("un authendicated");
         }
-        // $response = apiHeaders()->get(getBaseUrl() . 'tempOrganizationList/' . $id);
-        // $datas = $response->json();
-        // if ($response->status() == 200) {
-        //     $modeldata = $datas['data'];
-        //     return view('pimsUi/organizationMaster/organizationActivation/view', compact('modeldata'));
-        // } else {
-        //     dd("un authendicated");
-        // }
     }
 
     /**
