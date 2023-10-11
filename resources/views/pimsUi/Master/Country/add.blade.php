@@ -97,7 +97,8 @@
                         var responseData = data.error[ele_name];
                         if (responseData != "") {
                             $("input[name='" + ele_name + "']").attr('validate', 'failure');
-                            errorShow($("input[name='" + ele_name + "']"), responseData)
+                            errorShow($("input[name='" + ele_name + "']"), responseData);
+                            formValid();
                         }
                     }
 
