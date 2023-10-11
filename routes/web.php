@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\PIMS\Setting\UserController;
+use App\Http\Controllers\PIMS\Master\CountryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -73,6 +74,7 @@ Route::Resource('personStage', 'App\Http\Controllers\PIMS\PFM\PersonStageControl
 Route::Resource('authorization', 'App\Http\Controllers\PIMS\PFM\AuthorizationController');
 });
 
+Route::post('/check_duplicate', [CountryController::class, 'check_duplicate'])->name('check_duplicate');
 Route::post('/userAccess', [UserController::class, 'userAccess'])->name('userAccess');
 
 

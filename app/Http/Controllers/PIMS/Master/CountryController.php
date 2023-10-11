@@ -109,6 +109,24 @@ class CountryController extends Controller
         //
     }
 
+    public function check_duplicate(Request $request)
+    {
+        $datas = $request->all(); 
+        //dd($datas);
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'countryValidation', $datas);
+        $res_data = $response->json();
+       
+        if ($res_data['data']['errors'] != false) {
+            $res = $res_data['data']['errors'];
+           
+        }else{
+           $res = false;
+        }
+      
+        return response()->json(['error'=> $res]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -17,7 +17,7 @@
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="country" required placeholder="Country..."
-                class="form-control AlterInput  propel-key-press-input-mendatory" autocomplete="off">
+                class="form-control AlterInput  propel-key-press-input-mendatory duplicateVal" autocomplete="off">
             <span class="AlterInputLabel">Country</span>
         </label>
 
@@ -33,19 +33,19 @@
         </label>
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="number" name="numericCode" placeholder="Enter Numeric Code..." class="form-control AlterInput "
-                autocomplete="off">
+            <input type="number" name="numericCode" placeholder="Enter Numeric Code..."
+                class="form-control AlterInput duplicateVal" autocomplete="off">
             <span class="AlterInputLabel">Numeric Code</span>
         </label>
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="number" name="phoneCode" placeholder="Enter Phone Code..." class="form-control AlterInput "
-                autocomplete="off">
+            <input type="number" name="phoneCode" placeholder="Enter Phone Code..."
+                class="form-control AlterInput duplicateVal" autocomplete="off">
             <span class="AlterInputLabel">Phone Code</span>
         </label>
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="capital" placeholder="Enter Capital..." class="form-control AlterInput "
+            <input type="text" name="capital" placeholder="Enter Capital..." class="form-control AlterInput duplicateVal"
                 autocomplete="off">
             <span class="AlterInputLabel">Capital</span>
         </label>
@@ -78,5 +78,34 @@
             var url = "{{ route('country.index') }}";
             window.location.href = url;
         }
+        $('.duplicateVal').on('input blur', function() {
+            var ele_name = $(this).attr('name');
+            var ele_val = $(this).val();
+            var formData = new FormData();
+            formData.append('_token', '{{ csrf_token() }}');
+            formData.append(ele_name, ele_val);
+            //console.log(formData);
+            $.ajax({
+                url: '{{ route('check_duplicate') }}',
+                type: 'ajax',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.error != false) {
+                        var responseData = data.error[ele_name];
+                        if (responseData != "") {
+                            $("input[name='" + ele_name + "']").attr('validate', 'failure');
+                            errorShow($("input[name='" + ele_name + "']"), responseData)
+                        }
+                    }
+
+                },
+                error: function(err) {
+                    //console.log(err);
+                }
+            });
+        });
     </script>
 @endsection
