@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     @foreach ($modeldatas as $modeldata)
-                        <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
+                        <tr ondblclick="viewPage(<?php echo $modeldata['stateId']; ?>)">
                             <td>{{ $modeldata['countryName'] }}</td>
                             <td>{{ $modeldata['state'] }}</td>
                             <td>{{ $modeldata['status'] }}</td>

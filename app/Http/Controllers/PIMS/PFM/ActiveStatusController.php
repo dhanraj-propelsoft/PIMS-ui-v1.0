@@ -33,7 +33,14 @@ class ActiveStatusController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/pfm/activeStatus/add');
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/pfm/activeStatus/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -50,7 +57,7 @@ class ActiveStatusController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/pfm/activeStatus/add');
+                return redirect()->route('activeStatus.create');
             } else {
                 return redirect()->route('activeStatus.index');
             }
@@ -69,9 +76,12 @@ class ActiveStatusController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'activeStatus/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/pfm/activeStatus/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/pfm/activeStatus/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -88,12 +98,12 @@ class ActiveStatusController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'activeStatus/' . $id);
 
         $datas = $response->json();
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-
-            return view('pimsUi/pfm/activeStatus/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/pfm/activeStatus/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

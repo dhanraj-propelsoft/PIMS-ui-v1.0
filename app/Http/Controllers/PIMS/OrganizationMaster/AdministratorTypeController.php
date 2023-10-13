@@ -33,7 +33,14 @@ class AdministratorTypeController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/organizationMaster/administratorTypes/add');
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/organizationMaster/administratorTypes/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -50,7 +57,7 @@ class AdministratorTypeController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/organizationMaster/administratorTypes/add');
+                return redirect()->route('administratorType.create');
             } else {
                 return redirect()->route('administratorType.index');
             }
@@ -69,9 +76,12 @@ class AdministratorTypeController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'administratorType/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/organizationMaster/administratorTypes/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/organizationMaster/administratorTypes/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -88,12 +98,12 @@ class AdministratorTypeController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'administratorType/' . $id);
 
         $datas = $response->json();
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-
-            return view('pimsUi/organizationMaster/administratorTypes/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/organizationMaster/administratorTypes/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

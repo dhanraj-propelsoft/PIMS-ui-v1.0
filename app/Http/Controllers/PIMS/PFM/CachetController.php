@@ -33,7 +33,14 @@ class CachetController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/pfm/cachet/add');
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/pfm/cachet/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -50,7 +57,7 @@ class CachetController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/pfm/cachet/add');
+                return redirect()->route('cachet.create');
             } else {
                 return redirect()->route('cachet.index');
             }
@@ -69,9 +76,12 @@ class CachetController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'cachet/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/pfm/cachet/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/pfm/cachet/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -88,12 +98,12 @@ class CachetController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'cachet/' . $id);
 
         $datas = $response->json();
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-
-            return view('pimsUi/pfm/cachet/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/pfm/cachet/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

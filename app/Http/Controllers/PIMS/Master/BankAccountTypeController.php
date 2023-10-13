@@ -32,7 +32,14 @@ class BankAccountTypeController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/Master/bankAccountTypes/add');
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/bankAccountTypes/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -49,7 +56,7 @@ class BankAccountTypeController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/Master/bankAccountTypes/add');
+                return redirect()->route('bankAccountType.create');
             } else {
                 return redirect()->route('bankAccountType.index');
             }
@@ -69,9 +76,12 @@ class BankAccountTypeController extends Controller
 
         $response = apiHeaders()->get(getBaseUrl() . 'bankAccountType/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/bankAccountTypes/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/Master/bankAccountTypes/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -87,9 +97,12 @@ class BankAccountTypeController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'bankAccountType/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/bankAccountTypes/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/bankAccountTypes/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

@@ -32,8 +32,14 @@ class OrganizationOwnerShipController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/organizationMaster/organizationOwnerShips/add');
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/organizationMaster/organizationOwnerShips/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -50,9 +56,9 @@ class OrganizationOwnerShipController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/organizationMaster/organizationOwnerShips/add');
+                return redirect()->route('ownerShip.create');
             } else {
-                return redirect()->route('organizationOwnerShips.index');
+                return redirect()->route('ownerShip.index');
             }
         } else {
             dd("un authendicated");
@@ -69,9 +75,12 @@ class OrganizationOwnerShipController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'ownerShip/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/organizationMaster/organizationOwnerShips/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/organizationMaster/organizationOwnerShips/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -88,12 +97,12 @@ class OrganizationOwnerShipController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'ownerShip/' . $id);
 
         $datas = $response->json();
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-
-            return view('pimsUi/organizationMaster/organizationOwnerShips/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/organizationMaster/organizationOwnerShips/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }
@@ -124,7 +133,7 @@ class OrganizationOwnerShipController extends Controller
             $response = apiHeaders()->delete(getBaseUrl() . 'ownerShip/' . $id);
             $result = $response->json();
             if ($response->status() == 200) {
-                return redirect()->route('organizationOwnerShips.index');
+                return redirect()->route('ownerShip.index');
             }
         }
     }

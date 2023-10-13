@@ -34,7 +34,15 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('PimsUi/Master/Country/add');
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'activeStatus');
+        $datas = $response->json();
+        if ($response->status() == 200) {
+            $modeldatas = $datas['data'];
+            return view('pimsUi/Master/Country/add', compact('modeldatas'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -48,11 +56,10 @@ class CountryController extends Controller
         $datas = $request->all();
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->Post($baseUrl . 'country', $datas);
-        $result = $response->json();
 
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/Master/Country/add');
+                return redirect()->route('country.create');
             } else {
                 return redirect()->route('country.index');
             }

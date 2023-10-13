@@ -37,6 +37,14 @@ class SalutationController extends Controller
      */
     public function create()
     {
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/addressTypes/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
         return view('pimsUi/Master/salutation/add');
     }
 
@@ -55,14 +63,13 @@ class SalutationController extends Controller
 
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/Master/salutation/add');
+                return redirect()->route('salutation.create');
             } else {
                 return redirect()->route('salutation.index');
             }
         } else {
             dd("un authendicated");
         }
-
     }
 
     /**
@@ -74,13 +81,13 @@ class SalutationController extends Controller
     public function show($id)
     {
         $response = apiHeaders()->get(getBaseUrl() . 'salutation/' . $id);
-
         $datas = $response->json();
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/salutation/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/Master/salutation/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -98,12 +105,12 @@ class SalutationController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'salutation/' . $id);
 
         $datas = $response->json();
-        //  dd($datas);
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-
-            return view('pimsUi/Master/salutation/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/salutation/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

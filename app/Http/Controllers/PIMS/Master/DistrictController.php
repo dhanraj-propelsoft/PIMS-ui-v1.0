@@ -36,9 +36,12 @@ class DistrictController extends Controller
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->get($baseUrl . 'state');
         $datas = $response->json();
+        $response1 = apiHeaders()->get($baseUrl . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
-            return view('pimsUi/Master/district/add', compact('modeldatas'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/district/add', compact('modeldatas','modeldatas1'));
         } else {
             dd("un authendicated");
         }
@@ -78,9 +81,12 @@ class DistrictController extends Controller
 
         $response = apiHeaders()->get(getBaseUrl() . 'district/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/district/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/Master/district/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -103,8 +109,11 @@ class DistrictController extends Controller
             $response = apiHeaders()->get($baseUrl . 'state');
             $datas = $response->json();
             $modeldatas = $datas['data'];
+            $response1 = apiHeaders()->get($baseUrl . 'activeStatus');
+            $datas1 = $response1->json();
+            $modeldatas1 = $datas1['data'];
             if ($response->status() == 200) {
-                return view('pimsUi/Master/district/edit', compact('modeldatas', 'result'));
+                return view('pimsUi/Master/district/edit', compact('modeldatas', 'modeldatas1', 'result'));
             }
         } else {
             dd("un authendicated");

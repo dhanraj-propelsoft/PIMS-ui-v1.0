@@ -33,7 +33,14 @@ class BloodGroupController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/Master/bloodGroup/add');
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/bloodGroup/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -51,7 +58,7 @@ class BloodGroupController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/Master/BloodGroup/add');
+                return redirect()->route('bloodGroup.create');
             } else {
                 return redirect()->route('bloodGroup.index');
             }
@@ -70,9 +77,12 @@ class BloodGroupController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'bloodGroup/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/BloodGroup/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/Master/BloodGroup/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -89,12 +99,12 @@ class BloodGroupController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'bloodGroup/' . $id);
 
         $datas = $response->json();
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-
-            return view('pimsUi/Master/BloodGroup/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/BloodGroup/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

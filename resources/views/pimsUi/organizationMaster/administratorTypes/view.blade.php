@@ -24,8 +24,10 @@
             <select class="form-select w-100 AlterInput search-need" disabled name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                <option value="1" {{ $modeldata['activeStatus'] == 1 ? 'selected' : '' }}>Active</option>
-                <option value="0" {{ $modeldata['activeStatus'] == 0 ? 'selected' : '' }}>In-Active</option>
+                @foreach ($modeldata1 as $data1)
+                    <option value="{{ $data1['id'] }}" {{ $data1['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
+                        {{ $data1['activeType'] }}</option>
+                @endforeach
                 <!-- Add more states here -->
             </select>
             <span class="AlterInputLabel box">Status</span>

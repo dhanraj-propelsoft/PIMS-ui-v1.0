@@ -33,7 +33,14 @@ class ValidationController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/pfm/validation/add');
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/pfm/validation/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -50,7 +57,7 @@ class ValidationController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/pfm/validation/add');
+                return redirect()->route('validation.create');
             } else {
                 return redirect()->route('validation.index');
             }
@@ -69,9 +76,12 @@ class ValidationController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'validation/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/pfm/validation/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/pfm/validation/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -88,12 +98,12 @@ class ValidationController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'validation/' . $id);
 
         $datas = $response->json();
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-
-            return view('pimsUi/pfm/validation/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/pfm/validation/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

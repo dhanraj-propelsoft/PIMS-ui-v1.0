@@ -33,7 +33,14 @@ class DocumentTypeController extends Controller
      */
     public function create()
     {
-        return view('PimsUi/Master/PersonDocType/add');
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/PersonDocType/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -50,7 +57,7 @@ class DocumentTypeController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/Master/PersonDocType/add');
+                return redirect()->route('documentType.create');
             } else {
                 return redirect()->route('documentType.index');
             }
@@ -69,9 +76,12 @@ class DocumentTypeController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'documentType/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/PersonDocType/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/Master/PersonDocType/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -88,9 +98,12 @@ class DocumentTypeController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'documentType/' . $id);
 
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/PersonDocType/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/PersonDocType/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

@@ -58,6 +58,11 @@ $("form .disable").click(function () {
     }
 });
 
+$('.ddReset').on('click', function(e) {
+    var ele = $("form .select2-selection__rendered");
+    //var ele = $("form select.search-need");
+    ele.empty(), ele.removeAttr("title");
+});
 
     //Validation When input Change
             /*

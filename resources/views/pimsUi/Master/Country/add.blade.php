@@ -25,8 +25,9 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                <option value="1">Active</option>
-                <option value="0">In-Active</option>
+                @foreach ($modeldatas as $data)
+                    <option value="{{ $data['id'] }}">{{ $data['activeType'] }}</option>
+                @endforeach
                 <!-- Add more states here -->
             </select>
             <span class="AlterInputLabel box">Status</span>
@@ -45,7 +46,7 @@
         </label>
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="capital" placeholder="Enter Capital..." class="form-control AlterInput duplicateVal"
+            <input type="text" name="capital" placeholder="Enter Capital..." class="form-control AlterInput duplicateVal textValidation"
                 autocomplete="off">
             <span class="AlterInputLabel">Capital</span>
         </label>
@@ -64,7 +65,7 @@
 
         <div class="row justify-content-between  mx-1  mt-3">
             <button type="button" class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Cancel</button>
-            <button type="reset" class="propelbtn propelbtncurved propelcancel">Reset</button>
+            <button type="reset" class="propelbtn propelbtncurved propelcancel ddReset">Reset</button>
 
             <button class="propelbtn propelbtncurved propelsubmit" type="submit" value="saveAndClose" name="link">Save &
                 Close</button>
@@ -78,6 +79,12 @@
             var url = "{{ route('country.index') }}";
             window.location.href = url;
         }
+        $('.textValidation').on('keydown', function(e) {
+            if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+                e.preventDefault();
+                return false;
+            }
+        });
         $('.duplicateVal').on('input blur', function() {
             var ele_name = $(this).attr('name');
             var ele_val = $(this).val();

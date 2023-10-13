@@ -75,6 +75,7 @@ Route::Resource('authorization', 'App\Http\Controllers\PIMS\PFM\AuthorizationCon
 });
 
 Route::post('/check_duplicate', [CountryController::class, 'check_duplicate'])->name('check_duplicate');
+Route::post('/checkStDuplicate', 'App\Http\Controllers\PIMS\Master\StateController@checkStDuplicate')->name('checkStDuplicate');
 Route::post('/userAccess', [UserController::class, 'userAccess'])->name('userAccess');
 
 

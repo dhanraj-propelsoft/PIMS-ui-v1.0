@@ -10,6 +10,8 @@
             <table class="table shadow mt-4">
                 <thead>
                     <tr>
+                        <th>Country</th>
+                        <th>State</th>
                         <th>District</th>
                         <th>Area</th>
                         <th>Active Status</th>
@@ -19,7 +21,9 @@
                 <tbody>
                     @foreach ($modeldatas as $modeldata)
                         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
-                            <td>{{ $modeldata['districtName'] }}</td>
+                            <td></td>
+                            <td>{{ $modeldata['stateId'] }}</td>
+                            <td></td>
                             <td>{{ $modeldata['area'] }}</td>
                             <td>{{ $modeldata['status'] }}</td>
                             <td>{{ $modeldata['description'] }}</td>

@@ -25,8 +25,9 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                <option value="1">Active</option>
-                <option value="0">In-Active</option>
+                @foreach ($modeldatas1 as $data1)
+                    <option value="{{ $data1['id'] }}">{{ $data1['activeType'] }}</option>
+                @endforeach
                 <!-- Add more states here -->
             </select>
             <span class="AlterInputLabel box">Status</span>
@@ -40,7 +41,7 @@
 
         <div class="row justify-content-between  mx-1  mt-3">
             <button type="button" class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Cancel</button>
-            <button type="reset" class="propelbtn propelbtncurved propelcancel">Reset</button>
+            <button type="reset" class="propelbtn propelbtncurved propelcancel ddReset">Reset</button>
 
             <button class="propelbtn propelbtncurved propelsubmit" type="submit" value="saveAndClose" name="link">Save &
                 Close</button>

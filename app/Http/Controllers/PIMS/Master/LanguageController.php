@@ -32,7 +32,14 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('pimsUi/Master/languages/add');
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
+        if ($response1->status() == 200) {
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/languages/add', compact('modeldatas1'));
+        } else {
+            dd("un authendicated");
+        }
     }
 
     /**
@@ -49,7 +56,7 @@ class LanguageController extends Controller
         $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
-                return view('pimsUi/Master/languages/add');
+                return redirect()->route('language.create');
             } else {
                 return redirect()->route('language.index');
             }
@@ -68,9 +75,12 @@ class LanguageController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'language/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/languages/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/Master/languages/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -87,12 +97,12 @@ class LanguageController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'language/' . $id);
 
         $datas = $response->json();
-
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
-
             $modeldata = $datas['data'];
-
-            return view('pimsUi/Master/languages/edit', compact('modeldata'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/languages/edit', compact('modeldata', 'modeldatas1'));
         } else {
             dd("un authendicated");
         }

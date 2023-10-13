@@ -35,9 +35,12 @@ class StateController extends Controller
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->get($baseUrl . 'country');
         $datas = $response->json();
+        $response1 = apiHeaders()->get($baseUrl . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
-            return view('pimsUi/Master/state/add', compact('modeldatas'));
+            $modeldatas1 = $datas1['data'];
+            return view('pimsUi/Master/state/add', compact('modeldatas','modeldatas1'));
         } else {
             dd("un authendicated");
         }
@@ -54,7 +57,7 @@ class StateController extends Controller
         $datas = $request->all();
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->Post($baseUrl . 'state', $datas);
-        $result = $response->json();
+        
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
                 return redirect()->route('state.create');
@@ -77,9 +80,12 @@ class StateController extends Controller
 
         $response = apiHeaders()->get(getBaseUrl() . 'state/' . $id);
         $datas = $response->json();
+        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
+        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            return view('pimsUi/Master/state/view', compact('modeldata'));
+            $modeldata1 = $datas1['data'];
+            return view('pimsUi/Master/state/view', compact('modeldata','modeldata1'));
         } else {
             dd("un authendicated");
         }
@@ -102,8 +108,11 @@ class StateController extends Controller
             $response = apiHeaders()->get($baseUrl . 'country');
             $datas = $response->json();
             $modeldatas = $datas['data'];
+            $response1 = apiHeaders()->get($baseUrl . 'activeStatus');
+            $datas1 = $response1->json();
+            $modeldatas1 = $datas1['data'];
             if ($response->status() == 200) {
-                return view('pimsUi/Master/state/edit', compact('modeldatas', 'result'));
+                return view('pimsUi/Master/state/edit', compact('modeldatas', 'modeldatas1', 'result'));
             }
         } else {
             dd("un authendicated");
@@ -120,6 +129,23 @@ class StateController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function checkStDuplicate(Request $request)
+    {
+        $datas = $request->all(); 
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'stateValidation', $datas);
+        $res_data = $response->json();
+        
+        if ($res_data['data']['errors'] != false) {
+            $res = $res_data['data']['errors'];
+           
+        }else{
+           $res = false;
+        }
+      
+        return response()->json(['error'=> $res]);
     }
 
     /**

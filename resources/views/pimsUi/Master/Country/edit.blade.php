@@ -33,8 +33,11 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                <option value="1" {{ $modeldata['activeStatusId'] == 1 ? 'selected' : '' }}>Active</option>
-                <option value="0" {{ $modeldata['activeStatusId'] == 0 ? 'selected' : '' }}>In-Active</option>
+                @foreach ($modeldata['activeStatus'] as $data1)
+                    <option value="{{ $data1['id'] }}"
+                        {{ $data1['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
+                        {{ $data1['active_type'] }}</option>
+                @endforeach
                 <!-- Add more states here -->
             </select>
             <span class="AlterInputLabel box">Status</span>
@@ -53,8 +56,9 @@
         </label>
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="capital" placeholder="Enter Capital..." class="form-control AlterInput duplicateVal"
-                autocomplete="off" value="{{ $modeldata['capital'] }}">
+            <input type="text" name="capital" placeholder="Enter Capital..."
+                class="form-control AlterInput duplicateVal textValidation" autocomplete="off"
+                value="{{ $modeldata['capital'] }}">
             <span class="AlterInputLabel">Capital</span>
         </label>
 
@@ -93,6 +97,12 @@
             var url = "{{ route('country.index') }}";
             window.location.href = url;
         }
+        $('.textValidation').on('keydown', function(e) {
+            if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+                e.preventDefault();
+                return false;
+            }
+        });
         $('.duplicateVal').on('input blur', function() {
             var ele_name = $(this).attr('name');
             var ele_val = $(this).val();
