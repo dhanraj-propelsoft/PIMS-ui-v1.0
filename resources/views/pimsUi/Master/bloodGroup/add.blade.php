@@ -52,7 +52,7 @@
     <script>
 
         function cancelPage() {
-            var url = '{{ route('bloodGroup.index') }}';
+            var url = "{{ route('bloodGroup.index') }}";
             window.location.href = url;
         }
     </script>

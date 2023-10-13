@@ -52,7 +52,7 @@
     <script>
 
         function cancelPage() {
-            var url = '{{ route('salutation.index') }}';
+            var url = "{{ route('salutation.index') }}";
             window.location.href = url;
         }
     </script>

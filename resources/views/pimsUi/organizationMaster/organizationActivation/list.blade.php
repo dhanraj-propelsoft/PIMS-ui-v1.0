@@ -41,7 +41,7 @@
             $('.default-alert-container').show();
         }
         function activeOrganization(id) {
-            var url = '{{ route('orgActivation.show', ':id') }}';
+            var url = "{{ route('orgActivation.show', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }

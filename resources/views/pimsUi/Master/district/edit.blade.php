@@ -81,7 +81,7 @@
         }
 
         // function closePage(id){
-        //   var url = '{{ route('salutation.edit', ':id') }}';
+        //   var url = "{{ route('district.edit', ':id') }}";
         //       url = url.replace(':id', id);
         //   window.location.href = url;
         // }

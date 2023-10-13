@@ -44,9 +44,9 @@
             <button type="button" class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Cancel</button>
             <button type="reset" class="propelbtn propelbtncurved propelcancel ddReset">Reset</button>
 
-            <button class="propelbtn propelbtncurved propelsubmit" value="saveAndClose" name="link">Save &
+            <button class="propelbtn propelbtncurved propelsubmit" type="submit" value="saveAndClose" name="link">Save &
                 Close</button>
-            <button class="propelbtn propelbtncurved propelsubmit" value="saveAndNew" name="link">Save &
+            <button class="propelbtn propelbtncurved propelsubmit" type="submit" value="saveAndNew" name="link">Save &
                 New</button>
         </div>
 
@@ -54,7 +54,7 @@
     <script>
 
         function cancelPage() {
-            var url = '{{ route('gender.index') }}';
+            var url = "{{ route('gender.index') }}";
             window.location.href = url;
         }
     </script>

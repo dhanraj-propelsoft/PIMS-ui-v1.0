@@ -25,19 +25,6 @@
             <span class="AlterInputLabel">Active Status</span>
         </label>
 
-        <label class="form-group p-0 InputLabel w-100">
-            <select class="form-select w-100 AlterInput search-need" name="activeStatus"
-                data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
-                <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldatas1 as $data1)
-                    <option value="{{ $data1['id'] }}" {{ $data1['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
-                        {{ $data1['activeType'] }}</option>
-                @endforeach
-                <!-- Add more states here -->
-            </select>
-            <span class="AlterInputLabel box">Status</span>
-        </label>
-
         <div class=" mb-5  InputLabel">
             <textarea name="description" id="description" cols="30" rows="5" class="col-12 form-control AlterInput "
                 placeholder="Write Your Description..." spellcheck="true">{{ $modeldata['description'] }}</textarea>
@@ -67,7 +54,7 @@
         }
 
         // function closePage(id){
-        //   var url = '{{ route('salutation.edit', ':id') }}';
+        //   var url = "{{ route('activeStatus.edit', ':id') }}";
         //       url = url.replace(':id', id);
         //   window.location.href = url;
         // }

@@ -20,7 +20,7 @@
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="qualification" required placeholder="Enter Your Qualification..."
-                class="form-control AlterInput " autocomplete="off" value="{{ $modeldata['qualification'] }}">
+                class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off" value="{{ $modeldata['qualification'] }}">
             <span class="AlterInputLabel">Qualification</span>
         </label>
 
@@ -68,7 +68,7 @@
         }
 
         // function closePage(id){
-        //   var url = '{{ route('qualification.edit', ':id') }}';
+        //   var url = "{{ route('qualification.edit', ':id') }}";
         //       url = url.replace(':id', id);
         //   window.location.href = url;
         // }

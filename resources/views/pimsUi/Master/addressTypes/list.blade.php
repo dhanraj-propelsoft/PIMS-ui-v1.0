@@ -38,7 +38,7 @@
             `<a href="{{ route('addressType.create') }}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
         function viewPage(id) {
-            var url = '{{ route('addressType.show', ':id') }}';
+            var url = "{{ route('addressType.show', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }

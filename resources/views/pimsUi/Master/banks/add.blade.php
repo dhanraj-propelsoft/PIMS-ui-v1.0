@@ -67,7 +67,7 @@
     <script>
 
         function cancelPage() {
-            var url = '{{ route('bank.index') }}';
+            var url = "{{ route('bank.index') }}";
             window.location.href = url;
         }
     </script>

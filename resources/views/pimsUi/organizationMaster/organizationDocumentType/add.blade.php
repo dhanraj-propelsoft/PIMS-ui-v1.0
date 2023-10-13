@@ -52,7 +52,7 @@
     </form>
     <script>
         function cancelPage() {
-            var url = '{{ route('orgDocumentType.index') }}';
+            var url = "{{ route('orgDocumentType.index') }}";
             window.location.href = url;
         }
     </script>

@@ -51,7 +51,7 @@
     </form>
     <script>
         function cancelPage() {
-            var url = '{{ route('businessSector.index') }}';
+            var url = "{{ route('businessSector.index') }}";
             window.location.href = url;
         }
     </script>

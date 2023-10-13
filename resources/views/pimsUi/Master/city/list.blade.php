@@ -40,7 +40,7 @@
             `<a href="{{ route('city.create') }}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
         function viewPage(id) {
-            var url = '{{ route('city.show', ':id') }}';
+            var url = "{{ route('city.show', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }

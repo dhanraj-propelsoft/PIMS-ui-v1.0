@@ -41,7 +41,7 @@ class SalutationController extends Controller
         $datas1 = $response1->json();
         if ($response1->status() == 200) {
             $modeldatas1 = $datas1['data'];
-            return view('pimsUi/Master/addressTypes/add', compact('modeldatas1'));
+            return view('pimsUi/Master/salutation/add', compact('modeldatas1'));
         } else {
             dd("un authendicated");
         }

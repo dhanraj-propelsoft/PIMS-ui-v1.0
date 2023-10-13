@@ -38,7 +38,7 @@
             `<a href="{{ route('validation.create') }}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
         function viewPage(id) {
-            var url = '{{ route('validation.show', ':id') }}';
+            var url = "{{ route('validation.show', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }

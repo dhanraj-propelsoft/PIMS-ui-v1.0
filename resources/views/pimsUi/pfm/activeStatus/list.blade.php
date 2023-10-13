@@ -11,7 +11,6 @@
                 <thead>
                     <tr>
                         <th>Active Status</th>
-                        <th>Active Status</th>
                         <th>Description</th>
                     </tr>
                 </thead>
@@ -19,7 +18,6 @@
                     @foreach ($modeldatas as $modeldata)
                         <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
                             <td>{{ $modeldata['activeType'] }}</td>
-                            <td>{{ $modeldata['status'] }}</td>
                             <td>{{ $modeldata['description'] }}</td>
                         </tr>
                     @endforeach
@@ -38,7 +36,7 @@
             `<a href="{{ route('activeStatus.create') }}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
         function viewPage(id) {
-            var url = '{{ route('activeStatus.show', ':id') }}';
+            var url = "{{ route('activeStatus.show', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }

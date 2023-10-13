@@ -38,7 +38,7 @@
             `<a href="{{ route('structure.create') }}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
         function viewPage(id) {
-            var url = '{{ route('structure.show', ':id') }}';
+            var url = "{{ route('structure.show', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }

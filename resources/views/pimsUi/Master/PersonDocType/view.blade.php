@@ -48,13 +48,13 @@
 
     <script>
         function viewPage(id) {
-            var url = '{{ route('documentType.edit', ':id') }}';
+            var url = "{{ route('documentType.edit', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }
 
         function cancelPage() {
-            var url = '{{ route('documentType.index') }}';
+            var url = "{{ route('documentType.index') }}";
             window.location.href = url;
         }
     </script>

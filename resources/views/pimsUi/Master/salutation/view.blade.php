@@ -47,13 +47,13 @@
 
     <script>
         function viewPage(id) {
-            var url = '{{ route('salutation.edit', ':id') }}';
+            var url = "{{ route('salutation.edit', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }
 
         function cancelPage() {
-            var url = '{{ route('salutation.index') }}';
+            var url = "{{ route('salutation.index') }}";
             window.location.href = url;
         }
     </script>

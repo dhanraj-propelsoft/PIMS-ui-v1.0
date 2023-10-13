@@ -38,7 +38,7 @@
             `<a href="{{ route('administratorType.create') }}"><button class='propelbtn propelbtn-sm propelbtn-sm propelbtncurved propeladd propel-hover'>Add</button></a>`;
 
         function viewPage(id) {
-            var url = '{{ route('administratorType.show', ':id') }}';
+            var url = "{{ route('administratorType.show', ':id') }}";
             url = url.replace(':id', id);
             window.location.href = url;
         }

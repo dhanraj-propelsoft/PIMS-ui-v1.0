@@ -66,7 +66,7 @@
     <form action="{{ route('users.destroy', $modeldatas['id']) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="propelbtn propelbtncurved propeldelete">Delete</button>
+        <button type="submit" class="propelbtn propelbtncurved propeldelete propelDelPopup">Delete</button>
     </form>
 
     </div>
