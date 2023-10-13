@@ -13,6 +13,7 @@
                         <th>Country</th>
                         <th>State</th>
                         <th>District</th>
+                        <th>City</th>
                         <th>Area</th>
                         <th>Active Status</th>
                         <th>Description</th>
@@ -20,9 +21,10 @@
                 </thead>
                 <tbody>
                     @foreach ($modeldatas as $modeldata)
-                        <tr ondblclick="viewPage(<?php echo $modeldata['id']; ?>)">
-                            <td></td>
+                        <tr ondblclick="viewPage(<?php echo $modeldata['areaId']; ?>)">
                             <td>{{ $modeldata['stateId'] }}</td>
+                            <td>{{ $modeldata['stateId'] }}</td>
+                            <td></td>
                             <td></td>
                             <td>{{ $modeldata['area'] }}</td>
                             <td>{{ $modeldata['status'] }}</td>

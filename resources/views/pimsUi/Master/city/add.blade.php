@@ -16,17 +16,40 @@
     <form action="{{ route('city.store') }}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 InputLabel w-100">
-            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="state_id"
-                data-minimum-results-for-search="Infinity" data-placeholder="Select State">
+            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="countryId"
+                id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
+                <option selected value="" disabled>Select Country</option>
+                @foreach ($countryData as $data)
+                    <option value="{{ $data['countryId'] }}">{{ $data['country'] }}</option>
+                @endforeach
+                <!-- Add more countrys here -->
+            </select>
+            <span class="AlterInputLabel box">Country</span>
+        </label>
+
+        <label class="form-group p-0 InputLabel w-100">
+            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="stateId"
+                id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State">
                 <option selected value="" disabled>Select State</option>
-                @foreach ($modeldatas as $data)
-                    <option value="{{ $data['id'] }}">{{ $data['state'] }}</option>
+                @foreach ($stateData as $data)
+                    <option value="{{ $data['stateId'] }}">{{ $data['state'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
             <span class="AlterInputLabel box">State</span>
         </label>
-
+        <label class="form-group p-0 InputLabel w-100">
+            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="districtId"
+                id="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District">
+                <option selected value="" disabled>Select District</option>
+                @foreach ($districtData as $data)
+                    <option value="{{ $data['districtId'] }}">{{ $data['district'] }}</option>
+                @endforeach
+                <!-- Add more districts here -->
+            </select>
+            <span class="AlterInputLabel box">District</span>
+        </label>
+        
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="city" required placeholder="City..."
@@ -39,8 +62,8 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldatas1 as $data1)
-                    <option value="{{ $data1['id'] }}">{{ $data1['activeType'] }}</option>
+                @foreach ($statusData as $data)
+                    <option value="{{ $data['id'] }}">{{ $data['activeType'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -67,6 +90,68 @@
         function cancelPage() {
             var url = "{{ route('city.index') }}";
             window.location.href = url;
+        }
+        function get_states(country) {
+            var country_id = country.value;
+            $.ajax({
+                url: "{{route('get_states')}}",
+                type: 'ajax',
+                method: 'post',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    country_id: country_id,
+                },
+                success: function(data) {
+        
+                    var states = JSON.parse(data);
+                    console.log(states);
+                    $('#stateId')
+                        .find('option')
+                        .remove()
+                        .end();
+                    $("#stateId").prepend("<option value=''>Select State</option>").val('');
+                    $.each(states, function(key, value) {
+                        var option = '<option value="' + value.id + '">' + value.name +
+                            '</option>';
+                        $('#stateId').append(option);
+                    });
+
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+        function get_districts(state) {
+            var state_id = state.value;
+            $.ajax({
+                url: "{{route('get_districts')}}",
+                type: 'ajax',
+                method: 'post',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    state_id: state_id,
+                },
+                success: function(data) {
+        
+                    var districts = JSON.parse(data);
+                    console.log(districts);
+                    $('#districtId')
+                        .find('option')
+                        .remove()
+                        .end();
+                    $("#districtId").prepend("<option value=''>Select District</option>").val('');
+                    $.each(districts, function(key, value) {
+                        var option = '<option value="' + value.id + '">' + value.name +
+                            '</option>';
+                        $('#districtId').append(option);
+                    });
+
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
         }
     </script>
 @endsection

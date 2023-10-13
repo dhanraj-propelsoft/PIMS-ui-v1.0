@@ -34,14 +34,17 @@ class DistrictController extends Controller
     public function create()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'state');
-        $datas = $response->json();
-        $response1 = apiHeaders()->get($baseUrl . 'activeStatus');
-        $datas1 = $response1->json();
-        if ($response->status() == 200) {
-            $modeldatas = $datas['data'];
-            $modeldatas1 = $datas1['data'];
-            return view('pimsUi/Master/district/add', compact('modeldatas','modeldatas1'));
+        $countryResponse = apiHeaders()->get($baseUrl . 'country');
+        $countryDatas = $countryResponse->json();
+        if ($countryResponse->status() == 200) {
+            $countryData = $countryDatas['data'];
+            $stateResponse = apiHeaders()->get($baseUrl . 'state');
+            $stateDatas = $stateResponse->json();
+            $stateData = $stateDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/district/add', compact('countryData', 'stateData', 'statusData'));
         } else {
             dd("un authendicated");
         }
@@ -58,7 +61,6 @@ class DistrictController extends Controller
         $datas = $request->all();
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->Post($baseUrl . 'district', $datas);
-        $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
                 return redirect()->route('district.create');
@@ -78,15 +80,21 @@ class DistrictController extends Controller
      */
     public function show($id)
     {
-
-        $response = apiHeaders()->get(getBaseUrl() . 'district/' . $id);
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'district/' . $id);
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldata1 = $datas1['data'];
-            return view('pimsUi/Master/district/view', compact('modeldata','modeldata1'));
+            $countryResponse = apiHeaders()->get($baseUrl . 'country');
+            $countryDatas = $countryResponse->json();
+            $countryData = $countryDatas['data'];
+            $stateResponse = apiHeaders()->get($baseUrl . 'state');
+            $stateDatas = $stateResponse->json();
+            $stateData = $stateDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/district/view', compact('modeldata', 'countryData', 'stateData', 'statusData'));
         } else {
             dd("un authendicated");
         }
@@ -100,21 +108,21 @@ class DistrictController extends Controller
      */
     public function edit($id)
     {
-
-        $response = apiHeaders()->get(getBaseUrl() . 'district/' . $id);
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'district/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
-            $result = $datas['data'];
-            $baseUrl = getBaseUrl();
-            $response = apiHeaders()->get($baseUrl . 'state');
-            $datas = $response->json();
-            $modeldatas = $datas['data'];
-            $response1 = apiHeaders()->get($baseUrl . 'activeStatus');
-            $datas1 = $response1->json();
-            $modeldatas1 = $datas1['data'];
-            if ($response->status() == 200) {
-                return view('pimsUi/Master/district/edit', compact('modeldatas', 'modeldatas1', 'result'));
-            }
+            $modeldata = $datas['data'];
+            $countryResponse = apiHeaders()->get($baseUrl . 'country');
+            $countryDatas = $countryResponse->json();
+            $countryData = $countryDatas['data'];
+            $stateResponse = apiHeaders()->get($baseUrl . 'state');
+            $stateDatas = $stateResponse->json();
+            $stateData = $stateDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/district/edit', compact('modeldata', 'countryData', 'stateData', 'statusData'));
         } else {
             dd("un authendicated");
         }
@@ -141,9 +149,7 @@ class DistrictController extends Controller
     public function destroy($id)
     {
         if ($id) {
-            $baseUrl = getBaseUrl();
             $response = apiHeaders()->delete(getBaseUrl() . 'district/' . $id);
-            $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('district.index');
             }

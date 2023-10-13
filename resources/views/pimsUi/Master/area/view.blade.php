@@ -15,14 +15,41 @@
 
     <div class="m-auto col-md-6 card p-2 rounded">
         <label class="form-group p-0 InputLabel w-100">
+            <select disabled class="form-select w-100 AlterInput search-need" name="countryId"
+                data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
+                <option selected value="" disabled>Select Country</option>
+                
+                <!-- Add more countrys here -->
+            </select>
+            <span class="AlterInputLabel box">Country</span>
+        </label>
+        <label class="form-group p-0 InputLabel w-100">
+            <select disabled class="form-select w-100 AlterInput search-need" name="stateId"
+                data-minimum-results-for-search="Infinity" data-placeholder="Select State">
+                <option selected value="" disabled>Select State</option>
+                <option value="{{ $modeldata['stateId'] }}" selected>{{ $modeldata['stateName'] }}</option>
+
+                <!-- Add more states here -->
+            </select>
+            <span class="AlterInputLabel box">State</span>
+        </label>
+        <label class="form-group p-0 InputLabel w-100">
             <select disabled class="form-select w-100 AlterInput search-need" name="districtId"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select District">
                 <option selected value="" disabled>Select District</option>
-                <option value="{{ $modeldata['districtId'] }}" selected>{{ $modeldata['districtName'] }}</option>
-
+                
                 <!-- Add more districts here -->
             </select>
             <span class="AlterInputLabel box">District</span>
+        </label>
+        <label class="form-group p-0 InputLabel w-100">
+            <select disabled class="form-select w-100 AlterInput search-need" name="city"
+                data-minimum-results-for-search="Infinity" data-placeholder="Select City">
+                <option selected value="" disabled>Select City</option>
+                
+                <!-- Add more citys here -->
+            </select>
+            <span class="AlterInputLabel box">City</span>
         </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="area" placeholder="Enter Area..." class="form-control AlterInput "
@@ -34,9 +61,9 @@
             <select class="form-select w-100 AlterInput search-need" disabled name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldata1 as $data1)
-                    <option value="{{ $data1['id'] }}" {{ $data1['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
-                        {{ $data1['active_type'] }}</option>
+                @foreach ($statusData as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
+                        {{ $data['activeType'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -54,7 +81,7 @@
         </label>
         <div class="row justify-content-between  mx-1  mt-3">
             <button class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Close</button>
-            <button class="propelbtn propelbtncurved propelsubmit" onclick="viewPage(<?php echo $modeldata['id']; ?>)">Edit</button>
+            <button class="propelbtn propelbtncurved propelsubmit" onclick="viewPage(<?php echo $modeldata['areaId']; ?>)">Edit</button>
         </div>
 
     </div>

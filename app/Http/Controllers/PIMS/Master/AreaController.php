@@ -34,14 +34,23 @@ class AreaController extends Controller
     public function create()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'district');
-        $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
-        if ($response->status() == 200) {
-            $modeldatas = $datas['data'];
-            $modeldatas1 = $datas1['data'];
-            return view('pimsUi/Master/area/add', compact('modeldatas','modeldatas1'));
+        $countryResponse = apiHeaders()->get($baseUrl . 'country');
+        $countryDatas = $countryResponse->json();
+        if ($countryResponse->status() == 200) {
+            $countryData = $countryDatas['data'];
+            $stateResponse = apiHeaders()->get($baseUrl . 'state');
+            $stateDatas = $stateResponse->json();
+            $stateData = $stateDatas['data'];
+            $districtResponse = apiHeaders()->get($baseUrl . 'district');
+            $districtDatas = $districtResponse->json();
+            $districtData = $districtDatas['data'];
+            $cityResponse = apiHeaders()->get($baseUrl . 'city');
+            $cityDatas = $cityResponse->json();
+            $cityData = $cityDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/area/add', compact('countryData', 'stateData', 'districtData', 'cityData', 'statusData'));
         } else {
             dd("un authendicated");
         }
@@ -58,7 +67,6 @@ class AreaController extends Controller
         $datas = $request->all();
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->Post($baseUrl . 'area', $datas);
-        $result = $response->json();
         if ($response->status() == 200) {
             if (isset($datas['link']) && $datas['link'] == "saveAndNew") {
                 return redirect()->route('area.create');
@@ -78,15 +86,27 @@ class AreaController extends Controller
      */
     public function show($id)
     {
-
-        $response = apiHeaders()->get(getBaseUrl() . 'area/' . $id);
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'area/' . $id);
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldata1 = $datas1['data'];
-            return view('pimsUi/Master/area/view', compact('modeldata','modeldata1'));
+            $countryResponse = apiHeaders()->get($baseUrl . 'country');
+            $countryDatas = $countryResponse->json();
+            $countryData = $countryDatas['data'];
+            $stateResponse = apiHeaders()->get($baseUrl . 'state');
+            $stateDatas = $stateResponse->json();
+            $stateData = $stateDatas['data'];
+            $districtResponse = apiHeaders()->get($baseUrl . 'district');
+            $districtDatas = $districtResponse->json();
+            $districtData = $districtDatas['data'];
+            $cityResponse = apiHeaders()->get($baseUrl . 'city');
+            $cityDatas = $cityResponse->json();
+            $cityData = $cityDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/area/view', compact('modeldata', 'countryData', 'stateData', 'districtData', 'cityData', 'statusData'));
         } else {
             dd("un authendicated");
         }
@@ -100,21 +120,27 @@ class AreaController extends Controller
      */
     public function edit($id)
     {
-
+        $baseUrl = getBaseUrl();
         $response = apiHeaders()->get(getBaseUrl() . 'area/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
-            $result = $datas['data'];
-            $baseUrl = getBaseUrl();
-            $response = apiHeaders()->get($baseUrl . 'district');
-            $datas = $response->json();
-            $modeldatas = $datas['data'];
-            $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-            $datas1 = $response1->json();
-            $modeldatas1 = $datas1['data'];
-            if ($response->status() == 200) {
-                return view('pimsUi/Master/area/edit', compact('modeldatas', 'modeldatas1', 'result'));
-            }
+            $modeldata = $datas['data'];
+            $countryResponse = apiHeaders()->get($baseUrl . 'country');
+            $countryDatas = $countryResponse->json();
+            $countryData = $countryDatas['data'];
+            $stateResponse = apiHeaders()->get($baseUrl . 'state');
+            $stateDatas = $stateResponse->json();
+            $stateData = $stateDatas['data'];
+            $districtResponse = apiHeaders()->get($baseUrl . 'district');
+            $districtDatas = $districtResponse->json();
+            $districtData = $districtDatas['data'];
+            $cityResponse = apiHeaders()->get($baseUrl . 'city');
+            $cityDatas = $cityResponse->json();
+            $cityData = $cityDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/area/edit', compact('modeldata', 'countryData', 'stateData', 'districtData', 'cityData', 'statusData'));
         } else {
             dd("un authendicated");
         }
@@ -141,9 +167,7 @@ class AreaController extends Controller
     public function destroy($id)
     {
         if ($id) {
-            $baseUrl = getBaseUrl();
             $response = apiHeaders()->delete(getBaseUrl() . 'area/' . $id);
-            $result = $response->json();
             if ($response->status() == 200) {
                 return redirect()->route('area.index');
             }

@@ -33,10 +33,10 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldata['activeStatus'] as $data1)
-                    <option value="{{ $data1['id'] }}"
-                        {{ $data1['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
-                        {{ $data1['active_type'] }}</option>
+                @foreach ($modeldata['activeStatus'] as $data)
+                    <option value="{{ $data['id'] }}"
+                        {{ $data['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
+                        {{ $data['active_type'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -75,7 +75,7 @@
         </div>
 
 
-        <input type="hidden" value="{{ $modeldata['id'] }}" name="id">
+        <input type="hidden" value="{{ $modeldata['countryId'] }}" name="id">
 
 
         <div class="row justify-content-between  mx-1  mt-3">
@@ -83,7 +83,7 @@
             <button type="submit" class="propelbtn propelbtncurved propelsubmit">update</button>
 
     </form>
-    <form action="{{ route('country.destroy', $modeldata['id']) }}" method="POST">
+    <form action="{{ route('country.destroy', $modeldata['countryId']) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="button" class="propelbtn propelbtncurved propeldelete propelDelPopup">Delete</button>
@@ -109,7 +109,7 @@
             var formData = new FormData();
             formData.append('_token', '{{ csrf_token() }}');
             formData.append(ele_name, ele_val);
-            formData.append('id', "{{ $modeldata['id'] }}");
+            formData.append('id', "{{ $modeldata['countryId'] }}");
             //console.log(formData);
             $.ajax({
                 url: '{{ route('check_duplicate') }}',

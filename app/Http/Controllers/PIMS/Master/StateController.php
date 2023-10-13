@@ -33,14 +33,14 @@ class StateController extends Controller
     public function create()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'country');
-        $datas = $response->json();
-        $response1 = apiHeaders()->get($baseUrl . 'activeStatus');
-        $datas1 = $response1->json();
-        if ($response->status() == 200) {
-            $modeldatas = $datas['data'];
-            $modeldatas1 = $datas1['data'];
-            return view('pimsUi/Master/state/add', compact('modeldatas','modeldatas1'));
+        $countryResponse = apiHeaders()->get($baseUrl . 'country');
+        $countryDatas = $countryResponse->json();
+        if ($countryResponse->status() == 200) {
+            $countryData = $countryDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/state/add', compact('countryData','statusData'));
         } else {
             dd("un authendicated");
         }
@@ -77,15 +77,18 @@ class StateController extends Controller
      */
     public function show($id)
     {
-
-        $response = apiHeaders()->get(getBaseUrl() . 'state/' . $id);
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'state/' . $id);
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldata1 = $datas1['data'];
-            return view('pimsUi/Master/state/view', compact('modeldata','modeldata1'));
+            $countryResponse = apiHeaders()->get($baseUrl . 'country');
+            $countryDatas = $countryResponse->json();
+            $countryData = $countryDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/state/view', compact('modeldata', 'countryData', 'statusData'));
         } else {
             dd("un authendicated");
         }
@@ -100,20 +103,18 @@ class StateController extends Controller
      */
     public function edit($id)
     {
-        $response = apiHeaders()->get(getBaseUrl() . 'state/' . $id);
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->get($baseUrl . 'state/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
-            $result = $datas['data'];
-            $baseUrl = getBaseUrl();
-            $response = apiHeaders()->get($baseUrl . 'country');
-            $datas = $response->json();
-            $modeldatas = $datas['data'];
-            $response1 = apiHeaders()->get($baseUrl . 'activeStatus');
-            $datas1 = $response1->json();
-            $modeldatas1 = $datas1['data'];
-            if ($response->status() == 200) {
-                return view('pimsUi/Master/state/edit', compact('modeldatas', 'modeldatas1', 'result'));
-            }
+            $modeldata = $datas['data'];
+            $countryResponse = apiHeaders()->get($baseUrl . 'country');
+            $countryDatas = $countryResponse->json();
+            $countryData = $countryDatas['data'];
+            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+            $statusDatas = $statusResponse->json();
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/state/edit', compact('modeldata', 'countryData', 'statusData'));
         } else {
             dd("un authendicated");
         }
@@ -157,13 +158,12 @@ class StateController extends Controller
     public function destroy($id)
     {
         if ($id) {
-            $baseUrl = getBaseUrl();
             $response = apiHeaders()->delete(getBaseUrl() . 'state/' . $id);
             $datas = $response->json();
             if ($response->status() == 200) {
                 $result = $datas['data'];
                 if ($result['type'] == 2) {
-                    return redirect()->back()->with('failed', 'This State  Used in City');
+                    return redirect()->back()->with('failed', 'This State Used in City');
                 } elseif($result['type'] == 1) {
                     return redirect()->route('state.index');
                 }else{

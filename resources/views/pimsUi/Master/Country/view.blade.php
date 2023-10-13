@@ -24,9 +24,9 @@
             <select class="form-select w-100 AlterInput search-need" disabled name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldata['activeStatus'] as $data1)
-                    <option value="{{ $data1['id'] }}" {{ $data1['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
-                        {{ $data1['active_type'] }}</option>
+                @foreach ($modeldata['activeStatus'] as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
+                        {{ $data['active_type'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -65,7 +65,7 @@
 
         <div class="row justify-content-between  mx-1  mt-3">
             <button class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Close</button>
-            <button class="propelbtn propelbtncurved propelsubmit" onclick="viewPage(<?php echo $modeldata['id']; ?>)">Edit</button>
+            <button class="propelbtn propelbtncurved propelsubmit" onclick="viewPage(<?php echo $modeldata['countryId']; ?>)">Edit</button>
         </div>
 
     </div>

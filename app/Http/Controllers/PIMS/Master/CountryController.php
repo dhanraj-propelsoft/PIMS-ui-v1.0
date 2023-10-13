@@ -14,11 +14,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-      
         $baseUrl = getBaseUrl();
         $response = apiHeaders()->get($baseUrl . 'country');
         $datas = $response->json();
-
         if ($response->status() == 200) {
             $modeldatas = $datas['data'];
             return view('pimsUi/Master/Country/list', compact('modeldatas'));
@@ -35,11 +33,11 @@ class CountryController extends Controller
     public function create()
     {
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->get($baseUrl . 'activeStatus');
-        $datas = $response->json();
-        if ($response->status() == 200) {
-            $modeldatas = $datas['data'];
-            return view('pimsUi/Master/Country/add', compact('modeldatas'));
+        $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+        $statusDatas = $statusResponse->json();
+        if ($statusResponse->status() == 200) {
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/Master/Country/add', compact('statusData'));
         } else {
             dd("un authendicated");
         }
@@ -143,7 +141,6 @@ class CountryController extends Controller
     public function destroy($id)
     {
         if ($id) {
-            $baseUrl = getBaseUrl();
             $response = apiHeaders()->delete(getBaseUrl() . 'country/' . $id);
             $datas = $response->json();
             if ($response->status() == 200) {

@@ -25,7 +25,7 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldatas as $data)
+                @foreach ($statusData as $data)
                     <option value="{{ $data['id'] }}">{{ $data['activeType'] }}</option>
                 @endforeach
                 <!-- Add more states here -->

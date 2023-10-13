@@ -19,8 +19,8 @@
             <select required class="form-control w-100 AlterInput search-need propel-key-press-input-mendatory"
                 name="countryId" data-minimum-results-for-search="Infinity" id="countryId" data-placeholder="Select Country">
                 <option selected value="" disabled>Select Country</option>
-                @foreach ($modeldatas as $data)
-                    <option value="{{ $data['id'] }}">{{ $data['country'] }}</option>
+                @foreach ($countryData as $data)
+                    <option value="{{ $data['countryId'] }}">{{ $data['country'] }}</option>
                 @endforeach
 
             </select>
@@ -37,8 +37,8 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldatas1 as $data1)
-                    <option value="{{ $data1['id'] }}">{{ $data1['activeType'] }}</option>
+                @foreach ($statusData as $data)
+                    <option value="{{ $data['id'] }}">{{ $data['activeType'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>

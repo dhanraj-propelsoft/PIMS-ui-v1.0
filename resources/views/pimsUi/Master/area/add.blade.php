@@ -16,18 +16,50 @@
     <form action="{{ route('area.store') }}" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 InputLabel w-100">
-            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory"
-                name="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District">
+            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="countryId"
+                id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
+                <option selected value="" disabled>Select Country</option>
+                @foreach ($countryData as $data)
+                    <option value="{{ $data['countryId'] }}">{{ $data['country'] }}</option>
+                @endforeach
+                <!-- Add more countrys here -->
+            </select>
+            <span class="AlterInputLabel box">Country</span>
+        </label>
+
+        <label class="form-group p-0 InputLabel w-100">
+            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="stateId"
+                id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State">
+                <option selected value="" disabled>Select State</option>
+                @foreach ($stateData as $data)
+                    <option value="{{ $data['stateId'] }}">{{ $data['state'] }}</option>
+                @endforeach
+                <!-- Add more states here -->
+            </select>
+            <span class="AlterInputLabel box">State</span>
+        </label>
+        <label class="form-group p-0 InputLabel w-100">
+            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="districtId"
+                id="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District">
                 <option selected value="" disabled>Select District</option>
-                @foreach ($modeldatas as $data)
-                    <option value="{{ $data['id'] }}">{{ $data['district'] }}</option>
+                @foreach ($districtData as $data)
+                    <option value="{{ $data['districtId'] }}">{{ $data['district'] }}</option>
                 @endforeach
                 <!-- Add more districts here -->
             </select>
             <span class="AlterInputLabel box">District</span>
         </label>
-
-
+        <label class="form-group p-0 InputLabel w-100">
+            <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory"
+                name="cityId" id="cityId" data-minimum-results-for-search="Infinity" data-placeholder="Select City">
+                <option selected value="" disabled>Select City</option>
+                @foreach ($cityData as $data)
+                    <option value="{{ $data['cityId'] }}">{{ $data['city'] }}</option>
+                @endforeach
+                <!-- Add more citys here -->
+            </select>
+            <span class="AlterInputLabel box">City</span>
+        </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="area" required placeholder="Enter Area..."
                 class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off">
@@ -38,8 +70,8 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldatas1 as $data1)
-                    <option value="{{ $data1['id'] }}">{{ $data1['activeType'] }}</option>
+                @foreach ($statusData as $data)
+                    <option value="{{ $data['id'] }}">{{ $data['activeType'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -71,6 +103,99 @@
         function cancelPage() {
             var url = "{{ route('area.index') }}";
             window.location.href = url;
+        }
+        function get_states(country) {
+            var country_id = country.value;
+            $.ajax({
+                url: "{{route('get_states')}}",
+                type: 'ajax',
+                method: 'post',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    country_id: country_id,
+                },
+                success: function(data) {
+        
+                    var states = JSON.parse(data);
+                    console.log(states);
+                    $('#stateId')
+                        .find('option')
+                        .remove()
+                        .end();
+                    $("#stateId").prepend("<option value=''>Select State</option>").val('');
+                    $.each(states, function(key, value) {
+                        var option = '<option value="' + value.id + '">' + value.name +
+                            '</option>';
+                        $('#stateId').append(option);
+                    });
+
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+        function get_districts(state) {
+            var state_id = state.value;
+            $.ajax({
+                url: "{{route('get_districts')}}",
+                type: 'ajax',
+                method: 'post',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    state_id: state_id,
+                },
+                success: function(data) {
+        
+                    var districts = JSON.parse(data);
+                    console.log(districts);
+                    $('#districtId')
+                        .find('option')
+                        .remove()
+                        .end();
+                    $("#districtId").prepend("<option value=''>Select District</option>").val('');
+                    $.each(districts, function(key, value) {
+                        var option = '<option value="' + value.id + '">' + value.name +
+                            '</option>';
+                        $('#districtId').append(option);
+                    });
+
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+        function get_cities(district) {
+            var district_id = district.value;
+            $.ajax({
+                url: "{{route('get_cities')}}",
+                type: 'ajax',
+                method: 'post',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    district_id: district_id,
+                },
+                success: function(data) {
+        
+                    var cities = JSON.parse(data);
+                    console.log(cities);
+                    $('#cityId')
+                        .find('option')
+                        .remove()
+                        .end();
+                    $("#cityId").prepend("<option value=''>Select City</option>").val('');
+                    $.each(cities, function(key, value) {
+                        var option = '<option value="' + value.id + '">' + value.name +
+                            '</option>';
+                        $('#cityId').append(option);
+                    });
+
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
         }
     </script>
 @endsection

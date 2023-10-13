@@ -131,16 +131,16 @@
                     <span class='propel-menu-bar-text'>District</span>
                 </li>
             </a>
-            <a href="{{ url('area') }}">
-                <li class="area">
-                    <i class="fas fa-map-signs"></i>
-                    <span class='propel-menu-bar-text'>Area</span>
-                </li>
-            </a>
             <a href="{{ url('city') }}">
                 <li class="city">
                     <i class="fas fa-city"></i>
                     <span class='propel-menu-bar-text'>City</span>
+                </li>
+            </a>
+            <a href="{{ url('area') }}">
+                <li class="area">
+                    <i class="fas fa-map-signs"></i>
+                    <span class='propel-menu-bar-text'>Area</span>
                 </li>
             </a>
 

@@ -26,8 +26,8 @@
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory"
                 name="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
                 <option selected value="" disabled>Select Country</option>
-                @foreach ($modeldatas as $data)
-                    <option value="{{ $data['id'] }}" {{ $data['id'] == $result['countryId'] ? 'selected' : '' }}>
+                @foreach ($countryData as $data)
+                    <option value="{{ $data['countryId'] }}" {{ $data['countryId'] == $modeldata['countryId'] ? 'selected' : '' }}>
                         {{ $data['country'] }}</option>
                 @endforeach
 
@@ -37,7 +37,7 @@
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input required type="text" name="state" placeholder="State..."
                 class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off"
-                value="{{ $result['state'] }}">
+                value="{{ $modeldata['state'] }}">
             <span class="AlterInputLabel">State</span>
         </label>
 
@@ -45,9 +45,9 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldatas1 as $data1)
-                    <option value="{{ $data1['id'] }}" {{ $data1['id'] == $result['activeStatus'] ? 'selected' : '' }}>
-                        {{ $data1['activeType'] }}</option>
+                @foreach ($statusData as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
+                        {{ $data['activeType'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -56,11 +56,11 @@
 
         <div class=" mb-5  InputLabel">
             <textarea name="description" id="description" cols="30" rows="5" class="col-12 form-control AlterInput "
-                placeholder="Write Your Description..." spellcheck="true">{{ $result['description'] }}</textarea>
+                placeholder="Write Your Description..." spellcheck="true">{{ $modeldata['description'] }}</textarea>
             <span class="AlterInputLabel">Description</span>
         </div>
 
-        <input type="hidden" value="{{ $result['id'] }}" name="id">
+        <input type="hidden" value="{{ $modeldata['stateId'] }}" name="id">
 
 
         <div class="row justify-content-between  mx-1  mt-3">
@@ -68,7 +68,7 @@
             <button type="submit" class="propelbtn propelbtncurved propelsubmit">update</button>
 
     </form>
-    <form action="{{ route('state.destroy', $result['id']) }}" method="POST">
+    <form action="{{ route('state.destroy', $modeldata['stateId']) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="button" class="propelbtn propelbtncurved propeldelete propelDelPopup">Delete</button>
