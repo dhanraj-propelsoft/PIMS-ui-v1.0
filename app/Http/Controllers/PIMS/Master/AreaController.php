@@ -146,6 +146,33 @@ class AreaController extends Controller
         }
     }
 
+    public function check_area(Request $request)
+    {
+        $datas = $request->all(); 
+        //dd($datas);
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'AreaValidation', $datas);
+        $res_data = $response->json();
+       
+        if ($res_data['data']['errors'] != false) {
+            $res = $res_data['data']['errors'];
+           
+        }else{
+           $res = false;
+        }
+      
+        return response()->json(['error'=> $res]);
+    }
+
+    public function get_areas(Request $request)
+    {
+        $datas = $request->all(); 
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'getAreaByCityId', $datas);
+        $res_data = $response->json();
+        return json_encode($res_data['data']);
+    }
+
     /**
      * Update the specified resource in storage.
      *

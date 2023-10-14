@@ -75,7 +75,7 @@
             formData.append(ele_name, ele_val);
             formData.append('countryId', countryId);
             $.ajax({
-                url: '{{ route('checkStDuplicate') }}',
+                url: '{{ route('check_state') }}',
                 type: 'ajax',
                 method: 'post',
                 data: formData,

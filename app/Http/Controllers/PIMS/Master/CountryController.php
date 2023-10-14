@@ -114,7 +114,7 @@ class CountryController extends Controller
         //
     }
 
-    public function check_duplicate(Request $request)
+    public function check_country(Request $request)
     {
         $datas = $request->all(); 
         //dd($datas);

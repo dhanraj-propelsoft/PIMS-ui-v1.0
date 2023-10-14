@@ -82,13 +82,7 @@ class StateController extends Controller
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $countryResponse = apiHeaders()->get($baseUrl . 'country');
-            $countryDatas = $countryResponse->json();
-            $countryData = $countryDatas['data'];
-            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
-            $statusDatas = $statusResponse->json();
-            $statusData = $statusDatas['data'];
-            return view('pimsUi/Master/state/view', compact('modeldata', 'countryData', 'statusData'));
+            return view('pimsUi/Master/state/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -111,10 +105,7 @@ class StateController extends Controller
             $countryResponse = apiHeaders()->get($baseUrl . 'country');
             $countryDatas = $countryResponse->json();
             $countryData = $countryDatas['data'];
-            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
-            $statusDatas = $statusResponse->json();
-            $statusData = $statusDatas['data'];
-            return view('pimsUi/Master/state/edit', compact('modeldata', 'countryData', 'statusData'));
+            return view('pimsUi/Master/state/edit', compact('modeldata', 'countryData'));
         } else {
             dd("un authendicated");
         }
@@ -132,7 +123,7 @@ class StateController extends Controller
         //
     }
 
-    public function checkStDuplicate(Request $request)
+    public function check_state(Request $request)
     {
         $datas = $request->all(); 
         $baseUrl = getBaseUrl();
@@ -147,6 +138,15 @@ class StateController extends Controller
         }
       
         return response()->json(['error'=> $res]);
+    }
+
+    public function get_states(Request $request)
+    {
+        $datas = $request->all(); 
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'getStateByCountryId', $datas);
+        $res_data = $response->json();
+        return json_encode($res_data['data']);
     }
 
     /**

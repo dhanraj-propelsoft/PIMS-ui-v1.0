@@ -58,7 +58,7 @@
         
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="city" placeholder="City..."
-                class="form-control AlterInput  propel-key-press-input-mendatory" autocomplete="off"
+                class="form-control AlterInput  propel-key-press-input-mendatory duplicateVal" autocomplete="off"
                 value="{{ $modeldata['city'] }}">
             <span class="AlterInputLabel">City</span>
         </label>
@@ -107,6 +107,42 @@
             var url = "{{ route('city.index') }}";
             window.location.href = url;
         }
+        $('.duplicateVal').on('input blur', function() {
+            var ele_name = $(this).attr('name');
+            var ele_val = $(this).val();
+            let countryId = parseInt($("select[name='countryId']").val());
+            let stateId = parseInt($("select[name='stateId']").val());
+            let districtId = parseInt($("select[name='districtId']").val());
+            var formData = new FormData();
+            formData.append('_token', '{{ csrf_token() }}');
+            formData.append(ele_name, ele_val);
+            formData.append('countryId', countryId);
+            formData.append('stateId', stateId);
+            formData.append('districtId', districtId);
+            formData.append("id", "{{ $modeldata['cityId'] }}");
+            $.ajax({
+                url: '{{ route('check_city') }}',
+                type: 'ajax',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.error != false) {
+                        var responseData = data.error[ele_name];
+                        if (responseData != "") {
+                            $("input[name='" + ele_name + "']").attr('validate', 'failure');
+                            errorShow($("input[name='" + ele_name + "']"), responseData);
+                            formValid();
+                        }
+                    }
+
+                },
+                error: function(err) {
+                    //console.log(err);
+                }
+            });
+        });
         function get_states(country) {
             var country_id = country.value;
             $.ajax({

@@ -19,7 +19,7 @@
         @csrf
         <label class="form-group p-0 InputLabel w-100">
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="countryId"
-            id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
+            id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country" onchange="get_states(this)">
                 <option selected value="" disabled>Select Country</option>
                 @foreach ($countryData as $data)
                     <option value="{{ $data['countryId'] }}" {{ $data['countryId'] == $modeldata['countryId'] ? 'selected' : '' }}>
@@ -35,7 +35,7 @@
                 id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State">
                 <option selected value="" disabled>Select State</option>
                 @foreach ($stateData as $data)
-                    <option value="{{ $data['stateId'] }}" {{ $data['stateId'] == $modeldata['stateId'] ? 'selected' : '' }}>
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['stateId'] ? 'selected' : '' }}>
                         {{ $data['state'] }}</option>
                 @endforeach
 
@@ -46,7 +46,7 @@
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" required name="district" required placeholder="Enter District..."
-                class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off"
+                class="form-control AlterInput propel-key-press-input-mendatory duplicateVal" autocomplete="off"
                 value="{{ $modeldata['district'] }}">
             <span class="AlterInputLabel">District</span>
         </label>
@@ -55,10 +55,9 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($statusData as $data)
-                    <option value="{{ $data['id'] }}"
-                        {{ $data['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
-                        {{ $data['activeType'] }}</option>
+                @foreach ($modeldata['activeStatus'] as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
+                        {{ $data['active_type'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -92,6 +91,40 @@
             var url = "{{ route('district.index') }}";
             window.location.href = url;
         }
+        $('.duplicateVal').on('input blur', function() {
+            var ele_name = $(this).attr('name');
+            var ele_val = $(this).val();
+            let countryId = parseInt($("select[name='countryId']").val());
+            let stateId = parseInt($("select[name='stateId']").val());
+            var formData = new FormData();
+            formData.append('_token', '{{ csrf_token() }}');
+            formData.append(ele_name, ele_val);
+            formData.append('countryId', countryId);
+            formData.append('stateId', stateId);
+            formData.append("id", "{{ $modeldata['districtId'] }}");
+            $.ajax({
+                url: '{{ route('check_district') }}',
+                type: 'ajax',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.error != false) {
+                        var responseData = data.error[ele_name];
+                        if (responseData != "") {
+                            $("input[name='" + ele_name + "']").attr('validate', 'failure');
+                            errorShow($("input[name='" + ele_name + "']"), responseData);
+                            formValid();
+                        }
+                    }
+
+                },
+                error: function(err) {
+                    //console.log(err);
+                }
+            });
+        });
         function get_states(country) {
             var country_id = country.value;
             $.ajax({
@@ -100,19 +133,19 @@
                 method: 'post',
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    country_id: country_id,
+                    countryId: country_id,
                 },
                 success: function(data) {
         
                     var states = JSON.parse(data);
-                    console.log(states);
+                    //console.log(states);
                     $('#stateId')
                         .find('option')
                         .remove()
                         .end();
                     $("#stateId").prepend("<option value=''>Select State</option>").val('');
                     $.each(states, function(key, value) {
-                        var option = '<option value="' + value.id + '">' + value.name +
+                        var option = '<option value="' + value.id + '">' + value.state +
                             '</option>';
                         $('#stateId').append(option);
                     });

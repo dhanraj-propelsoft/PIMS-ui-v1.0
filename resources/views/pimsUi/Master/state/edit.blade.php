@@ -36,7 +36,7 @@
         </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input required type="text" name="state" placeholder="State..."
-                class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off"
+                class="form-control AlterInput propel-key-press-input-mendatory duplicateVal" autocomplete="off"
                 value="{{ $modeldata['state'] }}">
             <span class="AlterInputLabel">State</span>
         </label>
@@ -45,9 +45,9 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($statusData as $data)
-                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
-                        {{ $data['activeType'] }}</option>
+                @foreach ($modeldata['activeStatus'] as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['statusId'] ? 'selected' : '' }}>
+                        {{ $data['active_type'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -82,6 +82,38 @@
             var url = "{{ route('state.index') }}";
             window.location.href = url;
         }
+        $('.duplicateVal').on('input blur', function() {
+            var ele_name = $(this).attr('name');
+            var ele_val = $(this).val();
+            let countryId = parseInt($("select[name='countryId']").val());
+            var formData = new FormData();
+            formData.append('_token', '{{ csrf_token() }}');
+            formData.append(ele_name, ele_val);
+            formData.append('countryId', countryId);
+            formData.append("id", "{{ $modeldata['stateId'] }}");
+            $.ajax({
+                url: '{{ route('check_state') }}',
+                type: 'ajax',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.error != false) {
+                        var responseData = data.error[ele_name];
+                        if (responseData != "") {
+                            $("input[name='" + ele_name + "']").attr('validate', 'failure');
+                            errorShow($("input[name='" + ele_name + "']"), responseData);
+                            formValid();
+                        }
+                    }
+
+                },
+                error: function(err) {
+                    //console.log(err);
+                }
+            });
+        });
 
         // function closePage(id){
         //   var url = "{{ route('state.edit', ':id') }}";

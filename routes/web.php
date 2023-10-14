@@ -74,8 +74,15 @@ Route::Resource('personStage', 'App\Http\Controllers\PIMS\PFM\PersonStageControl
 Route::Resource('authorization', 'App\Http\Controllers\PIMS\PFM\AuthorizationController');
 });
 
-Route::post('/check_duplicate', [CountryController::class, 'check_duplicate'])->name('check_duplicate');
-Route::post('/checkStDuplicate', 'App\Http\Controllers\PIMS\Master\StateController@checkStDuplicate')->name('checkStDuplicate');
+Route::post('/check_country', 'App\Http\Controllers\PIMS\Master\CountryController@check_country')->name('check_country');
+Route::post('/check_state', 'App\Http\Controllers\PIMS\Master\StateController@check_state')->name('check_state');
+Route::post('/check_district', 'App\Http\Controllers\PIMS\Master\DistrictController@check_district')->name('check_district');
+Route::post('/check_city', 'App\Http\Controllers\PIMS\Master\CityController@check_city')->name('check_city');
+Route::post('/check_area', 'App\Http\Controllers\PIMS\Master\AreaController@check_area')->name('check_area');
+Route::post('/get_states', 'App\Http\Controllers\PIMS\Master\StateController@get_states')->name('get_states');
+Route::post('/get_districts', 'App\Http\Controllers\PIMS\Master\DistrictController@get_districts')->name('get_districts');
+Route::post('/get_cities', 'App\Http\Controllers\PIMS\Master\CityController@get_cities')->name('get_cities');
+Route::post('/get_areas', 'App\Http\Controllers\PIMS\Master\AreaController@get_areas')->name('get_areas');
 Route::post('/userAccess', [UserController::class, 'userAccess'])->name('userAccess');
 
 

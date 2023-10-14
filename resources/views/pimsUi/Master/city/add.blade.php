@@ -17,7 +17,7 @@
         @csrf
         <label class="form-group p-0 InputLabel w-100">
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="countryId"
-                id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
+                id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country" onchange="get_states(this)">
                 <option selected value="" disabled>Select Country</option>
                 @foreach ($countryData as $data)
                     <option value="{{ $data['countryId'] }}">{{ $data['country'] }}</option>
@@ -29,7 +29,7 @@
 
         <label class="form-group p-0 InputLabel w-100">
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="stateId"
-                id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State">
+                id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State" onchange="get_districts(this)">
                 <option selected value="" disabled>Select State</option>
                 @foreach ($stateData as $data)
                     <option value="{{ $data['stateId'] }}">{{ $data['state'] }}</option>
@@ -53,7 +53,7 @@
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="city" required placeholder="City..."
-                class="form-control AlterInput  propel-key-press-input-mendatory" autocomplete="off">
+                class="form-control AlterInput  propel-key-press-input-mendatory duplicateVal" autocomplete="off">
             <span class="AlterInputLabel">City</span>
         </label>
 
@@ -91,6 +91,41 @@
             var url = "{{ route('city.index') }}";
             window.location.href = url;
         }
+        $('.duplicateVal').on('input blur', function() {
+            var ele_name = $(this).attr('name');
+            var ele_val = $(this).val();
+            let countryId = parseInt($("select[name='countryId']").val());
+            let stateId = parseInt($("select[name='stateId']").val());
+            let districtId = parseInt($("select[name='districtId']").val());
+            var formData = new FormData();
+            formData.append('_token', '{{ csrf_token() }}');
+            formData.append(ele_name, ele_val);
+            formData.append('countryId', countryId);
+            formData.append('stateId', stateId);
+            formData.append('districtId', districtId);
+            $.ajax({
+                url: '{{ route('check_city') }}',
+                type: 'ajax',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.error != false) {
+                        var responseData = data.error[ele_name];
+                        if (responseData != "") {
+                            $("input[name='" + ele_name + "']").attr('validate', 'failure');
+                            errorShow($("input[name='" + ele_name + "']"), responseData);
+                            formValid();
+                        }
+                    }
+
+                },
+                error: function(err) {
+                    //console.log(err);
+                }
+            });
+        });
         function get_states(country) {
             var country_id = country.value;
             $.ajax({
@@ -99,19 +134,19 @@
                 method: 'post',
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    country_id: country_id,
+                    countryId: country_id,
                 },
                 success: function(data) {
         
                     var states = JSON.parse(data);
-                    console.log(states);
+                    //console.log(states);
                     $('#stateId')
                         .find('option')
                         .remove()
                         .end();
                     $("#stateId").prepend("<option value=''>Select State</option>").val('');
                     $.each(states, function(key, value) {
-                        var option = '<option value="' + value.id + '">' + value.name +
+                        var option = '<option value="' + value.id + '">' + value.state +
                             '</option>';
                         $('#stateId').append(option);
                     });
@@ -130,19 +165,19 @@
                 method: 'post',
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    state_id: state_id,
+                    stateId: state_id,
                 },
                 success: function(data) {
         
                     var districts = JSON.parse(data);
-                    console.log(districts);
+                    //console.log(districts);
                     $('#districtId')
                         .find('option')
                         .remove()
                         .end();
                     $("#districtId").prepend("<option value=''>Select District</option>").val('');
                     $.each(districts, function(key, value) {
-                        var option = '<option value="' + value.id + '">' + value.name +
+                        var option = '<option value="' + value.id + '">' + value.district +
                             '</option>';
                         $('#districtId').append(option);
                     });
