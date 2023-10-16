@@ -13,11 +13,11 @@
     </div> <!-- | -->
 
 
-    <form action="{{ url('salutation') }}" method="post" class="m-auto col-md-6 card p-2 rounded">
+    <form action="{{ url('salutation') }}" data-dupl-val="true" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="salutation" required placeholder="Salutation..."
-                class="form-control AlterInput  propel-key-press-input-mendatory" autocomplete="off">
+                class="form-control AlterInput  propel-key-press-input-mendatory duplicateVal" autocomplete="off">
             <span class="AlterInputLabel">Salutation</span>
         </label>
 
@@ -50,10 +50,37 @@
 
     </form>
     <script>
-
         function cancelPage() {
             var url = "{{ route('salutation.index') }}";
             window.location.href = url;
         }
+        var duplVal = $("form[data-dupl-val='true']");
+
+        duplVal.on('input change', function() {
+            var formData = new FormData($(duplVal)[0]);
+            $.ajax({
+                url: "{{ route('salutationValidation') }}",
+                type: 'ajax',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.error != false) {
+                        for (var key in data.error) {
+                            var responseData = data.error[key];
+                            if (responseData != "") {
+                                $("input[name='" + key + "']").attr('validate', 'failure');
+                                errorShow($("input[name='" + key + "']"), responseData);
+                                formValid();
+                            }
+                        }
+                    }
+                },
+                error: function(err) {
+                    //console.log(err);
+                }
+            });
+        });
     </script>
 @endsection

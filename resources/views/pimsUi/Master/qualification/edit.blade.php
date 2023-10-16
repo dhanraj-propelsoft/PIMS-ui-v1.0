@@ -15,12 +15,13 @@
     </div> <!-- | -->
 
 
-    <form action="{{ route('qualification.store') }}" data-edit-form="true" method="post"
+    <form action="{{ route('qualification.store') }}" data-dupl-val="true" data-edit-form="true" method="post"
         class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="qualification" required placeholder="Enter Your Qualification..."
-                class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off" value="{{ $modeldata['qualification'] }}">
+                class="form-control AlterInput propel-key-press-input-mendatory duplicateVal" autocomplete="off"
+                value="{{ $modeldata['qualification'] }}">
             <span class="AlterInputLabel">Qualification</span>
         </label>
 
@@ -44,7 +45,7 @@
             <span class="AlterInputLabel">Description</span>
         </div>
 
-        <input type="hidden" value="{{ $modeldata['id'] }}" name="id">
+        <input type="hidden" value="{{ $modeldata['qualificationId'] }}" name="id">
 
 
         <div class="row justify-content-between  mx-1  mt-3">
@@ -52,7 +53,7 @@
             <button type="submit" class="propelbtn propelbtncurved propelsubmit">update</button>
 
     </form>
-    <form action="{{ route('qualification.destroy', $modeldata['id']) }}" method="POST">
+    <form action="{{ route('qualification.destroy', $modeldata['qualificationId']) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="button" class="propelbtn propelbtncurved propeldelete propelDelPopup">Delete</button>
@@ -66,6 +67,34 @@
             var url = "{{ route('qualification.index') }}";
             window.location.href = url;
         }
+        var duplVal = $("form[data-dupl-val='true']");
+
+        duplVal.on('input change', function() {
+            var formData = new FormData($(duplVal)[0]);
+            $.ajax({
+                url: "{{ route('qualificationValidation') }}",
+                type: 'ajax',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.error != false) {
+                        for (var key in data.error) {
+                            var responseData = data.error[key];
+                            if (responseData != "") {
+                                $("input[name='" + key + "']").attr('validate', 'failure');
+                                errorShow($("input[name='" + key + "']"), responseData);
+                                formValid();
+                            }
+                        }
+                    }
+                },
+                error: function(err) {
+                    //console.log(err);
+                }
+            });
+        });
 
         // function closePage(id){
         //   var url = "{{ route('qualification.edit', ':id') }}";

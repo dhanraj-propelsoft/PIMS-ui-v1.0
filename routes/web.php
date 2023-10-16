@@ -74,11 +74,22 @@ Route::Resource('personStage', 'App\Http\Controllers\PIMS\PFM\PersonStageControl
 Route::Resource('authorization', 'App\Http\Controllers\PIMS\PFM\AuthorizationController');
 });
 
-Route::post('/check_country', 'App\Http\Controllers\PIMS\Master\CountryController@check_country')->name('check_country');
-Route::post('/check_state', 'App\Http\Controllers\PIMS\Master\StateController@check_state')->name('check_state');
-Route::post('/check_district', 'App\Http\Controllers\PIMS\Master\DistrictController@check_district')->name('check_district');
-Route::post('/check_city', 'App\Http\Controllers\PIMS\Master\CityController@check_city')->name('check_city');
-Route::post('/check_area', 'App\Http\Controllers\PIMS\Master\AreaController@check_area')->name('check_area');
+Route::post('/countryValidation', 'App\Http\Controllers\PIMS\Master\CountryController@countryValidation')->name('countryValidation');
+Route::post('/stateValidation', 'App\Http\Controllers\PIMS\Master\StateController@stateValidation')->name('stateValidation');
+Route::post('/DistrictValidation', 'App\Http\Controllers\PIMS\Master\DistrictController@DistrictValidation')->name('DistrictValidation');
+Route::post('/cityValidation', 'App\Http\Controllers\PIMS\Master\CityController@cityValidation')->name('cityValidation');
+Route::post('/areaValidation', 'App\Http\Controllers\PIMS\Master\AreaController@areaValidation')->name('areaValidation');
+Route::post('/salutationValidation', 'App\Http\Controllers\PIMS\Master\SalutationController@salutationValidation')->name('salutationValidation');
+Route::post('/genderValidation', 'App\Http\Controllers\PIMS\Master\GenderController@genderValidation')->name('genderValidation');
+Route::post('/documentTypeValidation', 'App\Http\Controllers\PIMS\Master\DocumentTypeController@documentTypeValidation')->name('documentTypeValidation');
+Route::post('/bloodGroupValidation', 'App\Http\Controllers\PIMS\Master\BloodGroupController@bloodGroupValidation')->name('bloodGroupValidation');
+Route::post('/MaritalStatusValidation', 'App\Http\Controllers\PIMS\Master\MaritalStatusController@MaritalStatusValidation')->name('MaritalStatusValidation');
+Route::post('/relationshipValidation', 'App\Http\Controllers\PIMS\Master\RelationShipController@relationshipValidation')->name('relationshipValidation');
+Route::post('/qualificationValidation', 'App\Http\Controllers\PIMS\Master\QualificationController@qualificationValidation')->name('qualificationValidation');
+Route::post('/bankAccountTypeValidation', 'App\Http\Controllers\PIMS\Master\BankAccountTypeController@bankAccountTypeValidation')->name('bankAccountTypeValidation');
+Route::post('/bankValidation', 'App\Http\Controllers\PIMS\Master\BankController@bankValidation')->name('bankValidation');
+Route::post('/addressTypeValidation', 'App\Http\Controllers\PIMS\Master\AddressTypeController@addressTypeValidation')->name('addressTypeValidation');
+Route::post('/languageValidation', 'App\Http\Controllers\PIMS\Master\LanguageController@languageValidation')->name('languageValidation');
 Route::post('/get_states', 'App\Http\Controllers\PIMS\Master\StateController@get_states')->name('get_states');
 Route::post('/get_districts', 'App\Http\Controllers\PIMS\Master\DistrictController@get_districts')->name('get_districts');
 Route::post('/get_cities', 'App\Http\Controllers\PIMS\Master\CityController@get_cities')->name('get_cities');

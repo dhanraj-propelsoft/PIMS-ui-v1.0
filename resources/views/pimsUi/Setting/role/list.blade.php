@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 @section('content')
-    <div class="common-master0 role0 for-active"></div>
+    <div class="setting0 role0 for-active"></div>
 
     <!--Table-->
     <div class="container col-md-10 m-4 mx-auto">

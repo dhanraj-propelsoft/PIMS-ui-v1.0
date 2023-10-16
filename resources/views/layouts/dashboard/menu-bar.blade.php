@@ -285,7 +285,7 @@
                 </li>
             </a>
         </ul>
-        <ul class="propel-menu-bar-list-container cardimage-menu-bar ">
+        <ul class="propel-menu-bar-list-container setting-menu-bar ">
             {{-- <p class="propel-menu-bar-title">Card Image</p> --}}
             <a href="{{ url('roles') }}">
                 <li class="role">

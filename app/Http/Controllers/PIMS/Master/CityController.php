@@ -137,12 +137,11 @@ class CityController extends Controller
         }
     }
 
-    public function check_city(Request $request)
+    public function cityValidation(Request $request)
     {
         $datas = $request->all(); 
-        //dd($datas);
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'CityValidation', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'cityValidation', $datas);
         $res_data = $response->json();
        
         if ($res_data['data']['errors'] != false) {

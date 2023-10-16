@@ -3,7 +3,7 @@
     {{-- This is For Navigation and Breadcrumbs --}}
 
     <!-- | -->
-    <div class="common-master0 role0 view0 for-active">
+    <div class="setting0 role0 view0 for-active">
         <!-- | -->
         <!-- | -->
         <div class="view">

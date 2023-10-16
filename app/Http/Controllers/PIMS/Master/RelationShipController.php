@@ -110,6 +110,23 @@ class RelationShipController extends Controller
         }
     }
 
+    public function relationshipValidation(Request $request)
+    {
+        $datas = $request->all(); 
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'relationshipValidation', $datas);
+        $res_data = $response->json();
+        
+        if ($res_data['data']['errors'] != false) {
+            $res = $res_data['data']['errors'];
+           
+        }else{
+           $res = false;
+        }
+      
+        return response()->json(['error'=> $res]);
+    }
+
     /**
      * Update the specified resource in storage.
      *

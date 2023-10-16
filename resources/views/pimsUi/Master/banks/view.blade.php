@@ -55,7 +55,7 @@
         </div>
         <div class="row justify-content-between  mx-1  mt-3">
             <button class="propelbtn propelbtncurved propelcancel" onclick="cancelPage()">Close</button>
-            <button class="propelbtn propelbtncurved propelsubmit" onclick="viewPage(<?php echo $modeldata['id']; ?>)">Edit</button>
+            <button class="propelbtn propelbtncurved propelsubmit" onclick="viewPage(<?php echo $modeldata['bankNameId']; ?>)">Edit</button>
         </div>
 
     </div>

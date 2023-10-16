@@ -13,7 +13,7 @@
     </div> <!-- | -->
 
 
-    <form action="{{ route('area.store') }}" method="post" class="m-auto col-md-6 card p-2 rounded">
+    <form action="{{ route('area.store') }}" data-dupl-val='true' method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 InputLabel w-100">
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="countryId"
@@ -62,7 +62,7 @@
         </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="area" required placeholder="Enter Area..."
-                class="form-control AlterInput propel-key-press-input-mendatory duplicateVal" autocomplete="off">
+                class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off">
             <span class="AlterInputLabel">Area</span>
         </label>
 
@@ -104,22 +104,13 @@
             var url = "{{ route('area.index') }}";
             window.location.href = url;
         }
-        $('.duplicateVal').on('input blur', function() {
-            var ele_name = $(this).attr('name');
-            var ele_val = $(this).val();
-            let countryId = parseInt($("select[name='countryId']").val());
-            let stateId = parseInt($("select[name='stateId']").val());
-            let districtId = parseInt($("select[name='districtId']").val());
-            let cityId = parseInt($("select[name='cityId']").val());
-            var formData = new FormData();
-            formData.append('_token', '{{ csrf_token() }}');
-            formData.append(ele_name, ele_val);
-            formData.append('countryId', countryId);
-            formData.append('stateId', stateId);
-            formData.append('districtId', districtId);
-            formData.append('cityId', cityId);
+                
+        var duplVal = $("form[data-dupl-val='true']");
+        
+        duplVal.on('input change', function() {
+            var formData = new FormData($(duplVal)[0]); 
             $.ajax({
-                url: '{{ route('check_area') }}',
+                url: "{{ route('areaValidation') }}",
                 type: 'ajax',
                 method: 'post',
                 data: formData,
@@ -127,14 +118,15 @@
                 processData: false,
                 success: function(data) {
                     if (data.error != false) {
-                        var responseData = data.error[ele_name];
-                        if (responseData != "") {
-                            $("input[name='" + ele_name + "']").attr('validate', 'failure');
-                            errorShow($("input[name='" + ele_name + "']"), responseData);
-                            formValid();
+                        for (var key in data.error) {
+                            var responseData = data.error[key];
+                            if (responseData != "") {
+                                $("input[name='" + key + "']").attr('validate', 'failure');
+                                errorShow($("input[name='" + key + "']"), responseData);
+                                formValid();
+                            }
                         }
                     }
-
                 },
                 error: function(err) {
                     //console.log(err);

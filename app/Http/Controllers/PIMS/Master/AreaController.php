@@ -146,14 +146,12 @@ class AreaController extends Controller
         }
     }
 
-    public function check_area(Request $request)
+    public function areaValidation(Request $request)
     {
         $datas = $request->all(); 
-        //dd($datas);
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'AreaValidation', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'areaValidation', $datas);
         $res_data = $response->json();
-       
         if ($res_data['data']['errors'] != false) {
             $res = $res_data['data']['errors'];
            

@@ -114,12 +114,11 @@ class DistrictController extends Controller
         }
     }
 
-    public function check_district(Request $request)
+    public function DistrictValidation(Request $request)
     {
         $datas = $request->all(); 
-        //dd($datas);
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'districtValidation', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'DistrictValidation', $datas);
         $res_data = $response->json();
        
         if ($res_data['data']['errors'] != false) {

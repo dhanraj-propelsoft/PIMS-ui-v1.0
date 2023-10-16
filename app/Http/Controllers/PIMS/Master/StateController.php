@@ -123,7 +123,7 @@ class StateController extends Controller
         //
     }
 
-    public function check_state(Request $request)
+    public function stateValidation(Request $request)
     {
         $datas = $request->all(); 
         $baseUrl = getBaseUrl();

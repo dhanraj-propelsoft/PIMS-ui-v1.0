@@ -110,6 +110,23 @@ class BankController extends Controller
         }
     }
 
+    public function bankValidation(Request $request)
+    {
+        $datas = $request->all(); 
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'bankValidation', $datas);
+        $res_data = $response->json();
+        
+        if ($res_data['data']['errors'] != false) {
+            $res = $res_data['data']['errors'];
+           
+        }else{
+           $res = false;
+        }
+      
+        return response()->json(['error'=> $res]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
