@@ -26,14 +26,14 @@
 
         <!-- IFSC Code -->
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="ifsc" value="{{ $modeldata['ifsc'] }}" required placeholder="IFSC Code..."
+            <input type="text" name="ifsc" value="" required placeholder="IFSC Code..."
                 class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off">
             <span class="AlterInputLabel">IFSC Code</span>
         </label>
 
         <!-- MICR Code -->
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="micr" value="{{ $modeldata['micr'] }}" required placeholder="MICR Code..."
+            <input type="text" name="micr" value="" required placeholder="MICR Code..."
                 class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off">
             <span class="AlterInputLabel">MICR Code</span>
         </label>
@@ -43,9 +43,9 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($modeldatas1 as $data1)
-                    <option value="{{ $data1['id'] }}" {{ $data1['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
-                        {{ $data1['activeType'] }}</option>
+                @foreach ($modeldata['activeStatus'] as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
+                        {{ $data['active_type'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -58,7 +58,7 @@
             <span class="AlterInputLabel">Description</span>
         </div>
 
-        <input type="hidden" value="{{ $modeldata['bankNameId'] }}" name="id">
+        <input type="hidden" value="{{ $modeldata['bankId'] }}" name="id">
 
 
         <div class="row justify-content-between  mx-1  mt-3">
@@ -66,7 +66,7 @@
             <button type="submit" class="propelbtn propelbtncurved propelsubmit">update</button>
 
     </form>
-    <form action="{{ route('bank.destroy', $modeldata['bankNameId']) }}" method="POST">
+    <form action="{{ route('bank.destroy', $modeldata['bankId']) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="button" class="propelbtn propelbtncurved propeldelete propelDelPopup">Delete</button>

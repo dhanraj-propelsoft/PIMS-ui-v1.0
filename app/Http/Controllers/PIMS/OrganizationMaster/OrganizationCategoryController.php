@@ -75,12 +75,9 @@ class OrganizationCategoryController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'category/' . $id);
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldata1 = $datas1['data'];
-            return view('pimsUi/organizationMaster/organizationCategory/view', compact('modeldata','modeldata1'));
+            return view('pimsUi/organizationMaster/organizationCategory/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -95,17 +92,30 @@ class OrganizationCategoryController extends Controller
     public function edit($id)
     {
         $response = apiHeaders()->get(getBaseUrl() . 'category/' . $id);
-
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldatas1 = $datas1['data'];
-            return view('pimsUi/organizationMaster/organizationCategory/edit', compact('modeldata', 'modeldatas1'));
+            return view('pimsUi/organizationMaster/organizationCategory/edit', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
+    }
+
+    public function categoryValidation(Request $request)
+    {
+        $datas = $request->all(); 
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'categoryValidation', $datas);
+        $res_data = $response->json();
+        
+        if ($res_data['data']['errors'] != false) {
+            $res = $res_data['data']['errors'];
+           
+        }else{
+           $res = false;
+        }
+      
+        return response()->json(['error'=> $res]);
     }
 
     /**

@@ -101,14 +101,11 @@ class DistrictController extends Controller
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $countryResponse = apiHeaders()->get($baseUrl . 'country');
-            $countryDatas = $countryResponse->json();
-            $countryData = $countryDatas['data'];
             $data1['countryId'] =  $modeldata['countryId'];
             $stateResponse = apiHeaders()->Post($baseUrl . 'getStateByCountryId', $data1);
             $stateDatas = $stateResponse->json();
             $stateData = $stateDatas['data'];
-            return view('pimsUi/Master/district/edit', compact('modeldata', 'countryData', 'stateData'));
+            return view('pimsUi/Master/district/edit', compact('modeldata', 'stateData'));
         } else {
             dd("un authendicated");
         }

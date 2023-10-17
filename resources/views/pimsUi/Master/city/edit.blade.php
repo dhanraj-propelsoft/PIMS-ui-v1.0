@@ -19,10 +19,10 @@
         @csrf
         <label class="form-group p-0 InputLabel w-100">
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="countryId"
-                id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
+                id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country" onchange="get_states(this)">
                 <option selected value="" disabled>Select Country</option>
-                @foreach ($countryData as $data)
-                    <option value="{{ $data['countryId'] }}" {{ $data['countryId'] == $modeldata['countryId'] ? 'selected' : '' }}>
+                @foreach ($modeldata['country'] as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['countryId'] ? 'selected' : '' }}>
                         {{ $data['country'] }}</option>
                 @endforeach
                 <!-- Add more countrys here -->
@@ -32,10 +32,10 @@
 
         <label class="form-group p-0 InputLabel w-100">
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="stateId"
-                id="districtId" id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State">
+                id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State" onchange="get_districts(this)">
                 <option selected value="" disabled>Select State</option>
                 @foreach ($stateData as $data)
-                    <option value="{{ $data['stateId'] }}" {{ $data['stateId'] == $modeldata['stateId'] ? 'selected' : '' }}>
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['stateId'] ? 'selected' : '' }}>
                         {{ $data['state'] }}</option>
                 @endforeach
 
@@ -45,12 +45,9 @@
         </label>
         <label class="form-group p-0 InputLabel w-100">
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="districtId"
-                data-minimum-results-for-search="Infinity" data-placeholder="Select District">
+                id="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District">
                 <option selected value="" disabled>Select District</option>
-                @foreach ($districtData as $data)
-                    <option value="{{ $data['districtId'] }}"  {{ $data['districtId'] == $modeldata['districtId'] ? 'selected' : '' }}>
-                        {{ $data['district'] }}</option>
-                @endforeach
+                <option value="{{ $modeldata['districtId'] }}" selected>{{ $modeldata['districtName'] }}</option>
                 <!-- Add more districts here -->
             </select>
             <span class="AlterInputLabel box">District</span>
@@ -68,10 +65,10 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($statusData as $data)
+                @foreach ($modeldata['activeStatus'] as $data)
                     <option value="{{ $data['id'] }}"
-                        {{ $data['id'] == $modeldata['activeStatus'] ? 'selected' : '' }}>
-                        {{ $data['activeType'] }}</option>
+                        {{ $data['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
+                        {{ $data['active_type'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
@@ -143,7 +140,7 @@
                 method: 'post',
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    country_id: country_id,
+                    countryId: country_id,
                 },
                 success: function(data) {
         
@@ -155,7 +152,7 @@
                         .end();
                     $("#stateId").prepend("<option value=''>Select State</option>").val('');
                     $.each(states, function(key, value) {
-                        var option = '<option value="' + value.id + '">' + value.name +
+                        var option = '<option value="' + value.id + '">' + value.state +
                             '</option>';
                         $('#stateId').append(option);
                     });
@@ -174,7 +171,7 @@
                 method: 'post',
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    state_id: state_id,
+                    stateId: state_id,
                 },
                 success: function(data) {
         
@@ -186,7 +183,7 @@
                         .end();
                     $("#districtId").prepend("<option value=''>Select District</option>").val('');
                     $.each(districts, function(key, value) {
-                        var option = '<option value="' + value.id + '">' + value.name +
+                        var option = '<option value="' + value.id + '">' + value.district +
                             '</option>';
                         $('#districtId').append(option);
                     });

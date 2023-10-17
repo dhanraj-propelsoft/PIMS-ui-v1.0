@@ -75,12 +75,9 @@ class AddressTypeController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'addressType/' . $id);
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldata1 = $datas1['data'];
-            return view('pimsUi/Master/addressTypes/view', compact('modeldata','modeldata1'));
+            return view('pimsUi/Master/addressTypes/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -95,14 +92,10 @@ class AddressTypeController extends Controller
     public function edit($id)
     {
         $response = apiHeaders()->get(getBaseUrl() . 'addressType/' . $id);
-
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldatas1 = $datas1['data'];
-            return view('pimsUi/Master/addressTypes/edit', compact('modeldata', 'modeldatas1'));
+            return view('pimsUi/Master/addressTypes/edit', compact('modeldata'));
         } else {
             dd("un authendicated");
         }

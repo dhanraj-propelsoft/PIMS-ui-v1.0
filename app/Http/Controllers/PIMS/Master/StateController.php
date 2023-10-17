@@ -102,10 +102,7 @@ class StateController extends Controller
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $countryResponse = apiHeaders()->get($baseUrl . 'country');
-            $countryDatas = $countryResponse->json();
-            $countryData = $countryDatas['data'];
-            return view('pimsUi/Master/state/edit', compact('modeldata', 'countryData'));
+            return view('pimsUi/Master/state/edit', compact('modeldata'));
         } else {
             dd("un authendicated");
         }

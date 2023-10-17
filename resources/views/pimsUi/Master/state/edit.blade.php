@@ -25,11 +25,10 @@
         @csrf
         <label class="form-group p-0 InputLabel w-100">
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory"
-                name="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
+                name="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country" onchange="get_states(this)">
                 <option selected value="" disabled>Select Country</option>
-                @foreach ($countryData as $data)
-                    <option value="{{ $data['countryId'] }}"
-                        {{ $data['countryId'] == $modeldata['countryId'] ? 'selected' : '' }}>
+                @foreach ($modeldata['countries'] as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['countryId'] ? 'selected' : '' }}>
                         {{ $data['country'] }}</option>
                 @endforeach
 
@@ -48,7 +47,8 @@
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
                 @foreach ($modeldata['activeStatus'] as $data)
-                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['statusId'] ? 'selected' : '' }}>
+                    <option value="{{ $data['id'] }}"
+                        {{ $data['id'] == $modeldata['statusId'] ? 'selected' : '' }}>
                         {{ $data['active_type'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
@@ -112,6 +112,37 @@
                 }
             });
         });
+        function get_states(country) {
+            var country_id = country.value;
+            $.ajax({
+                url: "{{route('get_states')}}",
+                type: 'ajax',
+                method: 'post',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    countryId: country_id,
+                },
+                success: function(data) {
+        
+                    var states = JSON.parse(data);
+                    console.log(states);
+                    $('#stateId')
+                        .find('option')
+                        .remove()
+                        .end();
+                    $("#stateId").prepend("<option value=''>Select State</option>").val('');
+                    $.each(states, function(key, value) {
+                        var option = '<option value="' + value.id + '">' + value.state +
+                            '</option>';
+                        $('#stateId').append(option);
+                    });
+
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
 
         // function closePage(id){
         //   var url = "{{ route('state.edit', ':id') }}";

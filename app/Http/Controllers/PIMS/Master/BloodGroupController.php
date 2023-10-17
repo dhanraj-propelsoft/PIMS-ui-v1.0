@@ -77,12 +77,9 @@ class BloodGroupController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'bloodGroup/' . $id);
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldata1 = $datas1['data'];
-            return view('pimsUi/Master/BloodGroup/view', compact('modeldata','modeldata1'));
+            return view('pimsUi/Master/BloodGroup/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -97,14 +94,10 @@ class BloodGroupController extends Controller
     public function edit($id)
     {
         $response = apiHeaders()->get(getBaseUrl() . 'bloodGroup/' . $id);
-
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldatas1 = $datas1['data'];
-            return view('pimsUi/Master/BloodGroup/edit', compact('modeldata', 'modeldatas1'));
+            return view('pimsUi/Master/BloodGroup/edit', compact('modeldata'));
         } else {
             dd("un authendicated");
         }

@@ -21,8 +21,8 @@
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="countryId"
             id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country" onchange="get_states(this)">
                 <option selected value="" disabled>Select Country</option>
-                @foreach ($countryData as $data)
-                    <option value="{{ $data['countryId'] }}" {{ $data['countryId'] == $modeldata['countryId'] ? 'selected' : '' }}>
+                @foreach ($modeldata['country'] as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['countryId'] ? 'selected' : '' }}>
                         {{ $data['country'] }}</option>
                 @endforeach
                 <!-- Add more countrys here -->

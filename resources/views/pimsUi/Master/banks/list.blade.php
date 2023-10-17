@@ -19,10 +19,10 @@
                 </thead>
                 <tbody>
                     @foreach ($modeldatas as $modeldata)
-                        <tr ondblclick="viewPage(<?php echo $modeldata['bankNameId']; ?>)">
+                        <tr ondblclick="viewPage(<?php echo $modeldata['bankId']; ?>)">
                             <td>{{ $modeldata['bankName'] }}</td>
-                            <td>{{ $modeldata['ifsc'] }}</td>
-                            <td>{{ $modeldata['micr'] }}</td>
+                            <td></td>
+                            <td></td>
                             <td>{{ $modeldata['status'] }}</td>
                             <td>{{ $modeldata['description'] }}</td>
                         </tr>

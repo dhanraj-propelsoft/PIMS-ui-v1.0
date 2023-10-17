@@ -15,7 +15,7 @@
     </div> <!-- | -->
 
 
-    <form action="{{ route('activeStatus.store') }}" data-edit-form="true" method="post"
+    <form action="{{ route('activeStatus.store') }}" data-dupl-val="true" data-edit-form="true" method="post"
         class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
@@ -52,7 +52,34 @@
             var url = "{{ route('activeStatus.index') }}";
             window.location.href = url;
         }
+        var duplVal = $("form[data-dupl-val='true']");
 
+        duplVal.on('input change', function() {
+            var formData = new FormData($(duplVal)[0]);
+            $.ajax({
+                url: "{{ route('activeStatusValidation') }}",
+                type: 'ajax',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.error != false) {
+                        for (var key in data.error) {
+                            var responseData = data.error[key];
+                            if (responseData != "") {
+                                $("input[name='" + key + "']").attr('validate', 'failure');
+                                errorShow($("input[name='" + key + "']"), responseData);
+                                formValid();
+                            }
+                        }
+                    }
+                },
+                error: function(err) {
+                    //console.log(err);
+                }
+            });
+        });
         // function closePage(id){
         //   var url = "{{ route('activeStatus.edit', ':id') }}";
         //       url = url.replace(':id', id);

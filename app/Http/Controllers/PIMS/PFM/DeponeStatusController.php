@@ -109,6 +109,23 @@ class DeponeStatusController extends Controller
         }
     }
 
+    public function deponeStatusValidation(Request $request)
+    {
+        $datas = $request->all(); 
+        $baseUrl = getBaseUrl();
+        $response = apiHeaders()->Post($baseUrl . 'deponeStatusValidation', $datas);
+        $res_data = $response->json();
+        
+        if ($res_data['errors'] != false) {
+            $res = $res_data['errors'];
+           
+        }else{
+           $res = false;
+        }
+      
+        return response()->json(['error'=> $res]);
+    }
+
     /**
      * Update the specified resource in storage.
      *

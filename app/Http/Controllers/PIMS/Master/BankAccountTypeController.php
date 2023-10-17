@@ -76,12 +76,9 @@ class BankAccountTypeController extends Controller
 
         $response = apiHeaders()->get(getBaseUrl() . 'bankAccountType/' . $id);
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldata1 = $datas1['data'];
-            return view('pimsUi/Master/bankAccountTypes/view', compact('modeldata','modeldata1'));
+            return view('pimsUi/Master/bankAccountTypes/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -97,12 +94,9 @@ class BankAccountTypeController extends Controller
     {
         $response = apiHeaders()->get(getBaseUrl() . 'bankAccountType/' . $id);
         $datas = $response->json();
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $modeldatas1 = $datas1['data'];
-            return view('pimsUi/Master/bankAccountTypes/edit', compact('modeldata', 'modeldatas1'));
+            return view('pimsUi/Master/bankAccountTypes/edit', compact('modeldata'));
         } else {
             dd("un authendicated");
         }

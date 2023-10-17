@@ -90,6 +90,26 @@ Route::post('/bankAccountTypeValidation', 'App\Http\Controllers\PIMS\Master\Bank
 Route::post('/bankValidation', 'App\Http\Controllers\PIMS\Master\BankController@bankValidation')->name('bankValidation');
 Route::post('/addressTypeValidation', 'App\Http\Controllers\PIMS\Master\AddressTypeController@addressTypeValidation')->name('addressTypeValidation');
 Route::post('/languageValidation', 'App\Http\Controllers\PIMS\Master\LanguageController@languageValidation')->name('languageValidation');
+
+Route::post('/administratorTypeValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\AdministratorTypeController@administratorTypeValidation')->name('administratorTypeValidation');
+Route::post('/businessActivityValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\BusinessActivityController@businessActivityValidation')->name('businessActivityValidation');
+Route::post('/businessSaleSubsetValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\BusinessSaleSubsetController@businessSaleSubsetValidation')->name('businessSaleSubsetValidation');
+Route::post('/businessSectorValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\BusinessSectorController@businessSectorValidation')->name('businessSectorValidation');
+Route::post('/categoryValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationCategoryController@categoryValidation')->name('categoryValidation');
+Route::post('/documentTypeValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationDocumentTypeController@documentTypeValidation')->name('documentTypeValidation');
+Route::post('/ownershipValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnershipController@ownershipValidation')->name('ownershipValidation');
+Route::post('/structureValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationStructureController@structureValidation')->name('structureValidation');
+
+Route::post('/originValidation', 'App\Http\Controllers\PIMS\PFM\OriginController@originValidation')->name('originValidation');
+Route::post('/authorizationValidation', 'App\Http\Controllers\PIMS\PFM\AuthorizationController@authorizationValidation')->name('authorizationValidation');
+Route::post('/cachetValidation', 'App\Http\Controllers\PIMS\PFM\CachetController@cachetValidation')->name('cachetValidation');
+Route::post('/deponeStatusValidation', 'App\Http\Controllers\PIMS\PFM\DeponeStatusController@deponeStatusValidation')->name('deponeStatusValidation');
+Route::post('/existenceValidation', 'App\Http\Controllers\PIMS\PFM\ExistenceController@existenceValidation')->name('existenceValidation');
+Route::post('/personStageValidation', 'App\Http\Controllers\PIMS\PFM\PersonStageController@personStageValidation')->name('personStageValidation');
+Route::post('/survivalValidation', 'App\Http\Controllers\PIMS\PFM\SurvivalController@survivalValidation')->name('survivalValidation');
+Route::post('/validationChecking', 'App\Http\Controllers\PIMS\PFM\ValidationController@validationChecking')->name('validationChecking');
+Route::post('/activeStatusValidation', 'App\Http\Controllers\PIMS\PFM\ActiveStatusController@activeStatusValidation')->name('activeStatusValidation');
+
 Route::post('/get_states', 'App\Http\Controllers\PIMS\Master\StateController@get_states')->name('get_states');
 Route::post('/get_districts', 'App\Http\Controllers\PIMS\Master\DistrictController@get_districts')->name('get_districts');
 Route::post('/get_cities', 'App\Http\Controllers\PIMS\Master\CityController@get_cities')->name('get_cities');

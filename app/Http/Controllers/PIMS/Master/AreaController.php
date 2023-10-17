@@ -91,22 +91,7 @@ class AreaController extends Controller
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $countryResponse = apiHeaders()->get($baseUrl . 'country');
-            $countryDatas = $countryResponse->json();
-            $countryData = $countryDatas['data'];
-            $stateResponse = apiHeaders()->get($baseUrl . 'state');
-            $stateDatas = $stateResponse->json();
-            $stateData = $stateDatas['data'];
-            $districtResponse = apiHeaders()->get($baseUrl . 'district');
-            $districtDatas = $districtResponse->json();
-            $districtData = $districtDatas['data'];
-            $cityResponse = apiHeaders()->get($baseUrl . 'city');
-            $cityDatas = $cityResponse->json();
-            $cityData = $cityDatas['data'];
-            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
-            $statusDatas = $statusResponse->json();
-            $statusData = $statusDatas['data'];
-            return view('pimsUi/Master/area/view', compact('modeldata', 'countryData', 'stateData', 'districtData', 'cityData', 'statusData'));
+            return view('pimsUi/Master/area/view', compact('modeldata'));
         } else {
             dd("un authendicated");
         }
@@ -125,22 +110,11 @@ class AreaController extends Controller
         $datas = $response->json();
         if ($response->status() == 200) {
             $modeldata = $datas['data'];
-            $countryResponse = apiHeaders()->get($baseUrl . 'country');
-            $countryDatas = $countryResponse->json();
-            $countryData = $countryDatas['data'];
-            $stateResponse = apiHeaders()->get($baseUrl . 'state');
+            $data1['countryId'] =  $modeldata['countryId'];
+            $stateResponse = apiHeaders()->Post($baseUrl . 'getStateByCountryId', $data1);
             $stateDatas = $stateResponse->json();
             $stateData = $stateDatas['data'];
-            $districtResponse = apiHeaders()->get($baseUrl . 'district');
-            $districtDatas = $districtResponse->json();
-            $districtData = $districtDatas['data'];
-            $cityResponse = apiHeaders()->get($baseUrl . 'city');
-            $cityDatas = $cityResponse->json();
-            $cityData = $cityDatas['data'];
-            $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
-            $statusDatas = $statusResponse->json();
-            $statusData = $statusDatas['data'];
-            return view('pimsUi/Master/area/edit', compact('modeldata', 'countryData', 'stateData', 'districtData', 'cityData', 'statusData'));
+            return view('pimsUi/Master/area/edit', compact('modeldata', 'stateData'));
         } else {
             dd("un authendicated");
         }

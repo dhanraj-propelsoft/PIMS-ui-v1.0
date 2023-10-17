@@ -21,8 +21,8 @@
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="countryId"
                 id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
                 <option selected value="" disabled>Select Country</option>
-                @foreach ($countryData as $data)
-                    <option value="{{ $data['countryId'] }}" {{ $data['countryId'] == $modeldata['countryId'] ? 'selected' : '' }}>
+                @foreach ($modeldata['country'] as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['countryId'] ? 'selected' : '' }}>
                         {{ $data['country'] }}</option>
                 @endforeach
 
@@ -36,7 +36,7 @@
                 id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State">
                 <option selected value="" disabled>Select State</option>
                 @foreach ($stateData as $data)
-                    <option value="{{ $data['stateId'] }}" {{ $data['stateId'] == $modeldata['stateId'] ? 'selected' : '' }}>
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['stateId'] ? 'selected' : '' }}>
                         {{ $data['state'] }}</option>
                 @endforeach
 
@@ -48,10 +48,7 @@
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="districtId"
                 id="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District">
                 <option selected value="" disabled>Select District</option>
-                @foreach ($districtData as $data)
-                    <option value="{{ $data['districtId'] }}" {{ $data['districtId'] == $modeldata['districtId'] ? 'selected' : '' }}>
-                        {{ $data['district'] }}</option>
-                @endforeach
+                <option value="{{ $modeldata['districtId'] }}" selected>{{ $modeldata['districtName'] }}</option>
 
                 <!-- Add more districts here -->
             </select>
@@ -61,10 +58,7 @@
             <select class="form-control w-100 AlterInput search-need propel-key-press-input-mendatory" name="cityId"
                 id="cityId" data-minimum-results-for-search="Infinity" data-placeholder="Select City">
                 <option selected value="" disabled>Select City</option>
-                @foreach ($cityData as $data)
-                    <option value="{{ $data['cityId'] }}" {{ $data['cityId'] == $modeldata['cityId'] ? 'selected' : '' }}>
-                        {{ $data['city'] }}</option>
-                @endforeach
+                <option value="{{ $modeldata['cityId'] }}" selected>{{ $modeldata['cityName'] }}</option>
                 <!-- Add more citys here -->
             </select>
             <span class="AlterInputLabel box">City</span>
@@ -80,9 +74,9 @@
             <select class="form-select w-100 AlterInput search-need" name="activeStatus"
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
-                @foreach ($statusData as $data)
+                @foreach ($modeldata['activeStatus'] as $data)
                     <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['activeStatusId'] ? 'selected' : '' }}>
-                        {{ $data['activeType'] }}</option>
+                        {{ $data['active_type'] }}</option>
                 @endforeach
                 <!-- Add more states here -->
             </select>
