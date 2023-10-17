@@ -19,7 +19,7 @@
         class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="relationShip" placeholder="Relationship..."
+            <input type="text" name="relationship" placeholder="Relationship..."
                 class="form-control AlterInput  propel-key-press-input-mendatory duplicateVal" autocomplete="off"
                 value="{{ $modeldata['relationship'] }}">
             <span class="AlterInputLabel">Relationship</span>

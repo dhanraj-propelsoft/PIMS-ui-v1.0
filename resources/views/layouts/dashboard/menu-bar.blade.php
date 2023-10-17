@@ -97,7 +97,7 @@
             <a href="{{ url('relationShip') }}">
                 <li class="relationShip">
                     <i class="fas fa-users"></i>
-                    <span class='propel-menu-bar-text'>RelationShip</span>
+                    <span class='propel-menu-bar-text'>Relationship</span>
                 </li>
             </a>
             <a href="{{ url('qualification') }}">

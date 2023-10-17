@@ -15,7 +15,7 @@
     </div> <!-- | -->
 
 
-    <form action="{{ route('language.store') }}" data-dupl-val='true' data-edit-form="true" class="m-auto col-md-6 card p-2 rounded">
+    <form action="{{ route('language.store') }}" data-dupl-val='true' data-edit-form="true" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="language" placeholder="Language..."

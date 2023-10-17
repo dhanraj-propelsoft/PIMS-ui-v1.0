@@ -15,7 +15,7 @@
 
     <div class="m-auto col-md-6 card p-2 rounded">
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="relationShip" placeholder="Relationship..." class="form-control AlterInput "
+            <input type="text" name="relationship" placeholder="Relationship..." class="form-control AlterInput "
                 autocomplete="off" disabled value="{{ $modeldata['relationship'] }}">
             <span class="AlterInputLabel">Relationship</span>
         </label>
