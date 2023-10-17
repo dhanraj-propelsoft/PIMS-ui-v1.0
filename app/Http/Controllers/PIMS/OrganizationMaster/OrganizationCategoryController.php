@@ -32,11 +32,12 @@ class OrganizationCategoryController extends Controller
      */
     public function create()
     {
-        $response1 = apiHeaders()->get(getBaseUrl() . 'activeStatus');
-        $datas1 = $response1->json();
-        if ($response1->status() == 200) {
-            $modeldatas1 = $datas1['data'];
-            return view('pimsUi/organizationMaster/organizationCategory/add', compact('modeldatas1'));
+        $baseUrl = getBaseUrl();
+        $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
+        $statusDatas = $statusResponse->json();
+        if ($statusResponse->status() == 200) {
+            $statusData = $statusDatas['data'];
+            return view('pimsUi/organizationMaster/organizationCategory/add', compact('statusData'));
         } else {
             dd("un authendicated");
         }

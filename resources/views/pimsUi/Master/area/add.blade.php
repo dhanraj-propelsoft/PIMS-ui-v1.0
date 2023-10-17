@@ -62,7 +62,11 @@
                 data-minimum-results-for-search="Infinity" data-placeholder="Select Status">
                 <option selected value="" disabled>Select Status</option>
                 @foreach ($statusData as $data)
-                    <option value="{{ $data['id'] }}">{{ $data['activeType'] }}</option>
+                    @if($data['id'] == "1")
+                        <option value="{{ $data['id'] }}" selected>{{ $data['activeType'] }}</option>
+                    @else 
+                        <option value="{{ $data['id'] }}" >{{ $data['activeType'] }}</option>
+                    @endif
                 @endforeach
                 <!-- Add more states here -->
             </select>
