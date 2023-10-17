@@ -16,7 +16,7 @@
     <form action="{{ route('ownerShip.store') }}" data-dupl-val="true" method="post" class="m-auto col-md-6 card p-2 rounded">
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
-            <input type="text" name="ownerShip" required placeholder="Ownerships..."
+            <input type="text" name="ownership" required placeholder="Ownerships..."
                 class="form-control AlterInput  propel-key-press-input-mendatory" autocomplete="off">
             <span class="AlterInputLabel">Ownerships</span>
         </label>
