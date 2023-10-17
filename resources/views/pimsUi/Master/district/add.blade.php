@@ -79,7 +79,7 @@
         duplVal.on('input change', function() {
             var formData = new FormData($(duplVal)[0]); 
             $.ajax({
-                url: "{{ route('DistrictValidation') }}",
+                url: "{{ route('districtValidation') }}",
                 type: 'ajax',
                 method: 'post',
                 data: formData,

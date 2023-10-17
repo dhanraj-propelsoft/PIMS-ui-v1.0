@@ -76,7 +76,7 @@ Route::Resource('authorization', 'App\Http\Controllers\PIMS\PFM\AuthorizationCon
 
 Route::post('/countryValidation', 'App\Http\Controllers\PIMS\Master\CountryController@countryValidation')->name('countryValidation');
 Route::post('/stateValidation', 'App\Http\Controllers\PIMS\Master\StateController@stateValidation')->name('stateValidation');
-Route::post('/DistrictValidation', 'App\Http\Controllers\PIMS\Master\DistrictController@DistrictValidation')->name('DistrictValidation');
+Route::post('/districtValidation', 'App\Http\Controllers\PIMS\Master\DistrictController@districtValidation')->name('districtValidation');
 Route::post('/cityValidation', 'App\Http\Controllers\PIMS\Master\CityController@cityValidation')->name('cityValidation');
 Route::post('/areaValidation', 'App\Http\Controllers\PIMS\Master\AreaController@areaValidation')->name('areaValidation');
 Route::post('/salutationValidation', 'App\Http\Controllers\PIMS\Master\SalutationController@salutationValidation')->name('salutationValidation');

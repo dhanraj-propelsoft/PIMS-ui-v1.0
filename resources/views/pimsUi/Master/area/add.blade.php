@@ -31,9 +31,6 @@
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="stateId"
                 id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State" onchange="get_districts(this)">
                 <option selected value="" disabled>Select State</option>
-                @foreach ($stateData as $data)
-                    <option value="{{ $data['stateId'] }}">{{ $data['state'] }}</option>
-                @endforeach
                 <!-- Add more states here -->
             </select>
             <span class="AlterInputLabel box">State</span>
@@ -42,9 +39,6 @@
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" name="districtId"
                 id="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District" onchange="get_cities(this)">
                 <option selected value="" disabled>Select District</option>
-                @foreach ($districtData as $data)
-                    <option value="{{ $data['districtId'] }}">{{ $data['district'] }}</option>
-                @endforeach
                 <!-- Add more districts here -->
             </select>
             <span class="AlterInputLabel box">District</span>
@@ -53,9 +47,6 @@
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory"
                 name="cityId" id="cityId" data-minimum-results-for-search="Infinity" data-placeholder="Select City">
                 <option selected value="" disabled>Select City</option>
-                @foreach ($cityData as $data)
-                    <option value="{{ $data['cityId'] }}">{{ $data['city'] }}</option>
-                @endforeach
                 <!-- Add more citys here -->
             </select>
             <span class="AlterInputLabel box">City</span>

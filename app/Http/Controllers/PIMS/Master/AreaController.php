@@ -38,19 +38,10 @@ class AreaController extends Controller
         $countryDatas = $countryResponse->json();
         if ($countryResponse->status() == 200) {
             $countryData = $countryDatas['data'];
-            $stateResponse = apiHeaders()->get($baseUrl . 'state');
-            $stateDatas = $stateResponse->json();
-            $stateData = $stateDatas['data'];
-            $districtResponse = apiHeaders()->get($baseUrl . 'district');
-            $districtDatas = $districtResponse->json();
-            $districtData = $districtDatas['data'];
-            $cityResponse = apiHeaders()->get($baseUrl . 'city');
-            $cityDatas = $cityResponse->json();
-            $cityData = $cityDatas['data'];
             $statusResponse = apiHeaders()->get($baseUrl . 'activeStatus');
             $statusDatas = $statusResponse->json();
             $statusData = $statusDatas['data'];
-            return view('pimsUi/Master/area/add', compact('countryData', 'stateData', 'districtData', 'cityData', 'statusData'));
+            return view('pimsUi/Master/area/add', compact('countryData', 'statusData'));
         } else {
             dd("un authendicated");
         }

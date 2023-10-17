@@ -76,7 +76,7 @@ class AddressTypeController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'addressType/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
-            $modeldata = $datas['data'];
+            $modeldata = $datas;
             return view('pimsUi/Master/addressTypes/view', compact('modeldata'));
         } else {
             dd("un authendicated");
@@ -94,7 +94,7 @@ class AddressTypeController extends Controller
         $response = apiHeaders()->get(getBaseUrl() . 'addressType/' . $id);
         $datas = $response->json();
         if ($response->status() == 200) {
-            $modeldata = $datas['data'];
+            $modeldata = $datas;
             return view('pimsUi/Master/addressTypes/edit', compact('modeldata'));
         } else {
             dd("un authendicated");
