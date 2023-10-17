@@ -16,6 +16,11 @@
 
 
     <form action="{{ route('area.store') }}" data-dupl-val="true" data-edit-form="true" method="post" class="m-auto col-md-6 card p-2 rounded">
+        @if (session('failed'))
+            <div class="alert alert-danger">
+                {{ session('failed') }}
+            </div>
+        @endif
         @csrf
         <label class="form-group p-0 InputLabel w-100">
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="countryId"

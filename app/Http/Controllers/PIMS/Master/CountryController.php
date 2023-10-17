@@ -142,11 +142,11 @@ class CountryController extends Controller
     {
         if ($id) {
             $response = apiHeaders()->delete(getBaseUrl() . 'country/' . $id);
-            $datas = $response->json();
             if ($response->status() == 200) {
+                $datas = $response->json();
                 $result = $datas['data'];
                 if ($result['type'] == 2) {
-                    return redirect()->back()->with('failed', 'This Country  Used in State');
+                    return redirect()->back()->with('failed', $result['status']);
                 } elseif($result['type'] == 1) {
                     return redirect()->route('country.index');
                 }else{

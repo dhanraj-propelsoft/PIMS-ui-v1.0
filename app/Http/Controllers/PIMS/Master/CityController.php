@@ -166,7 +166,15 @@ class CityController extends Controller
         if ($id) {
             $response = apiHeaders()->delete(getBaseUrl() . 'city/' . $id);
             if ($response->status() == 200) {
-                return redirect()->route('city.index');
+                $datas = $response->json();
+                $result = $datas['data'];
+                if ($result['type'] == 2) {
+                    return redirect()->back()->with('failed', $result['status']);
+                } elseif($result['type'] == 1) {
+                    return redirect()->route('city.index');
+                }else{
+                    dd("un authendicated");
+                }
             }
         }
     }

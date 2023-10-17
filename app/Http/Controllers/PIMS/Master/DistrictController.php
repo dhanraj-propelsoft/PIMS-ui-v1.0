@@ -160,7 +160,15 @@ class DistrictController extends Controller
         if ($id) {
             $response = apiHeaders()->delete(getBaseUrl() . 'district/' . $id);
             if ($response->status() == 200) {
-                return redirect()->route('district.index');
+                $datas = $response->json();
+                $result = $datas['data'];
+                if ($result['type'] == 2) {
+                    return redirect()->back()->with('failed', $result['status']);
+                } elseif($result['type'] == 1) {
+                    return redirect()->route('district.index');
+                }else{
+                    dd("un authendicated");
+                }
             }
         }
     }
