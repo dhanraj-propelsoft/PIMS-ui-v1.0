@@ -52,7 +52,10 @@
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="districtId"
                 id="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District">
                 <option selected value="" disabled>Select District</option>
-                <option value="{{ $modeldata['districtId'] }}" selected>{{ $modeldata['districtName'] }}</option>
+                @foreach ($districtData as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['districtId'] ? 'selected' : '' }}>
+                        {{ $data['district'] }}</option>
+                @endforeach
                 <!-- Add more districts here -->
             </select>
             <span class="AlterInputLabel box">District</span>
@@ -125,11 +128,9 @@
                 success: function(data) {
         
                     var states = JSON.parse(data);
-                    console.log(states);
-                    $('#stateId')
-                        .find('option')
-                        .remove()
-                        .end();
+                    //console.log(states);
+                    $('#stateId').find('option').remove().end();
+                    $('#districtId').find('option').remove().end();
                     $("#stateId").prepend("<option value=''>Select State</option>").val('');
                     $.each(states, function(key, value) {
                         var option = '<option value="' + value.id + '">' + value.state +
@@ -139,6 +140,8 @@
 
                 },
                 error: function(err) {
+                    $('#stateId').find('option').remove().end();
+                    $('#districtId').find('option').remove().end();
                     console.log(err);
                 }
             });
@@ -157,11 +160,8 @@
                 success: function(data) {
         
                     var districts = JSON.parse(data);
-                    console.log(districts);
-                    $('#districtId')
-                        .find('option')
-                        .remove()
-                        .end();
+                    //console.log(districts);
+                    $('#districtId').find('option').remove().end();
                     $("#districtId").prepend("<option value=''>Select District</option>").val('');
                     $.each(districts, function(key, value) {
                         var option = '<option value="' + value.id + '">' + value.district +
@@ -171,6 +171,7 @@
 
                 },
                 error: function(err) {
+                    $('#districtId').find('option').remove().end();
                     console.log(err);
                 }
             });

@@ -105,7 +105,11 @@ class CityController extends Controller
             $stateResponse = apiHeaders()->Post($baseUrl . 'getStateByCountryId', $data1);
             $stateDatas = $stateResponse->json();
             $stateData = $stateDatas['data'];
-            return view('pimsUi/Master/city/edit', compact('modeldata', 'stateData'));
+            $data2['stateId'] =  $modeldata['stateId'];
+            $districtResponse = apiHeaders()->Post($baseUrl . 'getDistrictByStateId', $data2);
+            $districtDatas = $districtResponse->json();
+            $districtData = $districtDatas['data'];
+            return view('pimsUi/Master/city/edit', compact('modeldata', 'stateData', 'districtData'));
         } else {
             dd("un authendicated");
         }

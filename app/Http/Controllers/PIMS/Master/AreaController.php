@@ -105,7 +105,15 @@ class AreaController extends Controller
             $stateResponse = apiHeaders()->Post($baseUrl . 'getStateByCountryId', $data1);
             $stateDatas = $stateResponse->json();
             $stateData = $stateDatas['data'];
-            return view('pimsUi/Master/area/edit', compact('modeldata', 'stateData'));
+            $data2['stateId'] =  $modeldata['stateId'];
+            $districtResponse = apiHeaders()->Post($baseUrl . 'getDistrictByStateId', $data2);
+            $districtDatas = $districtResponse->json();
+            $districtData = $districtDatas['data'];
+            $data3['districtId'] =  $modeldata['districtId'];
+            $cityResponse = apiHeaders()->Post($baseUrl . 'getCityByDistrictId', $data3);
+            $cityDatas = $cityResponse->json();
+            $cityData = $cityDatas['data'];
+            return view('pimsUi/Master/area/edit', compact('modeldata', 'stateData', 'districtData', 'cityData'));
         } else {
             dd("un authendicated");
         }

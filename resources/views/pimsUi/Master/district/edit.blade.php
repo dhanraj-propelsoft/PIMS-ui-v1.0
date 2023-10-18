@@ -96,36 +96,8 @@
             var url = "{{ route('district.index') }}";
             window.location.href = url;
         }
-        var valRouteUrl = "{{ route('areaValidation') }}";
-        
-        var duplVal = $("form[data-dupl-val='true']");
-        
-        duplVal.on('input change', function() {
-            var formData = new FormData($(duplVal)[0]); 
-            $.ajax({
-                url: "{{ route('districtValidation') }}",
-                type: 'ajax',
-                method: 'post',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    if (data.error != false) {
-                        for (var key in data.error) {
-                            var responseData = data.error[key];
-                            if (responseData != "") {
-                                $("input[name='" + key + "']").attr('validate', 'failure');
-                                errorShow($("input[name='" + key + "']"), responseData);
-                                formValid();
-                            }
-                        }
-                    }
-                },
-                error: function(err) {
-                    //console.log(err);
-                }
-            });
-        });
+        var valRouteUrl = "{{ route('districtValidation') }}";
+
         function get_states(country) {
             var country_id = country.value;
             $.ajax({
@@ -141,10 +113,7 @@
         
                     var states = JSON.parse(data);
                     //console.log(states);
-                    $('#stateId')
-                        .find('option')
-                        .remove()
-                        .end();
+                    $('#stateId').find('option').remove().end();
                     $("#stateId").prepend("<option value=''>Select State</option>").val('');
                     $.each(states, function(key, value) {
                         var option = '<option value="' + value.id + '">' + value.state +
@@ -154,6 +123,7 @@
 
                 },
                 error: function(err) {
+                    $('#stateId').find('option').remove().end();
                     console.log(err);
                 }
             });

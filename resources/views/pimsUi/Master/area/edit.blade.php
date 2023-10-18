@@ -24,7 +24,7 @@
         @csrf
         <label class="form-group p-0 InputLabel w-100">
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="countryId"
-                id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
+                id="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country" onchange="get_states(this)">
                 <option selected value="" disabled>Select Country</option>
                 @foreach ($modeldata['country'] as $data)
                     <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['countryId'] ? 'selected' : '' }}>
@@ -38,7 +38,7 @@
 
         <label class="form-group p-0 InputLabel w-100">
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="stateId"
-                id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State">
+                id="stateId" data-minimum-results-for-search="Infinity" data-placeholder="Select State" onchange="get_districts(this)">
                 <option selected value="" disabled>Select State</option>
                 @foreach ($stateData as $data)
                     <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['stateId'] ? 'selected' : '' }}>
@@ -51,10 +51,12 @@
         </label>
         <label class="form-group p-0 InputLabel w-100">
             <select class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory" required name="districtId"
-                id="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District">
+                id="districtId" data-minimum-results-for-search="Infinity" data-placeholder="Select District" onchange="get_cities(this)">
                 <option selected value="" disabled>Select District</option>
-                <option value="{{ $modeldata['districtId'] }}" selected>{{ $modeldata['districtName'] }}</option>
-
+                @foreach ($districtData as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['districtId'] ? 'selected' : '' }}>
+                        {{ $data['district'] }}</option>
+                @endforeach
                 <!-- Add more districts here -->
             </select>
             <span class="AlterInputLabel box">District</span>
@@ -63,7 +65,10 @@
             <select class="form-control w-100 AlterInput search-need propel-key-press-input-mendatory" name="cityId"
                 id="cityId" data-minimum-results-for-search="Infinity" data-placeholder="Select City">
                 <option selected value="" disabled>Select City</option>
-                <option value="{{ $modeldata['cityId'] }}" selected>{{ $modeldata['cityName'] }}</option>
+                @foreach ($cityData as $data)
+                    <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['cityId'] ? 'selected' : '' }}>
+                        {{ $data['city'] }}</option>
+                @endforeach
                 <!-- Add more citys here -->
             </select>
             <span class="AlterInputLabel box">City</span>
@@ -123,35 +128,7 @@
         }
 
         var valRouteUrl = "{{ route('areaValidation') }}";
-        
-        if ($(duplValForm)) {
-            duplValForm.on('input change', function() {
-                var formData = new FormData($(duplValForm)[0]); 
-                $.ajax({
-                    url: "{{ route('areaValidation') }}",
-                    type: 'ajax',
-                    method: 'post',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        if (data.error != false) {
-                            for (var key in data.error) {
-                                var responseData = data.error[key];
-                                if (responseData != "") {
-                                    $("input[name='" + key + "']").attr('validate', 'failure');
-                                    errorShow($("input[name='" + key + "']"), responseData);
-                                    formValid();
-                                }
-                            }
-                        }
-                    },
-                    error: function(err) {
-                        //console.log(err);
-                    }
-                });
-            });
-        }
+
         function get_states(country) {
             var country_id = country.value;
             $.ajax({
@@ -167,10 +144,9 @@
         
                     var states = JSON.parse(data);
                     //console.log(states);
-                    $('#stateId')
-                        .find('option')
-                        .remove()
-                        .end();
+                    $('#stateId').find('option').remove().end();
+                    $('#districtId').find('option').remove().end();
+                    $('#cityId').find('option').remove().end();
                     $("#stateId").prepend("<option value=''>Select State</option>").val('');
                     $.each(states, function(key, value) {
                         var option = '<option value="' + value.id + '">' + value.state +
@@ -180,6 +156,9 @@
 
                 },
                 error: function(err) {
+                    $('#stateId').find('option').remove().end();
+                    $('#districtId').find('option').remove().end();
+                    $('#cityId').find('option').remove().end();
                     console.log(err);
                 }
             });
@@ -193,25 +172,25 @@
                 async: false,
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    state_id: state_id,
+                    stateId: state_id,
                 },
                 success: function(data) {
         
                     var districts = JSON.parse(data);
-                    console.log(districts);
-                    $('#districtId')
-                        .find('option')
-                        .remove()
-                        .end();
+                    //console.log(districts);
+                    $('#districtId').find('option').remove().end();
+                    $('#cityId').find('option').remove().end();
                     $("#districtId").prepend("<option value=''>Select District</option>").val('');
                     $.each(districts, function(key, value) {
-                        var option = '<option value="' + value.id + '">' + value.name +
+                        var option = '<option value="' + value.id + '">' + value.district +
                             '</option>';
                         $('#districtId').append(option);
                     });
 
                 },
                 error: function(err) {
+                    $('#districtId').find('option').remove().end();
+                    $('#cityId').find('option').remove().end();
                     console.log(err);
                 }
             });
@@ -225,25 +204,23 @@
                 async: false,
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    district_id: district_id,
+                    districtId: district_id,
                 },
                 success: function(data) {
         
                     var cities = JSON.parse(data);
-                    console.log(cities);
-                    $('#cityId')
-                        .find('option')
-                        .remove()
-                        .end();
+                    //console.log(cities);
+                    $('#cityId').find('option').remove().end();
                     $("#cityId").prepend("<option value=''>Select City</option>").val('');
                     $.each(cities, function(key, value) {
-                        var option = '<option value="' + value.id + '">' + value.name +
+                        var option = '<option value="' + value.id + '">' + value.city +
                             '</option>';
                         $('#cityId').append(option);
                     });
 
                 },
                 error: function(err) {
+                    $('#cityId').find('option').remove().end();
                     console.log(err);
                 }
             });

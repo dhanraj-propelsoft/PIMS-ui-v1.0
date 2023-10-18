@@ -106,10 +106,8 @@
         
                     var states = JSON.parse(data);
                     //console.log(states);
-                    $('#stateId')
-                        .find('option')
-                        .remove()
-                        .end();
+                    $('#stateId').find('option').remove().end();
+                    $('#districtId').find('option').remove().end();
                     $("#stateId").prepend("<option value=''>Select State</option>").val('');
                     $.each(states, function(key, value) {
                         var option = '<option value="' + value.id + '">' + value.state +
@@ -119,6 +117,8 @@
 
                 },
                 error: function(err) {
+                    $('#stateId').find('option').remove().end();
+                    $('#districtId').find('option').remove().end();
                     console.log(err);
                 }
             });
@@ -138,10 +138,7 @@
         
                     var districts = JSON.parse(data);
                     //console.log(districts);
-                    $('#districtId')
-                        .find('option')
-                        .remove()
-                        .end();
+                    $('#districtId').find('option').remove().end();
                     $("#districtId").prepend("<option value=''>Select District</option>").val('');
                     $.each(districts, function(key, value) {
                         var option = '<option value="' + value.id + '">' + value.district +
@@ -151,6 +148,7 @@
 
                 },
                 error: function(err) {
+                    $('#districtId').find('option').remove().end();
                     console.log(err);
                 }
             });
