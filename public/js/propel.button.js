@@ -64,6 +64,38 @@ $('.ddReset').on('click', function(e) {
     ele.empty(), ele.removeAttr("title");
 });
 
+
+var duplVal = $("form[data-dupl-val='true']");
+        
+function duplicateVal(url) {
+    if ($(duplVal)) {
+        var formData = new FormData($(duplVal)[0]); 
+        $.ajax({
+            url: url,
+            type: 'ajax',
+            method: 'post',
+            async: false,
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                if (data.error != false) {
+                    for (var key in data.error) {
+                        var responseData = data.error[key];
+                        if (responseData != "") {
+                            $("input[name='" + key + "']").attr('validate', 'failure');
+                            errorShow($("input[name='" + key + "']"), responseData);
+                            //formValid();
+                        }
+                    }
+                }
+            },
+            error: function(err) {
+                //console.log(err);
+            }
+        });
+    }
+}
     //Validation When input Change
             /*
                    In this type of validation, we validate fields where the user cannot enter a value using the keyboard.
@@ -89,6 +121,7 @@ inputV.blur(function () {
     else if (emailValid($(this),false)) {} 
     else if (dateValid($(this),false)) {} 
     else if(checkValid($(this),false)){}
+    else if(duplicateVal(valRouteUrl)){}
     
     formValid();
 });

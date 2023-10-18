@@ -37,7 +37,7 @@
         </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="district" required placeholder="Enter District..."
-                class="form-control AlterInput propel-key-press-input-mendatory duplicateVal" autocomplete="off">
+                class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off">
             <span class="AlterInputLabel">District</span>
         </label>
 
@@ -78,6 +78,8 @@
             var url = "{{ route('district.index') }}";
             window.location.href = url;
         }
+        var valRouteUrl = "{{ route('areaValidation') }}";
+        
         var duplVal = $("form[data-dupl-val='true']");
         
         duplVal.on('input change', function() {
@@ -112,6 +114,7 @@
                 url: "{{route('get_states')}}",
                 type: 'ajax',
                 method: 'post',
+                async: false,
                 data: {
                     "_token": "{{ csrf_token() }}",
                     countryId: country_id

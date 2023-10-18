@@ -25,7 +25,7 @@
         @csrf
         <label class="form-group p-0 InputLabel w-100">
             <select required class="form-select w-100 AlterInput search-need propel-key-press-input-mendatory"
-                name="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country" onchange="get_states(this)">
+                name="countryId" data-minimum-results-for-search="Infinity" data-placeholder="Select Country">
                 <option selected value="" disabled>Select Country</option>
                 @foreach ($modeldata['countries'] as $data)
                     <option value="{{ $data['id'] }}" {{ $data['id'] == $modeldata['countryId'] ? 'selected' : '' }}>
@@ -37,7 +37,7 @@
         </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input required type="text" name="state" placeholder="State..."
-                class="form-control AlterInput propel-key-press-input-mendatory duplicateVal" autocomplete="off"
+                class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off"
                 value="{{ $modeldata['state'] }}">
             <span class="AlterInputLabel">State</span>
         </label>
@@ -84,65 +84,7 @@
             var url = "{{ route('state.index') }}";
             window.location.href = url;
         }
-        var duplVal = $("form[data-dupl-val='true']");
-
-        duplVal.on('input change', function() {
-            var formData = new FormData($(duplVal)[0]);
-            $.ajax({
-                url: "{{ route('stateValidation') }}",
-                type: 'ajax',
-                method: 'post',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    if (data.error != false) {
-                        for (var key in data.error) {
-                            var responseData = data.error[key];
-                            if (responseData != "") {
-                                $("input[name='" + key + "']").attr('validate', 'failure');
-                                errorShow($("input[name='" + key + "']"), responseData);
-                                formValid();
-                            }
-                        }
-                    }
-                },
-                error: function(err) {
-                    //console.log(err);
-                }
-            });
-        });
-        function get_states(country) {
-            var country_id = country.value;
-            $.ajax({
-                url: "{{route('get_states')}}",
-                type: 'ajax',
-                method: 'post',
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    countryId: country_id,
-                },
-                success: function(data) {
-        
-                    var states = JSON.parse(data);
-                    console.log(states);
-                    $('#stateId')
-                        .find('option')
-                        .remove()
-                        .end();
-                    $("#stateId").prepend("<option value=''>Select State</option>").val('');
-                    $.each(states, function(key, value) {
-                        var option = '<option value="' + value.id + '">' + value.state +
-                            '</option>';
-                        $('#stateId').append(option);
-                    });
-
-                },
-                error: function(err) {
-                    console.log(err);
-                }
-            });
-        }
+        var valRouteUrl = "{{ route('stateValidation') }}";
 
         // function closePage(id){
         //   var url = "{{ route('state.edit', ':id') }}";

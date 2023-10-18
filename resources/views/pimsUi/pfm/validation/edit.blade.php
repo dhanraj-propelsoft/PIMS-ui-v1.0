@@ -65,34 +65,7 @@
             var url = "{{ route('validation.index') }}";
             window.location.href = url;
         }
-        var duplVal = $("form[data-dupl-val='true']");
-
-        duplVal.on('input change', function() {
-            var formData = new FormData($(duplVal)[0]);
-            $.ajax({
-                url: "{{ route('validationChecking') }}",
-                type: 'ajax',
-                method: 'post',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    if (data.error != false) {
-                        for (var key in data.error) {
-                            var responseData = data.error[key];
-                            if (responseData != "") {
-                                $("input[name='" + key + "']").attr('validate', 'failure');
-                                errorShow($("input[name='" + key + "']"), responseData);
-                                formValid();
-                            }
-                        }
-                    }
-                },
-                error: function(err) {
-                    //console.log(err);
-                }
-            });
-        });
+        var valRouteUrl = "{{ route('validationChecking') }}";
         // function closePage(id){
         //   var url = "{{ route('validation.edit', ':id') }}";
         //       url = url.replace(':id', id);

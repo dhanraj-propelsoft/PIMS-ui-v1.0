@@ -70,7 +70,7 @@
         </label>
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" required name="area" placeholder="Enter Area..."
-                class="form-control AlterInput propel-key-press-input-mendatory duplicateVal" autocomplete="off"
+                class="form-control AlterInput propel-key-press-input-mendatory" autocomplete="off"
                 value="{{ $modeldata['area'] }}">
             <span class="AlterInputLabel">Area</span>
         </label>
@@ -122,7 +122,7 @@
             window.location.href = url;
         }
 
-        var duplValForm = $("form[data-dupl-val='true']");
+        var valRouteUrl = "{{ route('areaValidation') }}";
         
         if ($(duplValForm)) {
             duplValForm.on('input change', function() {
@@ -158,6 +158,7 @@
                 url: "{{route('get_states')}}",
                 type: 'ajax',
                 method: 'post',
+                async: false,
                 data: {
                     "_token": "{{ csrf_token() }}",
                     countryId: country_id,
@@ -189,6 +190,7 @@
                 url: "{{route('get_districts')}}",
                 type: 'ajax',
                 method: 'post',
+                async: false,
                 data: {
                     "_token": "{{ csrf_token() }}",
                     state_id: state_id,
@@ -220,6 +222,7 @@
                 url: "{{route('get_cities')}}",
                 type: 'ajax',
                 method: 'post',
+                async: false,
                 data: {
                     "_token": "{{ csrf_token() }}",
                     district_id: district_id,

@@ -24,7 +24,7 @@
         @csrf
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="country" required placeholder="Country..."
-                class="form-control AlterInput  propel-key-press-input-mendatory duplicateVal" autocomplete="off"
+                class="form-control AlterInput  propel-key-press-input-mendatory" autocomplete="off"
                 value="{{ $modeldata['country'] }}">
             <span class="AlterInputLabel">Country</span>
         </label>
@@ -45,19 +45,19 @@
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="number" name="numericCode" placeholder="Enter Numeric Code..."
-                class="form-control AlterInput duplicateVal" autocomplete="off" value="{{ $modeldata['numericCode'] }}">
+                class="form-control AlterInput" autocomplete="off" value="{{ $modeldata['numericCode'] }}">
             <span class="AlterInputLabel">Numeric Code</span>
         </label>
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="number" name="phoneCode" placeholder="Enter Phone Code..."
-                class="form-control AlterInput duplicateVal" autocomplete="off" value="{{ $modeldata['phoneCode'] }}">
+                class="form-control AlterInput" autocomplete="off" value="{{ $modeldata['phoneCode'] }}">
             <span class="AlterInputLabel">Phone Code</span>
         </label>
 
         <label class="form-group p-0 mb-4 InputLabel w-100">
             <input type="text" name="capital" placeholder="Enter Capital..."
-                class="form-control AlterInput duplicateVal textValidation" autocomplete="off"
+                class="form-control AlterInput textValidation" autocomplete="off"
                 value="{{ $modeldata['capital'] }}">
             <span class="AlterInputLabel">Capital</span>
         </label>
@@ -103,34 +103,7 @@
                 return false;
             }
         });
-        var duplVal = $("form[data-dupl-val='true']");
-        
-        duplVal.on('input change', function() {
-            var formData = new FormData($(duplVal)[0]); 
-            $.ajax({
-                url: "{{ route('countryValidation') }}",
-                type: 'ajax',
-                method: 'post',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    if (data.error != false) {
-                        for (var key in data.error) {
-                            var responseData = data.error[key];
-                            if (responseData != "") {
-                                $("input[name='" + key + "']").attr('validate', 'failure');
-                                errorShow($("input[name='" + key + "']"), responseData);
-                                formValid();
-                            }
-                        }
-                    }
-                },
-                error: function(err) {
-                    //console.log(err);
-                }
-            });
-        });
+        var valRouteUrl = "{{ route('countryValidation') }}";
 
         // function closePage(id){
         //   var url = "{{ route('country.edit', ':id') }}";
