@@ -96,7 +96,7 @@ Route::post('/businessActivityValidation', 'App\Http\Controllers\PIMS\Organizati
 Route::post('/businessSaleSubsetValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\BusinessSaleSubsetController@businessSaleSubsetValidation')->name('businessSaleSubsetValidation');
 Route::post('/businessSectorValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\BusinessSectorController@businessSectorValidation')->name('businessSectorValidation');
 Route::post('/categoryValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationCategoryController@categoryValidation')->name('categoryValidation');
-Route::post('/documentTypeValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationDocumentTypeController@documentTypeValidation')->name('documentTypeValidation');
+Route::post('/orgDocumentTypeValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationDocumentTypeController@orgDocumentTypeValidation')->name('orgDocumentTypeValidation');
 Route::post('/ownershipValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationOwnershipController@ownershipValidation')->name('ownershipValidation');
 Route::post('/structureValidation', 'App\Http\Controllers\PIMS\OrganizationMaster\OrganizationStructureController@structureValidation')->name('structureValidation');
 

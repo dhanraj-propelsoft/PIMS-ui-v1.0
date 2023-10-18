@@ -108,11 +108,11 @@ class OrganizationDocumentTypeController extends Controller
         }
     }
 
-    public function documentTypeValidation(Request $request)
+    public function orgDocumentTypeValidation(Request $request)
     {
         $datas = $request->all(); 
         $baseUrl = getBaseUrl();
-        $response = apiHeaders()->Post($baseUrl . 'documentTypeValidation', $datas);
+        $response = apiHeaders()->Post($baseUrl . 'orgDocumentTypeValidation', $datas);
         $res_data = $response->json();
         
         if ($res_data['data']['errors'] != false) {

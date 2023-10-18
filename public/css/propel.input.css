@@ -40,7 +40,10 @@ input:read-only{
 .select2-search__field::placeholder{
   font-size: 80%;
 }
-select ~ .AlterInputLabel{
+/* select ~ .AlterInputLabel{
+  display: none;
+} */
+select:not(:valid) ~ .AlterInputLabel{
   display: none;
 }
 .select2-container--below:not(:has(.select2-selection__placeholder)) ~ .AlterInputLabel,
@@ -91,14 +94,14 @@ select ~ .AlterInputLabel{
 }
 .AlterInput:not(:placeholder-shown)~.AlterInputLabel {
     /* You need to add a placeholder to your fields. For example: <input "placeholder=" "/> */
-
+    
     top: -8px;
     left: 15px;
     opacity: 1;
   }
   .AlterInput select[placeholder="selectPH"]~.AlterInputLabel {
     /* You need to add a placeholder to your fields. For example: <input "placeholder=" "/> */
-
+    display: block;
     top: -8px;
     left: 15px;
     opacity: 1;

@@ -70,7 +70,7 @@
         duplVal.on('input change', function() {
             var formData = new FormData($(duplVal)[0]);
             $.ajax({
-                url: "{{ route('documentTypeValidation') }}",
+                url: "{{ route('orgDocumentTypeValidation') }}",
                 type: 'ajax',
                 method: 'post',
                 data: formData,
